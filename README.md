@@ -11,7 +11,7 @@ $ cd .emacs.d
 $ cp .emacs ~/
 $ emacs
 ```
-### rinari key
+### rinari key for Rails
 
 ```text
 C-c ; f ;	rinari-find-by-context
@@ -42,3 +42,8 @@ C-c ; f x	rinari-find-fixture
 C-c ; f y	rinari-find-stylesheet
 C-c ; f z	rinari-find-rspec-fixture
 ```
+
+### YASnippet html mode for Rails
+```
+% -> <%= %>
+%[f,lk]....
