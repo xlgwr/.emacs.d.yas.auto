@@ -46,26 +46,26 @@ C-c ; f z	rinari-find-rspec-fixture
 ### YASnippet html mode for Rails emacs key
 ```
 1. %
-# name: <%= %>
-# key: %
+  name: <%= %>
+  key: %
 2. %e
-# name: <% @post.each do |post| %>
-# key: %e
+  name: <% @post.each do |post| %>
+  key: %e
 3. %t
-# name: <%= f.label f.text_field %>
-# key: %t   
+  name: <%= f.label f.text_field %>
+  key: %t   
 4. %a
-# name: <%= f.label f.text_area %>
-# key: %a
+  name: <%= f.label f.text_area %>
+  key: %a
 5. %lk
-# name: <%= link_to 'new post',new_post_path %>
-# key: %lk
+  name: <%= link_to 'new post',new_post_path %>
+  key: %lk
 6. %err
-# name: <%= if @post.errors.any? %>
-# key: %err
+  name: <%= if @post.errors.any? %>
+  key: %err
 7. %f
-# name: <%= form_for %>
-# key: %f
+  name: <%= form_for %>
+  key: %f
 8. p%
-# name: <p> <strong>Title:</strong></p>
-# key: p%
+  name: <p> <strong>Title:</strong></p>
+  key: p%
