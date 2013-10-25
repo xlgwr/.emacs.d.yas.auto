@@ -48,24 +48,24 @@ C-c ; f z	rinari-find-rspec-fixture
 1. %
 # name: <%= %>
 # key: %
-%e
+2. %e
 # name: <% @post.each do |post| %>
 # key: %e
-%t
+3. %t
 # name: <%= f.label f.text_field %>
 # key: %t   
-%a
+4. %a
 # name: <%= f.label f.text_area %>
 # key: %a
-%lk
+5. %lk
 # name: <%= link_to 'new post',new_post_path %>
 # key: %lk
-%err
+6. %err
 # name: <%= if @post.errors.any? %>
 # key: %err
-%f
+7. %f
 # name: <%= form_for %>
 # key: %f
-p%
+8. p%
 # name: <p> <strong>Title:</strong></p>
 # key: p%
