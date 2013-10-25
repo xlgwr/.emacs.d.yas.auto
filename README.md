@@ -1,6 +1,6 @@
 .emacs.d.yas.auto
 =================
-### power for rails and ruby.
+### power for rails and ruby to emacs.
 
 ```bash
 $ cd ~/
