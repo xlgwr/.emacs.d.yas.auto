@@ -1,7 +1,7 @@
 (add-to-list 'load-path
-	     "~/.emacs.d/plugins/yasnippet")
+	     "~/.emacs.d/tools/yasnippet")
 (require 'yasnippet)
-(setq yas-snippet-dirs '("~/.emacs.d/plugins/yasnippet/snippets" "~/.emacs.d/plugins/yasnippet/extras/imported"))
+(setq yas-snippet-dirs '("~/.emacs.d/tools/yasnippet/snippets" "~/.emacs.d/tools/yasnippet/extras/imported"))
 (yas-global-mode 1)
 
 ;; add ido
@@ -10,7 +10,7 @@
 
 ;; rinari
 (add-to-list 'load-path
-	     "~/.emacs.d/plugins/rinari")
+	     "~/.emacs.d/tools/rinari")
 (require 'rinari)
 (global-rinari-mode 1)
 

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: <p> <strong>Title:</strong></p>
+# key: p%
+# --
+<p>
+ <strong>${1:Title}:</strong>
+ <%= ${2:@post}.${3:title} %>
+</p>
+$0
