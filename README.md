@@ -48,6 +48,9 @@ C-c ; f z	rinari-find-rspec-fixture
 1. %
   name: <%= %>
   key: %
+  1.1 %rd
+    name: <%= render 'form' %>
+    key: %rd
 2. %e
   name: <% @post.each do |post| %>
   key: %e
@@ -61,9 +64,12 @@ C-c ; f z	rinari-find-rspec-fixture
   name: <%= link_to 'new post',new_post_path %>
   key: %lk
 
-  5.1 %tdlk
+  5.1 %lk
    # name: <td><%= link_to 'new post',new_post_path %></td>
-   # key: %tdlk
+   # key: %lk
+  5.2 %lkdl
+    # name:<td> <%= link_to 'Destroy',post_path(post),method: :delete %> </td>
+    # key: %lkdl
 
 6. %err
   name: <%= if @post.errors.any? %>

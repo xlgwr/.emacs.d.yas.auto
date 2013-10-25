@@ -1,0 +1,38 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/xlgwr/sites/blog/app/views/" . "layouts/")
+ ("/home/xlgwr/sites/blog/app/" . "views/")
+ ("/home/xlgwr/sites/blog/" . "app/")
+ ("/home/xlgwr/sites/" . "blog/")
+ ("/home/xlgwr/" . "sites/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/xlgwr/sites/blog/app/views/layouts/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "application.html.erb"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/xlgwr/sites/blog/app/views/layouts/" (21060 24704 705208 864000) "application.html.erb" "../" "./")
+
+ ("/home/xlgwr/sites/blog/app/views/" (21060 24704 705208 864000) "../" "./" "layouts/")
+
+ ("/home/xlgwr/sites/blog/app/" (21060 24704 709208 814000) "models/" "controllers/" "views/" "mailers/" "../" "./" "assets/" "helpers/")
+
+ ("/home/xlgwr/sites/blog/" (21060 24868 407150 852000) "db/" ".gitignore" "vendor/" "config.ru" "tmp/" "app/" "lib/" "Rakefile" "public/" "config/" "Gemfile.lock" "../" "./" "bin/" "test/" "README.rdoc" "log/" "Gemfile")
+
+ ("/home/xlgwr/sites/" (21089 20592 756577 279000) "blog/" "blogs2040/" "angular.js/" "blogspg/" "database.yml" "iRobotUI/" "angular-phonecat/" "../" "./")
+
+ ("/home/xlgwr/" (21098 23077 121630 335000) ".gem/" "data/" ".lesshst" ".npm/" ".bower/" ".mysql_history" ".bash_history" ".bash_profile" "slime-current.tgz" "ReadMe" ".viminfo" ".fbtermrc" ".fonts.conf" ".emacs.d/" ".emacs.d.bak/" ".config/" "tmp/" ".fbtermrc~" ".psql_history" ".bundler/" ".zprofile" ".rvm/" ".bash_profile~" ".zshrc" "slime-2013-04-05/" ".emacs~" ".cache/" ".vim/" "share/" ".node-gyp/" ".local/" ".w3m/" "../" "./" ".bashrc~" ".gemrc" "rubycode/" ".emacs.d.new/" "softs/" ".bash_logout" ".smex-items" ".rnd" "sites/" ".subversion/" ".slime-history.eld" ".ssh/" ".profile" ".bashrc" "0新建文件夹/" ".emacs.bak" ".emacs")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
