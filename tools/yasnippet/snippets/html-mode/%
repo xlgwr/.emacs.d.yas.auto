@@ -1,7 +1,5 @@
 # -*- mode: snippet -*-
-# name: <%= form_for %>
-# key: %f
+# name: <%= %>
+# key: %
 # --
-<%= form_for ${1::post}, url: ${2:posts_path} do |${3:f}| %>
-$0
-<% end %>
+<%= ${1:text} %>$0

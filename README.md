@@ -11,7 +11,7 @@ $ cd .emacs.d
 $ cp .emacs ~/
 $ emacs
 ```
-### rinari key for Rails
+### rinari key for Rails to emacs.
 
 ```text
 C-c ; f ;	rinari-find-by-context
