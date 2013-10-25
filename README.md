@@ -60,6 +60,11 @@ C-c ; f z	rinari-find-rspec-fixture
 5. %lk
   name: <%= link_to 'new post',new_post_path %>
   key: %lk
+
+  5.1 %tdlk
+   # name: <td><%= link_to 'new post',new_post_path %></td>
+   # key: %tdlk
+
 6. %err
   name: <%= if @post.errors.any? %>
   key: %err

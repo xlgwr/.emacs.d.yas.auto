@@ -2,6 +2,6 @@
 # name: <%= form_for %>
 # key: %f
 # --
-<%= form_for ${1::post}, url: ${2:posts_path} do |${3:f}| %>
+<%= form_for ${1::post}, url: ${2:posts_path_or_method} do |${3:f}| %>
 $0
 <% end %>
