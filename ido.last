@@ -2,34 +2,69 @@
 
 ;; ----- ido-last-directory-list -----
 (
- ("/home/xlgwr/sites/blog/app/views/" . "layouts/")
- ("/home/xlgwr/sites/blog/app/" . "views/")
- ("/home/xlgwr/sites/blog/" . "app/")
- ("/home/xlgwr/sites/" . "blog/")
- ("/home/xlgwr/" . "sites/")
+ ("/home/" . "xlgwr/")
+ ("/" . "home/")
+ ("/home/xlgwr/sites/railsGL/blog/app/" . "controllers/")
+ ("/home/xlgwr/sites/railsGL/blog/" . "app/")
+ ("/home/xlgwr/sites/railsGL/" . "blog/")
+ ("/home/xlgwr/sites/" . "railsGL/")
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/" . "html-mode/")
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/" . "snippets/")
+ ("/home/xlgwr/.emacs.d/tools/" . "yasnippet/")
+ ("/home/xlgwr/.emacs.d/" . "tools/")
+ ("/home/xlgwr/" . ".emacs.d/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
- "/home/xlgwr/sites/blog/app/views/layouts/"
+ "/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/"
+ "/home/xlgwr/sites/railsGL/blog/app/views/posts/"
+ "/home/xlgwr/.emacs.d/"
+ "/home/xlgwr/sites/railsGL/"
+ "/home/xlgwr/sites/railsGL/blog/app/controllers/"
 )
 
 ;; ----- ido-work-file-list -----
 (
- "application.html.erb"
+ "%tdlk"
+ "%tdlkdl"
+ "%lkdl"
+ "edit.html.erb"
+ "README.md"
+ "%rd"
+ "new.html.erb"
+ "%t"
+ "%lk"
+ "%err"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/xlgwr/sites/blog/app/views/layouts/" (21060 24704 705208 864000) "application.html.erb" "../" "./")
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/" (21098 28263 192432 595000) "href" "%lkdl~" "b.yasnippet" "link.stylesheet-ie" "dov" "%rd" "code" "br" "%tdlkdl" "style" "script.javascript-src" "span" "p" "%e" "%lk" "%a" "i.yasnippet" "meta/" "header/" "div" "%" "mailto" "%rd~" "span.class" "span.id" "html.xmlns" "code.class" "textarea" "pre" "div.class" "q.yasnippet" "%t" "head" "strong" "../" "script.javascript" "./" "%err" "input" "%tdlkdl~" ".yas-parents" ".yas-make-groups" "hr" "p%" "body" "%f" "img" "div.id" "list/" "html" "%lkdl" "table/" "%furl" "form" "title" "%tdlk" "div.id-class" "link.stylesheet" "quote" "%furl~")
 
- ("/home/xlgwr/sites/blog/app/views/" (21060 24704 705208 864000) "../" "./" "layouts/")
+ ("/home/xlgwr/sites/railsGL/blog/app/controllers/" (21098 27433 630861 597000) "posts_controller.rb" "welcome_controller.rb" "application_controller.rb" "concerns/" "../" "./")
 
- ("/home/xlgwr/sites/blog/app/" (21060 24704 709208 814000) "models/" "controllers/" "views/" "mailers/" "../" "./" "assets/" "helpers/")
+ ("/home/xlgwr/sites/railsGL/blog/app/views/posts/" (21098 26778 199101 490000) "new.html.erb" "edit.html.erb" "index.html.erb" "show.html.erb" "../" "_form.html.erb" "./" "_form.html.erb~")
 
- ("/home/xlgwr/sites/blog/" (21060 24868 407150 852000) "db/" ".gitignore" "vendor/" "config.ru" "tmp/" "app/" "lib/" "Rakefile" "public/" "config/" "Gemfile.lock" "../" "./" "bin/" "test/" "README.rdoc" "log/" "Gemfile")
+ ("/home/" (20952 10342 573355 762000) "../" "./" "xlgwr/")
 
- ("/home/xlgwr/sites/" (21089 20592 756577 279000) "blog/" "blogs2040/" "angular.js/" "blogspg/" "database.yml" "iRobotUI/" "angular-phonecat/" "../" "./")
+ ("/home/xlgwr/sites/railsGL/" (21098 25778 895664 435000) ".gitignore" "blog/" ".git/" "../" "./" "README.md")
+
+ ("/home/xlgwr/sites/railsGL/blog/app/views/" (21098 23249 307465 666000) "welcome/" "../" "./" "layouts/" "posts/")
+
+ ("/home/xlgwr/sites/railsGL/blog/app/" (21098 23249 307465 666000) "models/" "controllers/" "views/" "mailers/" "../" "./" "assets/" "helpers/")
+
+ ("/home/xlgwr/sites/railsGL/blog/" (21098 24695 621283 39000) "db/" ".gitignore" "vendor/" "config.ru" "tmp/" "app/" "lib/" "Rakefile" "public/" "config/" "Gemfile.lock" "../" "./" "bin/" "test/" "README.rdoc" "log/" "Gemfile")
+
+ ("/home/xlgwr/sites/" (21098 23592 955145 429000) "blog/" "blogs2040/" "angular.js/" "blogspg/" "database.yml" "iRobotUI/" "angular-phonecat/" "../" "./" "railsGL/" "blogsmicpost/")
+
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/" (21098 23065 73781 797000) "js-mode/" "css-mode/" "markdown-mode/" "html-mode/" "f90-mode/" "cc-mode/" "python-mode/" "objc-mode/" "text-mode/" "erlang-mode/" "csharp-mode/" "snippet-mode/" "nxml-mode/" "emacs-lisp-mode/" "../" "latex-mode/" "cperl-mode/" "./" "c++-mode/" "perl-mode/" "rst-mode/" "c-mode/" "ruby-mode/" "scala-mode/" "sql-mode/")
+
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/" (21098 23065 77781 746000) "yasnippet-debug.el" "yasnippet-tests.el" "doc/" "Rakefile" "README.mdown" "../" "yasnippet.el" "./" "snippets/" "extras/")
+
+ ("/home/xlgwr/.emacs.d/tools/" (21098 23065 77781 746000) "rinari/" "yasnippet/" "../" "./")
+
+ ("/home/xlgwr/.emacs.d/" (21098 24476 236041 85000) ".gitignore" "auto-complete.el" "ido.last" "popup.el" "eshell/" "ac-dict/" "elpa/" "tools/" "tramp" ".git/" "../" "auto-complete-config.el" "./" "README.md" "ac-comphist.dat" "auto-save-list/" "auto-complete-pkg.el" "auto-complete-pkg.elc" ".emacs")
 
  ("/home/xlgwr/" (21098 23077 121630 335000) ".gem/" "data/" ".lesshst" ".npm/" ".bower/" ".mysql_history" ".bash_history" ".bash_profile" "slime-current.tgz" "ReadMe" ".viminfo" ".fbtermrc" ".fonts.conf" ".emacs.d/" ".emacs.d.bak/" ".config/" "tmp/" ".fbtermrc~" ".psql_history" ".bundler/" ".zprofile" ".rvm/" ".bash_profile~" ".zshrc" "slime-2013-04-05/" ".emacs~" ".cache/" ".vim/" "share/" ".node-gyp/" ".local/" ".w3m/" "../" "./" ".bashrc~" ".gemrc" "rubycode/" ".emacs.d.new/" "softs/" ".bash_logout" ".smex-items" ".rnd" "sites/" ".subversion/" ".slime-history.eld" ".ssh/" ".profile" ".bashrc" "0新建文件夹/" ".emacs.bak" ".emacs")
 )

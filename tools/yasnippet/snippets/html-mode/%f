@@ -4,4 +4,7 @@
 # --
 <%= form_for ${1:@post} do |${3:f}| %>
   $0
+ <p>
+   <%= ${4:f}.submit %>
+ </p>
 <% end %>
