@@ -43,7 +43,29 @@ C-c ; f y	rinari-find-stylesheet
 C-c ; f z	rinari-find-rspec-fixture
 ```
 
-### YASnippet html mode for Rails
+### YASnippet html mode for Rails emacs key
 ```
-% -> <%= %>
-%[f,lk]....
+1. %
+# name: <%= %>
+# key: %
+%e
+# name: <% @post.each do |post| %>
+# key: %e
+%t
+# name: <%= f.label f.text_field %>
+# key: %t   
+%a
+# name: <%= f.label f.text_area %>
+# key: %a
+%lk
+# name: <%= link_to 'new post',new_post_path %>
+# key: %lk
+%err
+# name: <%= if @post.errors.any? %>
+# key: %err
+%f
+# name: <%= form_for %>
+# key: %f
+p%
+# name: <p> <strong>Title:</strong></p>
+# key: p%
