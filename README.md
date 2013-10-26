@@ -60,16 +60,16 @@ C-c ; f z	rinari-find-rspec-fixture
 4. %a
   name: <%= f.label f.text_area %>
   key: %a
-5. %lk
+5. %lk and %lkdl
   name: <%= link_to 'new post',new_post_path %>
   key: %lk
 
-  5.1 %lk
-   # name: <td><%= link_to 'new post',new_post_path %></td>
-   # key: %lk
-  5.2 %lkdl
-    # name:<td> <%= link_to 'Destroy',post_path(post),method: :delete %> </td>
-    # key: %lkdl
+  name:  <%= link_to 'Destroy', controller_path(controller),
+    method: :delete, data: {confirm:'Are you sure?'} %>
+  key: %lkdl
+
+  5.1 add to <p>5</p>
+  5.2 add to <td>5</td>
 
 6. %err
   name: <%= if @post.errors.any? %>
@@ -80,3 +80,6 @@ C-c ; f z	rinari-find-rspec-fixture
 8. p%
   name: <p> <strong>Title:</strong></p>
   key: p%
+
+  8.1 add text_area  
+  8.2 add text_field
