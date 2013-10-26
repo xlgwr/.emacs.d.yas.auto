@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: <p> <strong>Title:</strong></p>
+# name: a<p> <strong>Title:</strong> <%= post.title %></p>
 # key: p%
 # --
 <p>
