@@ -2,5 +2,5 @@
 # name: <%= render 'form' %>
 # key: %rd
 # --
-<%= render '${1:form}' %>
+<%= render ${1:form} %>
 $0
