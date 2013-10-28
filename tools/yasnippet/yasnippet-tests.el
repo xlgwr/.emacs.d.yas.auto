@@ -204,6 +204,24 @@
       (ert-simulate-command `(yas-mock-insert "bbb"))
       (should (string= (yas--buffer-contents) "if condition\naaa\nelse\nbbb\nend")))))
 
+(ert-deftest example-for-issue-404 ()
+  (with-temp-buffer
+    (c++-mode)
+    (yas-minor-mode 1)
+    (insert "#include <foo>\n")
+    (let ((snippet "main"))
+      (yas-expand-snippet snippet)
+      (should (string= (yas--buffer-contents) "#include <foo>\nmain")))))
+
+(ert-deftest middle-of-buffer-snippet-insertion ()
+  (with-temp-buffer
+    (yas-minor-mode 1)
+    (insert "beginning")
+    (save-excursion (insert "end"))
+    (let ((snippet "-middle-"))
+      (yas-expand-snippet snippet))
+    (should (string= (yas--buffer-contents) "beginning-middle-end"))))
+
 (ert-deftest another-example-for-issue-271 ()
   ;; expect this to fail in batch mode since `region-active-p' doesn't
   ;; used by `yas-expand-snippet' doesn't make sense in that context.
