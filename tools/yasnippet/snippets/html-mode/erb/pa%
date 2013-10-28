@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: area <p><%= f.label f.text_area %></p>
+# name:b area <p><%= f.label f.text_area %></p>
 # key: p%
 # --
 <p>
