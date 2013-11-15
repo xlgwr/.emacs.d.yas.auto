@@ -48,3 +48,7 @@ rm *.html.erb
 ls
 rm *.html*
 ls
+cd
+ls
+pwd
+exit

@@ -1,6 +1,7 @@
    apt-get update
    apt-get upgrade
    apt-get install zsh
+   apt-get install fbterm
    add-apt-repository ppa:apt-fast/stable
    add-apt-repository ppa:cassou/emacs
    add-apt-repository ppa:chris-lea/node.js-legacy

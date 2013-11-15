@@ -1,7 +1,32 @@
+###apt-get alias####
 alias acs='apt-cache search'
 alias agu='sudo apt-get update'
 alias agg='sudo apt-get upgrade'
 alias agd='sudo apt-get dist-upgrade'
 alias agi='sudo apt-get install'
 alias agr='sudo apt-get remove'
-alias cls='clear'
+###add by xlgwr
+alias update="sudo apt-fast update && (echo 'y' | sudo apt-fast upgrade) && (echo 'y' | sudo apt-fast dist-upgrade)"
+alias cls="clear"
+alias lm="more $1"
+###add rvm
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+### by root
+[[ -s "/usr/local/rvm/scripts/rvm" ]] && . "/usr/local/rvm/scripts/rvm"
+#############
+#add by xlgwr for linux china
+#font-names=mono,"YaHei Consolas Hybrid",Monaco,"Microsoft YaHei"
+#font-size=15
+#############
+#echo -en "\e]P7ffffff" && fbterm && clear
+fbterm && echo -en "\e]P7ffffff" && clear
+alias update="sudo apt-fast update && (echo 'y' | sudo apt-fast upgrade) && (echo 'y' | sudo apt-fast dist-upgrade)"
+alias cls="clear"
+alias lm="more $1"
+#add by xlgwr for linux china
+#font-names=mono,"YaHei Consolas Hybrid",Monaco,"Microsoft YaHei"
+#font-size=15
+#############
+#echo -en "\e]P7ffffff" && fbterm && clear
+fbterm && echo -en "\e]P7ffffff" && clear
