@@ -1,5 +1,5 @@
 #add to /etc/bash.bashrc
-#[[ -s "$HOME/.ailasrc" ]] && . "$HOME/.ailasrc"
+#[[ -s "$HOME/.aliasrc" ]] && . "$HOME/.aliasrc"
 #echo $HOME
 
 ###apt-get alias####
