@@ -11,7 +11,8 @@ alias agi='sudo apt-get install'
 alias agr='sudo apt-get remove'
 
 ###add by xlgwr
-alias update="sudo apt-fast update && (echo 'y' | sudo apt-fast upgrade) && (echo 'y' | sudo apt-fast dist-upgrade)"
+alias update="sudo apt-get update && (echo 'y' | sudo apt-get upgrade) && (echo 'y' | sudo apt-get dist-upgrade)"
+alias updatefast="sudo apt-fast update && (echo 'y' | sudo apt-fast upgrade) && (echo 'y' | sudo apt-fast dist-upgrade)"
 alias cls="clear"
 alias lm="more $1"
 
