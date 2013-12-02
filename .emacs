@@ -26,13 +26,15 @@
 
 ;;linux
 ;;git clone git://git.code.sf.net/p/sbcl/sbcl
-(setq inferior-lisp-program "/usr/bin/sbcl")
+;;(setq inferior-lisp-program "/usr/bin/sbcl")
+(setq inferior-lisp-program "/usr/local/bin/sbcl")
 
 ;;windows
 ;;https://github.com/akovalenko/sbcl-win32-threads/wiki
 ;;(setq inferior-lisp-program "~/.emacs.d/sbcl.exe")
 
-(require 'slime)
+;(require 'slime)
 ;(slime-setup)
-(slime-setup '(slime-fancy))
 (require 'slime-autoloads)
+(slime-setup '(slime-fancy))
+
