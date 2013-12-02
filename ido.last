@@ -2,6 +2,8 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/home/xlgwr/share/" . "code/")
+ ("/etc/" . "apt/")
  ("/home/" . "xlgwr/")
  ("/" . "home/")
  ("/home/xlgwr/sites/railsGL/blog/app/" . "controllers/")
@@ -12,45 +14,73 @@
  ("/home/xlgwr/.emacs.d/tools/yasnippet/" . "snippets/")
  ("/home/xlgwr/.emacs.d/tools/" . "yasnippet/")
  ("/home/xlgwr/.emacs.d/" . "tools/")
- ("/home/xlgwr/" . ".emacs.d/")
+ ("/home/xlgwr/" . "lisps/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
+ "/home/xlgwr/lisps/"
+ "/home/xlgwr/"
+ "/home/xlgwr/learn/ruby/"
+ "/etc/"
+ "/etc/apt/"
  "/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/"
+ "/home/xlgwr/sites/railsGL/blog/app/models/"
+ "/home/xlgwr/sites/railsGL/blog/app/controllers/"
  "/home/xlgwr/sites/railsGL/blog/app/views/posts/"
  "/home/xlgwr/.emacs.d/"
  "/home/xlgwr/sites/railsGL/"
- "/home/xlgwr/sites/railsGL/blog/app/controllers/"
 )
 
 ;; ----- ido-work-file-list -----
 (
- "%tdlk"
- "%tdlkdl"
- "%lkdl"
- "edit.html.erb"
- "README.md"
- "%rd"
- "new.html.erb"
- "%t"
- "%lk"
- "%err"
+ "hello.lisp"
+ "hello.cl"
+ ".emacs"
+ "hello.rb"
+ "bash.bashrc"
+ ".fonts.conf"
+ ".fbtermrc"
+ "163.txt"
+ "sources.list"
+ "pa%"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/" (21098 28263 192432 595000) "href" "%lkdl~" "b.yasnippet" "link.stylesheet-ie" "dov" "%rd" "code" "br" "%tdlkdl" "style" "script.javascript-src" "span" "p" "%e" "%lk" "%a" "i.yasnippet" "meta/" "header/" "div" "%" "mailto" "%rd~" "span.class" "span.id" "html.xmlns" "code.class" "textarea" "pre" "div.class" "q.yasnippet" "%t" "head" "strong" "../" "script.javascript" "./" "%err" "input" "%tdlkdl~" ".yas-parents" ".yas-make-groups" "hr" "p%" "body" "%f" "img" "div.id" "list/" "html" "%lkdl" "table/" "%furl" "form" "title" "%tdlk" "div.id-class" "link.stylesheet" "quote" "%furl~")
+ ("/home/xlgwr/lisps/" (21146 45037 133350 0) "#hello.lisp#" "hello.lisp" "../" "./" ".#hello.lisp" "hello.lisp~")
 
- ("/home/xlgwr/sites/railsGL/blog/app/controllers/" (21098 27433 630861 597000) "posts_controller.rb" "welcome_controller.rb" "application_controller.rb" "concerns/" "../" "./")
+ ("/home/xlgwr/" (21146 44973 230153 372000) ".gem/" ".lesshst" ".npm/" ".bower/" ".mysql_history" ".bash_history" ".bash_profile" "slime-current.tgz" ".viminfo" ".fbtermrc" ".fonts.conf" ".emacs.d/" ".emacs.d.bak/" ".config/" "tmp/" ".fbtermrc~" ".psql_history" ".bundler/" "sources.list.163" ".zprofile" ".rvm/" ".bash_profile~" ".zshrc" "slime-2013-04-05/" ".emacs~" ".cache/" ".vim/" "share/" ".node-gyp/" ".local/" ".w3m/" "learn/" "../" "163.txt" ".fonts.conf~" "./" ".bashrc~" ".gemrc" ".emacs.d.new/" "softs/" ".bash_logout" "lisps/" ".smex-items" ".rnd" "sites/" ".subversion/" ".slime-history.eld" ".ssh/" ".profile~" ".profile" ".bashrc" ".emacs.bak" ".emacs")
 
- ("/home/xlgwr/sites/railsGL/blog/app/views/posts/" (21098 26778 199101 490000) "new.html.erb" "edit.html.erb" "index.html.erb" "show.html.erb" "../" "_form.html.erb" "./" "_form.html.erb~")
+ ("/etc/common-lisp/" (20952 15480 543467 420000) "source-registry.conf.d/" "../" "./" "asdf-output-translations.conf.d/")
 
- ("/home/" (20952 10342 573355 762000) "../" "./" "xlgwr/")
+ ("/home/xlgwr/.emacs.d/" (21145 61885 733012 273000) "ido.last~" ".gitignore" "auto-complete.el" "ido.last" "popup.el" "eshell/" "ac-dict/" "elpa/" "tools/" "tramp" ".git/" "../" "auto-complete-config.el" "./" "README.md" "ac-comphist.dat" "auto-save-list/" "auto-complete-pkg.el" "auto-complete-pkg.elc" ".emacs")
 
- ("/home/xlgwr/sites/railsGL/" (21098 25778 895664 435000) ".gitignore" "blog/" ".git/" "../" "./" "README.md")
+ ("/etc/" (21146 41897 688818 162000) "cups/" "ldap/" "python3/" "mailman/" "python/" "squid3/" "selinux/" "rc0.d/" "mke2fs.conf" "ghostscript/" "postgresql-common/" "sudoers" "passwd" "X11/" "update-manager/" "hosts.deny" "gdb/" "gshadow" "gnome/" "issue.net" "sgml/" "apparmor/" "crontab" "ca-certificates/" "subgid" "gssapi_mech.conf" "dhcp/" "nsswitch.conf" "sysctl.d/" "blkid.tab" "vtrgb" "papersize" "console-setup/" "apt/" "hosts" "hosts.allow" "hdparm.conf" "updatedb.conf" "wvdial.conf" "email-addresses" "insserv.conf" "screenrc" "colord.conf" "apt-fast.conf" "wpa_supplicant/" "rc5.d/" "systemd/" "foomatic/" "sound/" "upstart-xsessions" "fuse.conf" "localtime" "insserv/" "nail.rc" "zsh/" "rc4.d/" "cron.hourly/" "exim4/" "bash.bashrc" "init/" "iscsi/" "sbcl.rc" "adduser.conf" "nanorc" "udev/" ".java/" "alternatives/" "host.conf" "deluser.conf" "mailname" "mime.types" "pam.d/" "profile.d/" "ca-certificates.conf" "aliases" "rc3.d/" "bonobo-activation/" "cron.d/" "wzdftpd/" "bindresvport.blacklist" "w3m/" "pulse/" "iproute2/" "opt/" "libaudit.conf" "samba/" "ca-certificates.conf.dpkg-old" "shells" "ld.so.conf" "xml/" "dpkg/" "hostname" "gtk-3.0/" "sane.d/" "legal" "rsyslog.conf" "magic" "login.defs" "landscape/" "manpath.config" "pkcs11/" "ifplugd/" "ld.so.cache" "emacs-snapshot/" "cron.weekly/" "terminfo/" "ld.so.conf.d/" "skel/" "network/" "group-" "ltrace.conf" "aolserver4/" "subversion/" "rcS.d/" "bind/" "kernel-img.conf" "java-7-openjdk/" "gnome-vfs-2.0/" "sysctl.conf" "modprobe.d/" "services" "bash.bashrc~" "request-key.conf" "protocols" "byobu/" "subuid" "apport/" "rmt" "kernel/" ".pwd.lock" "calendar/" "at.deny" "python2.7/" "lisp-config.lisp" "pm/" "cron.monthly/" "ftpusers" "chatscripts/" "ucf.conf" "default/" "debconf.conf" "rpc" "ConsoleKit/" "mongodb.conf" "rarfiles.lst" "dhcp3/" "printcap" "avahi/" "postgres-xc/" "resolvconf/" "lsb-release" "exports" "issue" "debian_version" "emacs/" "mailcap" "logrotate.d/" "pam.conf" "ssh/" "python3.3/" "group" "update-notifier/" "usb_modeswitch.conf" "idmapd.conf" "groff/" "passwd-" "init.d/" "drirc" "bash_completion" "ssl/" "initramfs-tools/" "fonts/" "security/" "perl/" "acpi/" "logrotate.conf" "polkit-1/" "adjtime" "common-lisp/" "apparmor.d/" "shadow-" "sudoers.d/" "ufw/" "apache2/" "blkid.conf" "aliases.db" "securetty" "vim/" "logcheck/" "libnl-3/" "vsftpd.conf" "postfix/" "emacs24/" "request-key.d/" "dictionaries-common/" "os-release" "netconfig" "networks" "uniconf.conf" "wgetrc" "rsyslog.d/" "rc6.d/" "rc2.d/" "modules" "profile" "gai.conf" "fstab" "dbus-1/" "udhcpd.conf" "gshadow-" "ImageMagick/" "zsh_command_not_found" "shadow" "resolv.conf" "kbd/" "mtab" "at-spi2/" "rc.local" "insserv.conf.d/" "cron.daily/" "update-motd.d/" "timezone" "libpaper.d/" "locale.alias" "magic.mime" "profile~" "depmod.d/" "grub.d/" "gtk-2.0/" "lighttpd/" "popularity-contest.conf" "mysql/" "bash_completion.d/" "rc1.d/" "udisks2/" "postgresql/" "environment" "mailcap.order" "inputrc" "xdg/" "newt/" "apm/" "ppp/" "gconf/" "usb_modeswitch.d/" "fstab.d/" "../" "./")
 
- ("/home/xlgwr/sites/railsGL/blog/app/views/" (21098 23249 307465 666000) "welcome/" "../" "./" "layouts/" "posts/")
+ ("/home/xlgwr/learn/ruby/" (21145 61885 753012 22000) "../" "./" "#hello.rb#")
+
+ ("/home/xlgwr/learn/" (21145 57342 594127 264000) "../" "./" "ruby/")
+
+ ("/home/xlgwr/sites/railsGL/" (21099 57009 97726 236000) ".gitignore" "blog/" ".git/" "../" "./" "README.md")
+
+ ("/home/xlgwr/sites/railsGL/blog/app/views/posts/" (21099 57090 116707 689000) "new.html.erb" "edit.html.erb" "index.html.erb" "show.html.erb" "../" "_form.html.erb" "./" "#show.html.erb#")
+
+ ("/home/xlgwr/sites/railsGL/blog/app/controllers/" (21099 57009 97726 236000) "posts_controller.rb" "comments_controller.rb" "welcome_controller.rb" "application_controller.rb" "concerns/" "../" "./")
+
+ ("/home/xlgwr/sites/railsGL/blog/app/models/" (21099 57009 97726 236000) "post.rb" "comment.rb" ".keep" "concerns/" "../" "./")
+
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/" (21099 56941 950570 390000) "href" "b.yasnippet" "link.stylesheet-ie" "dov" "code" "br" "erb/" "style" "script.javascript-src" "span" "p" "i.yasnippet" "meta/" "header/" "div" "mailto" "span.class" "span.id" "html.xmlns" "code.class" "textarea" "pre" "div.class" "q.yasnippet" "head" "strong" "../" "script.javascript" "./" "input" ".yas-parents" ".yas-make-groups" "hr" "body" "img" "div.id" "list/" "html" "table/" "form" "title" "div.id-class" "link.stylesheet" "quote")
+
+ ("/etc/apt/" (21108 59654 41395 159000) "sources.list~" "trusted.gpg.d/" "sources.list" "sources.list.save" "sources.list.d/" "preferences.d/" "../" "./" "sources.list.distUpgrade" "apt.conf.d/" "trustdb.gpg" "trusted.gpg~" "trusted.gpg" "sources.list.default.1310")
+
+ ("/home/xlgwr/share/code/" (21108 50450 274329 622000) "libindicator7_12.10.2+13.10.20130913-0ubuntu1_amd64.deb" "libdbusmenu-gtk3-4_12.10.3+13.10.20130913-0ubuntu2_amd64.deb" "libdbusmenu-gtk4_12.10.3+13.10.20130913-0ubuntu2_amd64.deb" "node/" "libindicator3-7_12.10.2+13.10.20130913-0ubuntu1_amd64.deb" "indicator-application_12.10.1daily13.01.25-0ubuntu1_amd64.deb" "libuniconf4.6_4.6.1-6_amd64.deb" "libappindicator1_12.10.1+13.10.20130920-0ubuntu2_amd64.deb" "libappindicator3-1_12.10.1+13.10.20130920-0ubuntu2_amd64.deb" "usb-modeswitch-data_20120815-2_all.deb" "g++_4%3a4.8.1-2ubuntu3_amd64.deb" "libwvstreams4.6-base_4.6.1-6_amd64.deb" "git_1.8.3.2-1_amd64.deb" "pentium-builder_0.19_all.deb" "wvdial_1.61-4.1_amd64.deb" "libp11-kit-gnome-keyring_3.8.2-0ubuntu3_amd64.deb" "../" "./" "libgtk2.0-common_2.24.20-1ubuntu1_all.deb" "libdbusmenu-glib4_12.10.3+13.10.20130913-0ubuntu2_amd64.deb" "gnome-ppp_0.3.23-1.2ubuntu1_amd64.deb" "usb-modeswitch_1.2.3+repack0-1ubuntu3_amd64.deb" "libgtk2.0-bin_2.24.20-1ubuntu1_amd64.deb" "resolv.conf" "libwvstreams4.6-extras_4.6.1-6_amd64.deb" "libgtk2.0-0_2.24.20-1ubuntu1_amd64.deb" "libglade2-0_1%3a2.6.4-1ubuntu3_amd64.deb" "gcc_4%3a4.8.1-2ubuntu3_amd64.deb")
+
+ ("/home/xlgwr/share/" (21111 46391 198025 791000) "code/" "../" "./" "0新建文件夹/")
+
+ ("/home/" (21099 60080 703994 429000) "lye/" "../" "./" "xlgwr/")
+
+ ("/home/xlgwr/sites/railsGL/blog/app/views/" (21098 35614 388091 904000) "welcome/" "../" "./" "layouts/" "posts/" "comments/")
 
  ("/home/xlgwr/sites/railsGL/blog/app/" (21098 23249 307465 666000) "models/" "controllers/" "views/" "mailers/" "../" "./" "assets/" "helpers/")
 
@@ -63,10 +93,6 @@
  ("/home/xlgwr/.emacs.d/tools/yasnippet/" (21098 23065 77781 746000) "yasnippet-debug.el" "yasnippet-tests.el" "doc/" "Rakefile" "README.mdown" "../" "yasnippet.el" "./" "snippets/" "extras/")
 
  ("/home/xlgwr/.emacs.d/tools/" (21098 23065 77781 746000) "rinari/" "yasnippet/" "../" "./")
-
- ("/home/xlgwr/.emacs.d/" (21098 24476 236041 85000) ".gitignore" "auto-complete.el" "ido.last" "popup.el" "eshell/" "ac-dict/" "elpa/" "tools/" "tramp" ".git/" "../" "auto-complete-config.el" "./" "README.md" "ac-comphist.dat" "auto-save-list/" "auto-complete-pkg.el" "auto-complete-pkg.elc" ".emacs")
-
- ("/home/xlgwr/" (21098 23077 121630 335000) ".gem/" "data/" ".lesshst" ".npm/" ".bower/" ".mysql_history" ".bash_history" ".bash_profile" "slime-current.tgz" "ReadMe" ".viminfo" ".fbtermrc" ".fonts.conf" ".emacs.d/" ".emacs.d.bak/" ".config/" "tmp/" ".fbtermrc~" ".psql_history" ".bundler/" ".zprofile" ".rvm/" ".bash_profile~" ".zshrc" "slime-2013-04-05/" ".emacs~" ".cache/" ".vim/" "share/" ".node-gyp/" ".local/" ".w3m/" "../" "./" ".bashrc~" ".gemrc" "rubycode/" ".emacs.d.new/" "softs/" ".bash_logout" ".smex-items" ".rnd" "sites/" ".subversion/" ".slime-history.eld" ".ssh/" ".profile" ".bashrc" "0新建文件夹/" ".emacs.bak" ".emacs")
 )
 
 ;; ----- ido-unc-hosts-cache -----

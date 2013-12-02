@@ -48,3 +48,4 @@ rm *.html.erb
 ls
 rm *.html*
 ls
+ls
