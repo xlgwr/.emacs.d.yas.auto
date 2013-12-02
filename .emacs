@@ -18,3 +18,12 @@
 (require 'auto-complete-config)
 (ac-config-default)
 (global-auto-complete-mode 1)
+
+;; add slime
+(add-to-list 'load-path "~/.emacs.d/elpa/slime/")  ; your SLIME directory
+;;linux
+(setq inferior-lisp-program "/usr/bin/sbcl") ; your Lisp system
+;;windows
+;;(setq inferior-lisp-program "~/.emacs.d/sbcl.exe")
+(require 'slime)
+(slime-setup '(slime-fancy))
