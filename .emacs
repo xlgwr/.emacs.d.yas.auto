@@ -33,4 +33,6 @@
 ;;(setq inferior-lisp-program "~/.emacs.d/sbcl.exe")
 
 (require 'slime)
+;(slime-setup)
 (slime-setup '(slime-fancy))
+(require 'slime-autoloads)
