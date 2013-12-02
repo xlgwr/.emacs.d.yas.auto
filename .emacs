@@ -21,9 +21,16 @@
 
 ;; add slime
 (add-to-list 'load-path "~/.emacs.d/elpa/slime/")  ; your SLIME directory
+
+;;;your Lisp system
+
 ;;linux
-(setq inferior-lisp-program "/usr/bin/sbcl") ; your Lisp system
+;;git clone git://git.code.sf.net/p/sbcl/sbcl
+(setq inferior-lisp-program "/usr/bin/sbcl")
+
 ;;windows
+;;https://github.com/akovalenko/sbcl-win32-threads/wiki
 ;;(setq inferior-lisp-program "~/.emacs.d/sbcl.exe")
+
 (require 'slime)
 (slime-setup '(slime-fancy))
