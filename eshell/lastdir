@@ -9,4 +9,9 @@
 /home/xlgwr/sites/blogsUnit/app/views
 /home/xlgwr/sites/blogsUnit/app/views/sessions
 /home/xlgwr/sites/blogsUnit/app/views/relationships
+<<<<<<< HEAD
 /home/xlgwr/learn/ruby
+=======
+/home/xlgwr/sites/railsGuides/layout_render_views/app/views/layouts
+/home/xlgwr
+>>>>>>> d670b35c52c8a9cc14066a6d892282980d413d5d

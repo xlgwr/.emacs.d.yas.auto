@@ -51,8 +51,8 @@
 ;;       `yas-extra-modes'
 ;;
 ;;           A local variable that you can set in a hook to override
-;;           snippet-lookup based on major mode.  It is a symbol (or
-;;           list of symbols) that correspond to subdirectories of
+;;           snippet-lookup based on major mode.  It is a list of
+;;           symbols that correspond to subdirectories of
 ;;           `yas-snippet-dirs' and is used for deciding which
 ;;           snippets to consider for the active buffer.
 ;;
@@ -658,9 +658,7 @@ snippet itself contains a condition that returns the symbol
   "The keymap used when `yas-minor-mode' is active.")
 
 (defvar yas-extra-modes nil
-  "If non-nil, also lookup snippets for this/these modes.
-
-Can be a symbol or a list of symbols.
+  "A list of modes for which to also lookup snippets.
 
 This variable probably makes more sense as buffer-local, so
 ensure your use `make-local-variable' when you set it.")
@@ -816,8 +814,6 @@ Honour `yas-dont-activate', which see."
 
 (defvar yas--font-lock-keywords
   (append '(("^#.*$" . font-lock-comment-face))
-          lisp-font-lock-keywords
-          lisp-font-lock-keywords-1
           lisp-font-lock-keywords-2
           '(("$\\([0-9]+\\)"
              (0 font-lock-keyword-face)
@@ -825,8 +821,8 @@ Honour `yas-dont-activate', which see."
             ("${\\([0-9]+\\):?"
              (0 font-lock-keyword-face)
              (1 font-lock-warning-face t))
-            ("${" font-lock-keyword-face)
-            ("$[0-9]+?" font-lock-preprocessor-face)
+            ("${" . font-lock-keyword-face)
+            ("$[0-9]+?" . font-lock-preprocessor-face)
             ("\\(\\$(\\)" 1 font-lock-preprocessor-face)
             ("}"
              (0 font-lock-keyword-face)))))
@@ -841,7 +837,8 @@ Honour `yas-dont-activate', which see."
                         (when (third ent)
                           (define-key map (third ent) (second ent)))
                         (vector (first ent) (second ent) t))
-                    '(("Load this snippet" yas-load-snippet-buffer "\C-c\C-c")
+                    '(("Load this snippet" yas-load-snippet-buffer "\C-c\C-l")
+                      ("Load and quit window" yas-load-snippet-buffer-and-close "\C-c\C-c")
                       ("Try out this snippet" yas-tryout-snippet "\C-c\C-t")))))
     map)
   "The keymap used when `snippet-mode' is active.")
@@ -2205,7 +2202,7 @@ If expansion fails, execute the previous binding for this key"
   (interactive)
   (setq yas--condition-cache-timestamp (current-time))
   (let* ((vec (subseq (this-command-keys-vector) (if current-prefix-arg
-                                                     universal-argument-num-events
+                                                     (length (this-command-keys))
                                                    0)))
          (templates (mapcan #'(lambda (table)
                                 (yas--fetch table vec))
@@ -2530,8 +2527,7 @@ neither do the elements of PARENTS."
 
 TABLE is a symbol naming a passed to `yas--table-get-create'.
 
-When called interactively, prompt for the table name and
-whether (and where) to save the snippet, then quit the window."
+When called interactively, prompt for the table name."
   (interactive (list (yas--read-table) t))
   (cond
    ;;  We have `yas--editing-template', this buffer's content comes from a
@@ -2550,9 +2546,25 @@ whether (and where) to save the snippet, then quit the window."
       (set (make-local-variable 'yas--editing-template)
            (yas--define-snippets-1 (yas--parse-template buffer-file-name)
                                   table)))))
+  (when interactive
+    (yas--message 3 "Snippet \"%s\" loaded for %s."
+                  (yas--template-name yas--editing-template)
+                  (yas--table-name (yas--template-table yas--editing-template)))))
 
-  (when (and interactive
-             (or
+(defun yas-load-snippet-buffer-and-close (table &optional kill)
+  "Load the snippet with `yas-load-snippet-buffer', possibly
+  save, then `quit-window' if saved.
+
+If the snippet is new, ask the user whether (and where) to save
+it. If the snippet already has a file, just save it.
+
+The prefix argument KILL is passed to `quit-window'.
+
+Don't use this from a Lisp program, call `yas-load-snippet-buffer'
+and `kill-buffer' instead."
+  (interactive (list (yas--read-table) current-prefix-arg))
+  (yas-load-snippet-buffer table t)
+  (when (and (or
               ;; Only offer to save this if it looks like a library or new
               ;; snippet (loaded from elisp, from a dir in `yas-snippet-dirs'
               ;; which is not the first, or from an unwritable file)
@@ -2575,11 +2587,9 @@ whether (and where) to save the snippet, then quit the window."
                               (read-from-minibuffer (format "File name to create in %s? " chosen)
                                                     default-file-name)))
           (setf (yas--template-file yas--editing-template) buffer-file-name)))))
-  (when interactive
-    (yas--message 3 "Snippet \"%s\" loaded for %s."
-                  (yas--template-name yas--editing-template)
-                  (yas--table-name (yas--template-table yas--editing-template)))
-    (quit-window interactive)))
+  (when buffer-file-name
+    (save-buffer)
+    (quit-window kill)))
 
 (defun yas-tryout-snippet (&optional debug)
   "Test current buffer's snippet template in other buffer."
@@ -3513,22 +3523,20 @@ considered when expanding the snippet."
            ;;    plain text will get recorded at the end.
            ;;
            ;;    stacked expansion: also shoosh the overlay modification hooks
-           (save-restriction
-             (narrow-to-region start start)
-             (let ((buffer-undo-list t))
-               ;; snippet creation might evaluate users elisp, which
-               ;; might generate errors, so we have to be ready to catch
-               ;; them mostly to make the undo information
-               ;;
-               (setq yas--start-column (save-restriction (widen) (current-column)))
-               (yas--inhibit-overlay-hooks
-                 (setq snippet
-                       (if expand-env
-                           (eval `(let* ,expand-env
-                                    (insert content)
-                                    (yas--snippet-create (point-min))))
-                         (insert content)
-                         (yas--snippet-create (point-min)))))))
+           (let ((buffer-undo-list t))
+             ;; snippet creation might evaluate users elisp, which
+             ;; might generate errors, so we have to be ready to catch
+             ;; them mostly to make the undo information
+             ;;
+             (setq yas--start-column (current-column))
+             (yas--inhibit-overlay-hooks
+               (setq snippet
+                     (if expand-env
+                         (eval `(let* ,expand-env
+                                  (insert content)
+                                  (yas--snippet-create start (point))))
+                       (insert content)
+                       (yas--snippet-create start (point))))))
 
            ;; stacked-expansion: This checks for stacked expansion, save the
            ;; `yas--previous-active-field' and advance its boundary.
@@ -3606,25 +3614,27 @@ After revival, push the `yas--take-care-of-redo' in the
       (push `(apply yas--take-care-of-redo ,beg ,end ,snippet)
             buffer-undo-list))))
 
-(defun yas--snippet-create (begin)
-  "Create a snippet from a template inserted at BEGIN.
+(defun yas--snippet-create (begin end)
+  "Create a snippet from a template inserted at BEGIN to END.
 
 Returns the newly created snippet."
-  (let ((snippet (yas--make-snippet)))
-    (goto-char begin)
-    (yas--snippet-parse-create snippet)
+  (save-restriction
+    (narrow-to-region begin end)
+    (let ((snippet (yas--make-snippet)))
+      (goto-char begin)
+      (yas--snippet-parse-create snippet)
 
-    ;; Sort and link each field
-    (yas--snippet-sort-fields snippet)
+      ;; Sort and link each field
+      (yas--snippet-sort-fields snippet)
 
-    ;; Create keymap overlay for snippet
-    (setf (yas--snippet-control-overlay snippet)
-          (yas--make-control-overlay snippet (point-min) (point-max)))
+      ;; Create keymap overlay for snippet
+      (setf (yas--snippet-control-overlay snippet)
+            (yas--make-control-overlay snippet (point-min) (point-max)))
 
-    ;; Move to end
-    (goto-char (point-max))
+      ;; Move to end
+      (goto-char (point-max))
 
-    snippet))
+      snippet)))
 
 
 ;;; Apropos adjacencies and "fom's":
@@ -4398,33 +4408,6 @@ and return the directory.  Return nil if not found."
                  (setq file nil))))
         root))))
 
-;; `c-neutralize-syntax-in-CPP` sometimes fires "End of Buffer" error
-;; (when it execute forward-char) and interrupt the after change
-;; hook. Thus prevent the insert-behind hook of yasnippet to be
-;; invoked. Here's a way to reproduce it:
-
-;; # open a *new* Emacs.
-;; # load yasnippet.
-;; # open a *new* .cpp file.
-;; # input "inc" and press TAB to expand the snippet.
-;; # select the `#include <...>` snippet.
-;; # type inside `<>`
-
-(defadvice c-neutralize-syntax-in-CPP
-  (around yas--mp/c-neutralize-syntax-in-CPP activate)
-  "Adviced `c-neutralize-syntax-in-CPP' to properly
-handle the `end-of-buffer' error fired in it by calling
-`forward-char' at the end of buffer."
-  (condition-case err
-      ad-do-it
-    (error (message (error-message-string err)))))
-
-;; disable c-electric-* serial command in YAS fields
-(add-hook 'c-mode-common-hook
-          '(lambda ()
-             (dolist (k '(":" ">" ";" "<" "{" "}"))
-               (define-key (symbol-value (make-local-variable 'yas-keymap))
-                 k 'self-insert-command))))
 
 ;;; Backward compatibility to yasnippet <= 0.7
 
@@ -4561,4 +4544,3 @@ upon.")
 ;; coding: utf-8
 ;; byte-compile-warnings: (not cl-functions)
 ;; End:
-
