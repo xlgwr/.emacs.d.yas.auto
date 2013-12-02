@@ -56,3 +56,6 @@ ls
 pwd
 exit
 >>>>>>> d670b35c52c8a9cc14066a6d892282980d413d5d
+cd share/code/
+ls
+git clone git://git.code.sf.net/p/sbcl/sbcl
