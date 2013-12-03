@@ -1,86 +1,49 @@
-.emacs.d.yas.auto
-=================
-### power for rails and ruby to emacs.
+% Auto-Complete - An Intelligent auto-completion extension for Emacs
 
-```bash
-$ cd ~/
-$ cp .emacs .emacs.bak
-$ cp .emacs.d .emacs.d.bak
-$ git clone https://github.com/xlgwr/.emacs.d.yas.auto.git .emacs.d
-$ cd .emacs.d
-$ cp .emacs ~/
-$ cp .aliasrc
-$ emacs
-```
-### rinari key for Rails to emacs.
+[![Build Status](https://secure.travis-ci.org/auto-complete/auto-complete.png)](http://travis-ci.org/auto-complete/auto-complete)
 
-```text
-C-c ; f ;	rinari-find-by-context
-C-c ; f C	rinari-find-cells
-C-c ; f F	rinari-find-features
-C-c ; f M	rinari-find-mailer
-C-c ; f S	rinari-find-steps
-C-c ; f Y	rinari-find-sass
-C-c ; f a	rinari-find-application
-C-c ; f c	rinari-find-controller
-C-c ; f e	rinari-find-environment
-C-c ; f f	rinari-find-file-in-project
-C-c ; f h	rinari-find-helper
-C-c ; f i	rinari-find-migration
-C-c ; f j	rinari-find-javascript
-C-c ; f l	rinari-find-lib
-C-c ; f m	rinari-find-model
-C-c ; f n	rinari-find-configuration
-C-c ; f o	rinari-find-log
-C-c ; f p	rinari-find-public
-C-c ; f r	rinari-find-rspec
-C-c ; f s	rinari-find-script
-C-c ; f t	rinari-find-test
-C-c ; f u	rinari-find-plugin
-C-c ; f v	rinari-find-view
-C-c ; f w	rinari-find-worker
-C-c ; f x	rinari-find-fixture
-C-c ; f y	rinari-find-stylesheet
-C-c ; f z	rinari-find-rspec-fixture
-```
+# What is Auto-Complete?
 
-### YASnippet html mode for Rails emacs key
-```
-1. %
-  name: <%= %>
-  key: %
-  1.1 %rd
-    name: <%= render 'form' %>
-    key: %rd
-2. %e
-  name: <% @post.each do |post| %>
-  key: %e
-3. %t
-  name: <%= f.label f.text_field %>
-  key: %t   
-4. %a
-  name: <%= f.label f.text_area %>
-  key: %a
-5. %lk and %lkdl
-  name: <%= link_to 'new post',new_post_path %>
-  key: %lk
+Auto-Complete is an intelligent auto-completion extension for
+Emacs. It extends the standard Emacs completion interface and provides
+an environment that allows users to concentrate more on their own
+work.
 
-  name:  <%= link_to 'Destroy', controller_path(controller),
-    method: :delete, data: {confirm:'Are you sure?'} %>
-  key: %lkdl
+# Features
 
-  5.1 add to <p>5</p>
-  5.2 add to <td>5</td>
+* Visual interface
+* Reduce overhead of completion by using statistic method
+* Extensibility
 
-6. %err
-  name: <%= if @post.errors.any? %>
-  key: %err
-7. %f
-  name: <%= form_for %>
-  key: %f
-8. p%
-  name: <p> <strong>Title:</strong></p>
-  key: p%
+# Screenshots
 
-  8.1 add text_area  
-  8.2 add text_field
+![](doc/ac.png "Auto Completion")
+
+![](doc/ac-fuzzy.png "Fuzzy Completion")
+
+![](doc/ac-isearch.png "Increamental Search")
+
+# Demo Video
+
+* [YouTube](http://www.youtube.com/watch?v=rGVVnDxwJYE)
+
+# Install
+
+# User Manual
+
+[Auto-Complete User Manual](http://cx4a.org/software/auto-complete/manual.html)
+
+# Development
+
+* <http://github.com/auto-complete/auto-complete>
+
+# Reporting Bugs
+
+Visit
+[Auto-Complete Issue Tracker](https://github.com/auto-complete/auto-complete/issues)
+and create a new issue.
+
+License
+-------
+
+This software is distributed under the term of GPLv3.
