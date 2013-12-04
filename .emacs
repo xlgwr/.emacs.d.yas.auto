@@ -1,3 +1,10 @@
+;;hide tool-bar
+;;hide scroll-bar-mode
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+
+;;add yasnippet
+
 (add-to-list 'load-path
 	     "~/.emacs.d/tools/yasnippet")
 (require 'yasnippet)
