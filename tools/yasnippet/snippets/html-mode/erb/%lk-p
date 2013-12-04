@@ -3,6 +3,7 @@
 # key: %lk
 # --
 <p>
- <%= link_to '${1:link_name}' ,  ${2:Action_controller_path} %>
+ ${1:}
+ <%= link_to '${2:link_name}' ,  ${3:Action_controller_path} %>
 </p>
 $0

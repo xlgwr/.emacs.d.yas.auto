@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: a<%= for file in @files %>
+# key: %for
+# --
+<% for ${1:file} in ${2:@files} %>
+     ${3:} <%= ${4:file} %>${5:}
+<% end %>
+$0
