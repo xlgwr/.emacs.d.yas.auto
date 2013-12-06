@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: o<%= f.label f.text_field, rows: 6 %>
+# key: %area
+# --
+<%= ${1:f}.label :${2:title} %><br />
+<%= ${3:f}.text_area :${4:title}, ${5:rows:6} %>
+$0
