@@ -49,11 +49,11 @@
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/home/xlgwr/" (21148 42118 963324 655000) ".gem/" ".lesshst" ".npm/" ".bower/" ".mysql_history" ".bash_history" ".bash_profile" ".viminfo" ".fbtermrc" ".fonts.conf" ".emacs.d/" ".emacs.d.bak/" ".config/" "tmp/" ".fbtermrc~" ".psql_history" ".bundler/" "sources.list.163" ".zprofile" ".rvm/" ".bash_profile~" ".zshrc" ".emacs~" ".cache/" ".vim/" "share/" ".node-gyp/" ".local/" ".w3m/" "learn/" "../" "163.txt" ".fonts.conf~" "./" ".bashrc~" ".gemrc" ".emacs.d.new/" "softs/" ".bash_logout" "lisps/" ".smex-items" ".rnd" "sites/" ".subversion/" ".slime-history.eld" ".ssh/" ".profile~" ".profile" ".bashrc" ".emacs.bak" ".emacs")
+
  ("/usr/local/" (21060 21025 763459 425000) "etc/" "lib/" "sbin/" "include/" "share/" "../" "src/" "games/" "./" "sbcl/" "bin/" "man/" "pgsql/")
 
  ("/usr/" (20952 9420 768944 413000) "local/" "lib/" "sbin/" "include/" "share/" "../" "src/" "games/" "./" "bin/")
-
- ("/home/xlgwr/" (21148 40049 40435 10000) ".gem/" ".#.emacs" ".lesshst" ".npm/" ".bower/" ".mysql_history" ".bash_history" ".bash_profile" "slime-current.tgz" ".viminfo" ".fbtermrc" ".fonts.conf" ".emacs.d/" ".emacs.d.bak/" ".config/" "tmp/" ".fbtermrc~" ".psql_history" ".bundler/" "sources.list.163" ".zprofile" ".rvm/" ".bash_profile~" ".zshrc" "slime-2013-04-05/" ".emacs~" ".cache/" ".vim/" "share/" ".node-gyp/" ".local/" ".w3m/" "learn/" "../" "163.txt" ".fonts.conf~" "./" ".bashrc~" ".gemrc" ".emacs.d.new/" "softs/" ".bash_logout" "lisps/" ".smex-items" ".rnd" "sites/" ".subversion/" ".slime-history.eld" ".ssh/" ".profile~" ".profile" ".bashrc" ".emacs.bak" ".emacs")
 
  ("/home/xlgwr/lisps/" (21147 5792 430823 629000) "hello.lisp" "../" "./" "my-cds.db" "hello.lisp~")
 

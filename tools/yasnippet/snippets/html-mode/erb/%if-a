@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: a<% if |notice| %>
+# key: %if
+# --
+<% if ${1:notice} %>
+   ${2:}
+<% end %>
+$0
