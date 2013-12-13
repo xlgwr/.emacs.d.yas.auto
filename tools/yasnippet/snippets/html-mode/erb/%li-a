@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: a<li><%= item.product.title %></li>
+# key: %li
+# --
+<li><%= ${1:item.product.title} %></li>
+$0

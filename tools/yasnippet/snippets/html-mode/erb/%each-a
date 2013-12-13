@@ -3,6 +3,5 @@
 # key: %each
 # --
 <% ${1:@products}.each do |${2:product}| %>
-  ${3:}
+  $0
 <% end %>
-$0

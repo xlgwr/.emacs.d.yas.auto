@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: a<% cache ['store',Product.latest] do %>
+# key: %cache
+# --
+<% cache ['${1:store}', ${2:Product.latest}] do %>
+   $3
+<% end %>
+$0

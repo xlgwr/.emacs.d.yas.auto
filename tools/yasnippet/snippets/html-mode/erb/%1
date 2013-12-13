@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: c<%= button_to 'add to cart', line_items_path(product_id: product) %>
+# key: %
+# --
+<%= ${1:html_tag_like_button_to} '${2:content}', ${3:url_or_other} %>$0

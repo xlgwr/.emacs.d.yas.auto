@@ -1,6 +1,5 @@
 # -*- mode: snippet -*-
-# name: <%= %>
+# name: a<% %>
 # key: %
 # --
-<%= ${1:text} %>
-$0
+<% ${1:text} %>$0
