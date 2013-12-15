@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: dl<%= button_to 'Empty cart',@cart,method: :delete %>
+# key: %btn
+# --
+<%= button_to '${1:EmptyCart}', ${2:@cart},method: ${3::delete}, data: {${4:confirm:'Are you sure?'}} %>
+$0

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: b<% if |notice| %> <p id="notice">...
+# key: %if
+# --
+<% if ${1:notice} %>
+   <p id='${2:notice}'><%= ${3:notice} %> </p>
+   $4
+<% end %>
+$0

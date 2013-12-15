@@ -2,6 +2,7 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/" . "erb/")
  ("/usr/" . "local/")
  ("/home/xlgwr/share/" . "code/")
  ("/etc/" . "apt/")
@@ -15,11 +16,13 @@
  ("/home/xlgwr/.emacs.d/tools/yasnippet/" . "snippets/")
  ("/home/xlgwr/.emacs.d/tools/" . "yasnippet/")
  ("/home/xlgwr/.emacs.d/" . "tools/")
- ("/home/xlgwr/" . "lisps/")
+ ("/home/xlgwr/" . ".emacs.d/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
+ "/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/erb/"
+ "/home/xlgwr/work/depot/app/controllers/"
  "/home/xlgwr/"
  "/home/xlgwr/lisps/"
  "/home/xlgwr/.emacs.d/"
@@ -35,21 +38,43 @@
 
 ;; ----- ido-work-file-list -----
 (
+ "%btn-dl"
+ "%btn-a"
+ "%0"
+ "products_controller.rb"
  ".emacs"
  "hello.lisp"
  ".gitignore"
  "hello.cl"
  "hello.rb"
  "bash.bashrc"
- ".fonts.conf"
- ".fbtermrc"
- "163.txt"
- "sources.list"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/xlgwr/" (21148 42118 963324 655000) ".gem/" ".lesshst" ".npm/" ".bower/" ".mysql_history" ".bash_history" ".bash_profile" ".viminfo" ".fbtermrc" ".fonts.conf" ".emacs.d/" ".emacs.d.bak/" ".config/" "tmp/" ".fbtermrc~" ".psql_history" ".bundler/" "sources.list.163" ".zprofile" ".rvm/" ".bash_profile~" ".zshrc" ".emacs~" ".cache/" ".vim/" "share/" ".node-gyp/" ".local/" ".w3m/" "learn/" "../" "163.txt" ".fonts.conf~" "./" ".bashrc~" ".gemrc" ".emacs.d.new/" "softs/" ".bash_logout" "lisps/" ".smex-items" ".rnd" "sites/" ".subversion/" ".slime-history.eld" ".ssh/" ".profile~" ".profile" ".bashrc" ".emacs.bak" ".emacs")
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/erb/" (21164 32523 8535 518000) "pa%" "%rd" "%lk-a" "%area-a" "%li-a~" "%lkdl-td" "%lkdl-a" "%=" "%e" "pt%" "%each-a" "%tp" "%btn-a~" "%btn-dl" "%if-a" "%area-o" "%a~" "%for-a" "%cache~" "%lk-p" "%lk-td" "%area-p" "%if-a~" "%li-a" "%t" "../" "%cache" "%b~" "./" "%err" "p%" "%area-po" "%each-a~" "%0" "%f" "%furl" "%btn-a" "%1~" "%1" "%lkdl-p")
+
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/" (21161 49686 985328 583000) "js-mode/" "css-mode/" "markdown-mode/" "html-mode/" "scss-mode/" "f90-mode/" "cc-mode/" "python-mode/" "objc-mode/" "text-mode/" "erlang-mode/" "csharp-mode/" "snippet-mode/" "nxml-mode/" "emacs-lisp-mode/" "../" "latex-mode/" "cperl-mode/" "./" "c++-mode/" "perl-mode/" "rst-mode/" "c-mode/" "ruby-mode/" "scala-mode/" "sql-mode/")
+
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/" (21148 36037 77972 978000) "yasnippet-debug.el" ".gitignore" "yasnippet-tests.el" ".gitmodules" "doc/" "Rakefile" "README.mdown" "../" "yasnippet.el" "./" "snippets/" "extras/")
+
+ ("/home/xlgwr/.emacs.d/tools/" (21161 50440 295858 187000) "rinari/" "yasnippet/" "../" "./")
+
+ ("/home/xlgwr/.emacs.d/" (21161 50521 646835 466000) "ido.last~" "etc/" ".gitignore" "init.sh" "auto-complete.el" "COPYING.GPLv3" "ido.last" "popup.el" "eshell/" "Makefile" "ac-dict/" "elpa/" "doc/" "tools/" "tramp" ".git/" "../" "auto-complete-config.el" "./" "README.md" ".aliasrc" "ac-comphist.dat" "tests/" "auto-save-list/" "auto-complete-pkg.el" "auto-complete-pkg.elc" "COPYING.FDL" "TODO.md" "dict/" ".emacs")
+
+ ("/home/xlgwr/" (21163 9317 625247 334000) ".gem/" ".lesshst" ".npm/" ".bower/" ".mysql_history" ".bash_history" ".bash_profile" ".viminfo" ".fbtermrc" ".fonts.conf" ".emacs.d/" ".emacs.d.bak/" ".config/" "tmp/" ".fbtermrc~" ".psql_history" ".bundler/" "sources.list.163" ".zprofile" ".rvm/" ".bash_profile~" ".zshrc" ".emacs~" ".cache/" ".vim/" "share/" ".node-gyp/" ".local/" ".w3m/" "learn/" "../" "163.txt" ".fonts.conf~" "./" ".bashrc~" ".gemrc" ".emacs.d.new/" "softs/" ".bash_logout" "work/" "lisps/" ".smex-items" ".rnd" "sites/" ".subversion/" ".slime-history.eld" ".ssh/" ".profile~" ".profile" ".bashrc" ".emacs.bak" ".emacs")
+
+ ("/home/xlgwr/work/" (21161 41860 593376 790000) "../" "./" "depot/")
+
+ ("/home/xlgwr/work/depot/" (21161 55365 565939 156000) "db/" ".gitignore" "vendor/" "config.ru" "tmp/" "app/" "lib/" "Rakefile" "public/" "config/" "Gemfile.lock" ".git/" "../" "./" "bin/" "README.md" "test/" "README.rdoc" "log/" "Gemfile")
+
+ ("/home/xlgwr/work/depot/app/" (21161 41868 581276 369000) "models/" "controllers/" "views/" "mailers/" "../" "./" "assets/" "helpers/")
+
+ ("/home/xlgwr/work/depot/app/views/" (21163 11133 282421 432000) "line_items/" "store/" "products/" "../" "./" "layouts/" "carts/")
+
+ ("/home/xlgwr/work/depot/app/views/carts/" (21164 31956 771654 79000) "new.html.erb" "index.json.jbuilder" "edit.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "show.html.erb~" "../" "_form.html.erb" "./" ".#show.html.erb" "#show.html.erb#")
+
+ ("/home/xlgwr/work/depot/app/controllers/" (21163 11133 282421 432000) "store_controller.rb" "application_controller.rb" "concerns/" "line_items_controller.rb" "../" "./" "#store_controller.rb#" "carts_controller.rb" ".#store_controller.rb" "products_controller.rb" "store_controller.rb~" "line_items_controller.rb~")
 
  ("/usr/local/" (21060 21025 763459 425000) "etc/" "lib/" "sbin/" "include/" "share/" "../" "src/" "games/" "./" "sbcl/" "bin/" "man/" "pgsql/")
 
@@ -58,8 +83,6 @@
  ("/home/xlgwr/lisps/" (21147 5792 430823 629000) "hello.lisp" "../" "./" "my-cds.db" "hello.lisp~")
 
  ("/home/xlgwr/share/code/" (21148 37513 639410 87000) "node/" "../" "./" "sbcl/" "ruby/" "deb/" "resolv.conf")
-
- ("/home/xlgwr/.emacs.d/" (21148 37424 764527 396000) "ido.last~" ".gitignore" "init.sh" "auto-complete.el" "ido.last" "popup.el" "eshell/" "ac-dict/" "elpa/" "tools/" "tramp" ".git/" "../" "auto-complete-config.el" "./" "README.md" ".aliasrc" "ac-comphist.dat" "auto-save-list/" "auto-complete-pkg.el" "auto-complete-pkg.elc" ".emacs")
 
  ("/etc/common-lisp/" (20952 15480 543467 420000) "source-registry.conf.d/" "../" "./" "asdf-output-translations.conf.d/")
 
@@ -92,12 +115,6 @@
  ("/home/xlgwr/sites/railsGL/blog/" (21098 24695 621283 39000) "db/" ".gitignore" "vendor/" "config.ru" "tmp/" "app/" "lib/" "Rakefile" "public/" "config/" "Gemfile.lock" "../" "./" "bin/" "test/" "README.rdoc" "log/" "Gemfile")
 
  ("/home/xlgwr/sites/" (21098 23592 955145 429000) "blog/" "blogs2040/" "angular.js/" "blogspg/" "database.yml" "iRobotUI/" "angular-phonecat/" "../" "./" "railsGL/" "blogsmicpost/")
-
- ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/" (21098 23065 73781 797000) "js-mode/" "css-mode/" "markdown-mode/" "html-mode/" "f90-mode/" "cc-mode/" "python-mode/" "objc-mode/" "text-mode/" "erlang-mode/" "csharp-mode/" "snippet-mode/" "nxml-mode/" "emacs-lisp-mode/" "../" "latex-mode/" "cperl-mode/" "./" "c++-mode/" "perl-mode/" "rst-mode/" "c-mode/" "ruby-mode/" "scala-mode/" "sql-mode/")
-
- ("/home/xlgwr/.emacs.d/tools/yasnippet/" (21098 23065 77781 746000) "yasnippet-debug.el" "yasnippet-tests.el" "doc/" "Rakefile" "README.mdown" "../" "yasnippet.el" "./" "snippets/" "extras/")
-
- ("/home/xlgwr/.emacs.d/tools/" (21098 23065 77781 746000) "rinari/" "yasnippet/" "../" "./")
 )
 
 ;; ----- ido-unc-hosts-cache -----
