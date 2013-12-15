@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: c<% if line_item == @current_item %> ... <% else %> ... <% end %>
+# key: %if
+# --
+<% if ${1:line_item} ${2:==} ${3:@current_item} %>
+   $4
+<% else %>
+   $5
+<% end %>
+$0

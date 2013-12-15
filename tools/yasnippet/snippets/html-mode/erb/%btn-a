@@ -2,5 +2,5 @@
 # name: a<%= button_to 'Empty cart',@cart %>
 # key: %btn
 # --
-<%= button_to '${1:EmptyCart}', ${2:@cart} %>
+<%= button_to '${1:EmptyCart}', ${2:@cart} $3 %>
 $0

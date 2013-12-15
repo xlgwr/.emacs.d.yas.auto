@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: a<%= escape_javascript render(@cart) %>
+# key: %esc
+# --
+<%= escape_javascript ${1:render(@cart)} %>
+$0

@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: <%= render 'form' %>
-# key: %rd
+# name: a<%= render 'form' %>
+# key: %ren
 # --
 <%= render ${1:form} %>
 $0
