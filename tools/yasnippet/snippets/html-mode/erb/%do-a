@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: a<% def() do %>
+# key: %do
+# --
+<%= ${1:def()} do %>
+   <%= ${2:} %>
+   ${3:}
+<% end %>
+$0
