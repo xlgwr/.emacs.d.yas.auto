@@ -24,6 +24,15 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
+;; add js json js.erb mode
+(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js\.erb$" . js2-mode))
+
+;; jquery-doc
+(add-to-list 'load-path
+	     "~/.emacs.d/tools/jquery-doc/")
+(require 'jquery-doc)
+(add-hook 'js2-mode-hook 'jqurey-doc-setup)
 
 ;; add slime
 (add-to-list 'load-path "~/.emacs.d/elpa/slime/")  ; your SLIME directory
