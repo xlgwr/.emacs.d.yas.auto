@@ -25,6 +25,7 @@
 (ac-config-default)
 
 ;; add js json js.erb mode
+(add-to-list 'auto-mode-alist '("\\.erb$" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.js\.erb$" . js2-mode))
