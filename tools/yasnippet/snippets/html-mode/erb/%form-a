@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: atag <%= form_tag do %>
+# key: %form
+# --
+<%= form_tag do${1:} %>
+    <fieldset>
+      <legend>${2:}</legend>
+    $0
+    <div>
+      <%= submit_tag "${3:Login}" ${4:}%>
+    </div>
+    </fieldset>
+<% end %>

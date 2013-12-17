@@ -2,6 +2,10 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/home/xlgwr/work/depot/app/views/" . "store/")
+ ("/home/xlgwr/work/depot/app/" . "controllers/")
+ ("/home/xlgwr/work/depot/" . "app/")
+ ("/home/xlgwr/work/" . "depot/")
  ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/" . "erb/")
  ("/usr/" . "local/")
  ("/home/xlgwr/share/" . "code/")
@@ -21,8 +25,15 @@
 
 ;; ----- ido-work-directory-list -----
 (
- "/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/erb/"
+ "/home/xlgwr/work/depot/app/views/products/"
+ "/home/xlgwr/work/depot/test/fixtures/"
  "/home/xlgwr/work/depot/app/controllers/"
+ "/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/erb/"
+ "/home/xlgwr/work/depot/"
+ "/home/xlgwr/work/depot/app/views/line_items/"
+ "/home/xlgwr/work/depot/app/views/store/"
+ "/home/xlgwr/work/depot/app/views/carts/"
+ "/home/xlgwr/work/depot/app/assets/stylesheets/"
  "/home/xlgwr/"
  "/home/xlgwr/lisps/"
  "/home/xlgwr/.emacs.d/"
@@ -38,21 +49,47 @@
 
 ;; ----- ido-work-file-list -----
 (
- "%btn-dl"
+ "who_bought.atom.builder"
+ "products.yml"
+ "orders_controller.rb"
+ "%if-else-c"
+ "Gemfile"
+ "%escape-a"
+ "create.js.erb"
+ "index.html.erb"
  "%btn-a"
- "%0"
- "products_controller.rb"
- ".emacs"
- "hello.lisp"
- ".gitignore"
- "hello.cl"
- "hello.rb"
- "bash.bashrc"
+ "%btn-c"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/erb/" (21164 32523 8535 518000) "pa%" "%rd" "%lk-a" "%area-a" "%li-a~" "%lkdl-td" "%lkdl-a" "%=" "%e" "pt%" "%each-a" "%tp" "%btn-a~" "%btn-dl" "%if-a" "%area-o" "%a~" "%for-a" "%cache~" "%lk-p" "%lk-td" "%area-p" "%if-a~" "%li-a" "%t" "../" "%cache" "%b~" "./" "%err" "p%" "%area-po" "%each-a~" "%0" "%f" "%furl" "%btn-a" "%1~" "%1" "%lkdl-p")
+ ("/etc/" (21167 1141 939318 701000) "cups/" "ldap/" "python3/" "mailman/" "python/" "squid3/" "selinux/" "rc0.d/" "mke2fs.conf" "ghostscript/" "postgresql-common/" "sudoers" "passwd" "X11/" "update-manager/" "hosts.deny" "gdb/" "gshadow" "gnome/" "issue.net" "sgml/" "apparmor/" "crontab" "ca-certificates/" "subgid" "gssapi_mech.conf" "dhcp/" "nsswitch.conf" "sysctl.d/" "blkid.tab" "vtrgb" "papersize" "console-setup/" "apt/" "hosts" "hosts.allow" "hdparm.conf" "updatedb.conf" "wvdial.conf" "email-addresses" "insserv.conf" "screenrc" "colord.conf" "apt-fast.conf" "wpa_supplicant/" "rc5.d/" "systemd/" "foomatic/" "sound/" "upstart-xsessions" "fuse.conf" "localtime" "insserv/" "nail.rc" "zsh/" "rc4.d/" "cron.hourly/" "exim4/" "bash.bashrc" "init/" "iscsi/" "sbcl.rc" "adduser.conf" "nanorc" "udev/" ".java/" "alternatives/" "host.conf" "deluser.conf" "mailname" "mime.types" "pam.d/" "profile.d/" "ca-certificates.conf" "aliases" "rc3.d/" "bonobo-activation/" "cron.d/" "wzdftpd/" "bindresvport.blacklist" "w3m/" "pulse/" "iproute2/" "opt/" "libaudit.conf" "samba/" "ca-certificates.conf.dpkg-old" "shells" "ld.so.conf" "xml/" "dpkg/" "hostname" "gtk-3.0/" "sane.d/" "legal" "rsyslog.conf" "magic" "login.defs" "landscape/" "manpath.config" "pkcs11/" "ifplugd/" "ld.so.cache" "emacs-snapshot/" "cron.weekly/" "terminfo/" "ld.so.conf.d/" "skel/" "network/" "group-" "ltrace.conf" "aolserver4/" "subversion/" "rcS.d/" "bind/" "kernel-img.conf" "java-7-openjdk/" "gnome-vfs-2.0/" "sysctl.conf" "modprobe.d/" "services" "bash.bashrc~" "request-key.conf" "protocols" "byobu/" "subuid" "apport/" "rmt" "kernel/" ".pwd.lock" "calendar/" "at.deny" "python2.7/" "lisp-config.lisp" "pm/" "cron.monthly/" "ftpusers" "chatscripts/" "ucf.conf" "default/" "debconf.conf" "rpc" "ConsoleKit/" "mongodb.conf" "rarfiles.lst" "dhcp3/" "printcap" "avahi/" "postgres-xc/" "resolvconf/" "lsb-release" "exports" "issue" "debian_version" "emacs/" "mailcap" "logrotate.d/" "pam.conf" "ssh/" "python3.3/" "group" "update-notifier/" "usb_modeswitch.conf" "idmapd.conf" "groff/" "passwd-" "init.d/" "drirc" "bash_completion" "ssl/" "initramfs-tools/" "fonts/" "security/" "perl/" "acpi/" "logrotate.conf" "polkit-1/" "adjtime" "common-lisp/" "apparmor.d/" "shadow-" "sudoers.d/" "ufw/" "apache2/" "blkid.conf" "aliases.db" "securetty" "vim/" "logcheck/" "libnl-3/" "vsftpd.conf" "postfix/" "emacs24/" "request-key.d/" "dictionaries-common/" "os-release" "netconfig" "networks" "uniconf.conf" "wgetrc" "rsyslog.d/" "rc6.d/" "rc2.d/" "modules" "profile" "gai.conf" "fstab" "dbus-1/" "udhcpd.conf" "gshadow-" "ImageMagick/" "zsh_command_not_found" "shadow" "resolv.conf" "kbd/" "mtab" "at-spi2/" "rc.local" "insserv.conf.d/" "cron.daily/" "update-motd.d/" "timezone" "libpaper.d/" "locale.alias" "magic.mime" "profile~" "depmod.d/" "grub.d/" "gtk-2.0/" "lighttpd/" "popularity-contest.conf" "mysql/" "bash_completion.d/" "rc1.d/" "udisks2/" "postgresql/" "environment" "mailcap.order" "inputrc" "xdg/" "newt/" "apm/" "ppp/" "gconf/" "usb_modeswitch.d/" "fstab.d/" "../" "./")
+
+ ("/home/xlgwr/.emacs.d/" (21167 1364 800950 238000) "ido.last~" "etc/" ".gitignore" "init.sh" "auto-complete.el" "COPYING.GPLv3" "ido.last" "popup.el" "gitcmd" "eshell/" "Makefile" "ac-dict/" "elpa/" "doc/" "tools/" "tramp" ".git/" "../" "auto-complete-config.el" "./" "README.md" ".aliasrc" "ac-comphist.dat" "tests/" "auto-save-list/" "auto-complete-pkg.el" "auto-complete-pkg.elc" "COPYING.FDL" "TODO.md" "dict/" ".emacs")
+
+ ("/home/xlgwr/" (21167 5397 88347 82000) ".gem/" ".lesshst" ".npm/" ".bower/" ".mysql_history" ".bash_history" ".bash_profile" ".viminfo" ".fbtermrc" ".fonts.conf" ".emacs.d/" ".emacs.d.bak/" ".config/" "tmp/" ".fbtermrc~" ".psql_history" ".bundler/" "sources.list.163" ".zprofile" ".rvm/" ".bash_profile~" ".zshrc" ".emacs~" ".cache/" ".vim/" "share/" ".node-gyp/" ".local/" ".w3m/" "learn/" "../" "163.txt" ".fonts.conf~" "./" ".bashrc~" ".gemrc" ".sqlite_history" ".emacs.d.new/" "softs/" ".bash_logout" "work/" "lisps/" ".smex-items" ".rnd" "sites/" ".subversion/" ".slime-history.eld" ".ssh/" ".profile~" ".profile" ".bashrc" ".emacs.bak" ".emacs")
+
+ ("/home/xlgwr/work/depot/app/assets/stylesheets/" (21167 3636 194484 516000) ".sass-cache/" "carts.css.scss" "scaffolds.css.scss" "line_items.css.css" "products.css.css" "store.css.css" "store.css.scss" "scaffolds.css.css" "products.css.scss" "orders.css.scss" "carts.css.css" "../" "store.css.scss~" "./" "line_items.css.scss" "application.css" "orders.css.css")
+
+ ("/home/xlgwr/work/depot/app/views/carts/" (21167 2811 916847 89000) "_cart.html.erb" "new.html.erb" "index.json.jbuilder" "edit.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "show.html.erb~" "_cart.html.erb~" "../" "_form.html.erb" "./")
+
+ ("/home/xlgwr/work/depot/app/views/store/" (21165 55917 690150 164000) "index.html.erb" "../" "./" "index.html.erb~")
+
+ ("/home/xlgwr/work/depot/app/views/line_items/" (21167 6143 330965 542000) "new.html.erb" "index.json.jbuilder" "edit.html.erb" "_line_item.html.erb" "create.js.erb~" "index.html.erb" "show.json.jbuilder" "show.html.erb" "_line_item.html.erb~" "../" "_form.html.erb" "./" "create.js.erb")
+
+ ("/home/xlgwr/work/depot/" (21165 55917 690150 164000) "db/" ".gitignore" "vendor/" "config.ru" "tmp/" "app/" "lib/" "Rakefile" "public/" "config/" "Gemfile.lock" ".git/" "../" "./" "bin/" "README.md" "test/" "README.rdoc" "log/" "Gemfile")
+
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/erb/" (21167 1939 539814 354000) "%btn-b~" "%btn-c~" "%if-else-c~" "pa%" "%btn-dl~" "%lk-a" "%area-a" "%li-a~" "%if-else-c" "%escape-a" "%lkdl-td" "%lkdl-a" "%=" "%do-a" "%e" "pt%" "%each-a" "%if-b~" "%if-b" "%tp" "%btn-a~" "%btn-dl" "%if-a" "%area-o" "%a~" "%for-a" "%cache~" "%lk-p" "%lk-td" "%area-p" "%if-a~" "%li-a" "%t" "../" "%cache" "%b~" "./" "%err" "%btn-c" "p%" "%area-po" "%each-a~" "%0" "%f" "%btn-b" "%furl" "%btn-a" "%escape-a~" "%1~" "%render-a" "%render-a~" "%lkdl-p")
+
+ ("/home/xlgwr/work/depot/app/views/products/" (21161 41868 581276 369000) "new.html.erb" "index.json.jbuilder" "edit.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "../" "_form.html.erb" "./")
+
+ ("/home/xlgwr/work/depot/app/controllers/" (21167 7066 915354 514000) "orders_controller.rb" "store_controller.rb" "application_controller.rb" "concerns/" "line_items_controller.rb" "../" "./" "#store_controller.rb#" "carts_controller.rb" "products_controller.rb" "store_controller.rb~" "line_items_controller.rb~")
+
+ ("/home/xlgwr/work/depot/test/fixtures/" (21167 4431 376487 724000) "line_items.yml" "products.yml" ".keep" "orders.yml" "carts.yml" "../" "./")
+
+ ("/home/xlgwr/work/depot/app/views/orders/" (21167 2811 916847 89000) "new.html.erb" "index.json.jbuilder" "edit.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "../" "_form.html.erb" "./")
+
+ ("/home/xlgwr/work/depot/app/views/layouts/" (21165 52163 821342 686000) "application.html.erb" "../" "./")
 
  ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/" (21161 49686 985328 583000) "js-mode/" "css-mode/" "markdown-mode/" "html-mode/" "scss-mode/" "f90-mode/" "cc-mode/" "python-mode/" "objc-mode/" "text-mode/" "erlang-mode/" "csharp-mode/" "snippet-mode/" "nxml-mode/" "emacs-lisp-mode/" "../" "latex-mode/" "cperl-mode/" "./" "c++-mode/" "perl-mode/" "rst-mode/" "c-mode/" "ruby-mode/" "scala-mode/" "sql-mode/")
 
@@ -60,21 +97,11 @@
 
  ("/home/xlgwr/.emacs.d/tools/" (21161 50440 295858 187000) "rinari/" "yasnippet/" "../" "./")
 
- ("/home/xlgwr/.emacs.d/" (21161 50521 646835 466000) "ido.last~" "etc/" ".gitignore" "init.sh" "auto-complete.el" "COPYING.GPLv3" "ido.last" "popup.el" "eshell/" "Makefile" "ac-dict/" "elpa/" "doc/" "tools/" "tramp" ".git/" "../" "auto-complete-config.el" "./" "README.md" ".aliasrc" "ac-comphist.dat" "tests/" "auto-save-list/" "auto-complete-pkg.el" "auto-complete-pkg.elc" "COPYING.FDL" "TODO.md" "dict/" ".emacs")
-
- ("/home/xlgwr/" (21163 9317 625247 334000) ".gem/" ".lesshst" ".npm/" ".bower/" ".mysql_history" ".bash_history" ".bash_profile" ".viminfo" ".fbtermrc" ".fonts.conf" ".emacs.d/" ".emacs.d.bak/" ".config/" "tmp/" ".fbtermrc~" ".psql_history" ".bundler/" "sources.list.163" ".zprofile" ".rvm/" ".bash_profile~" ".zshrc" ".emacs~" ".cache/" ".vim/" "share/" ".node-gyp/" ".local/" ".w3m/" "learn/" "../" "163.txt" ".fonts.conf~" "./" ".bashrc~" ".gemrc" ".emacs.d.new/" "softs/" ".bash_logout" "work/" "lisps/" ".smex-items" ".rnd" "sites/" ".subversion/" ".slime-history.eld" ".ssh/" ".profile~" ".profile" ".bashrc" ".emacs.bak" ".emacs")
-
  ("/home/xlgwr/work/" (21161 41860 593376 790000) "../" "./" "depot/")
-
- ("/home/xlgwr/work/depot/" (21161 55365 565939 156000) "db/" ".gitignore" "vendor/" "config.ru" "tmp/" "app/" "lib/" "Rakefile" "public/" "config/" "Gemfile.lock" ".git/" "../" "./" "bin/" "README.md" "test/" "README.rdoc" "log/" "Gemfile")
 
  ("/home/xlgwr/work/depot/app/" (21161 41868 581276 369000) "models/" "controllers/" "views/" "mailers/" "../" "./" "assets/" "helpers/")
 
  ("/home/xlgwr/work/depot/app/views/" (21163 11133 282421 432000) "line_items/" "store/" "products/" "../" "./" "layouts/" "carts/")
-
- ("/home/xlgwr/work/depot/app/views/carts/" (21164 31956 771654 79000) "new.html.erb" "index.json.jbuilder" "edit.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "show.html.erb~" "../" "_form.html.erb" "./" ".#show.html.erb" "#show.html.erb#")
-
- ("/home/xlgwr/work/depot/app/controllers/" (21163 11133 282421 432000) "store_controller.rb" "application_controller.rb" "concerns/" "line_items_controller.rb" "../" "./" "#store_controller.rb#" "carts_controller.rb" ".#store_controller.rb" "products_controller.rb" "store_controller.rb~" "line_items_controller.rb~")
 
  ("/usr/local/" (21060 21025 763459 425000) "etc/" "lib/" "sbin/" "include/" "share/" "../" "src/" "games/" "./" "sbcl/" "bin/" "man/" "pgsql/")
 
@@ -85,8 +112,6 @@
  ("/home/xlgwr/share/code/" (21148 37513 639410 87000) "node/" "../" "./" "sbcl/" "ruby/" "deb/" "resolv.conf")
 
  ("/etc/common-lisp/" (20952 15480 543467 420000) "source-registry.conf.d/" "../" "./" "asdf-output-translations.conf.d/")
-
- ("/etc/" (21146 41897 688818 162000) "cups/" "ldap/" "python3/" "mailman/" "python/" "squid3/" "selinux/" "rc0.d/" "mke2fs.conf" "ghostscript/" "postgresql-common/" "sudoers" "passwd" "X11/" "update-manager/" "hosts.deny" "gdb/" "gshadow" "gnome/" "issue.net" "sgml/" "apparmor/" "crontab" "ca-certificates/" "subgid" "gssapi_mech.conf" "dhcp/" "nsswitch.conf" "sysctl.d/" "blkid.tab" "vtrgb" "papersize" "console-setup/" "apt/" "hosts" "hosts.allow" "hdparm.conf" "updatedb.conf" "wvdial.conf" "email-addresses" "insserv.conf" "screenrc" "colord.conf" "apt-fast.conf" "wpa_supplicant/" "rc5.d/" "systemd/" "foomatic/" "sound/" "upstart-xsessions" "fuse.conf" "localtime" "insserv/" "nail.rc" "zsh/" "rc4.d/" "cron.hourly/" "exim4/" "bash.bashrc" "init/" "iscsi/" "sbcl.rc" "adduser.conf" "nanorc" "udev/" ".java/" "alternatives/" "host.conf" "deluser.conf" "mailname" "mime.types" "pam.d/" "profile.d/" "ca-certificates.conf" "aliases" "rc3.d/" "bonobo-activation/" "cron.d/" "wzdftpd/" "bindresvport.blacklist" "w3m/" "pulse/" "iproute2/" "opt/" "libaudit.conf" "samba/" "ca-certificates.conf.dpkg-old" "shells" "ld.so.conf" "xml/" "dpkg/" "hostname" "gtk-3.0/" "sane.d/" "legal" "rsyslog.conf" "magic" "login.defs" "landscape/" "manpath.config" "pkcs11/" "ifplugd/" "ld.so.cache" "emacs-snapshot/" "cron.weekly/" "terminfo/" "ld.so.conf.d/" "skel/" "network/" "group-" "ltrace.conf" "aolserver4/" "subversion/" "rcS.d/" "bind/" "kernel-img.conf" "java-7-openjdk/" "gnome-vfs-2.0/" "sysctl.conf" "modprobe.d/" "services" "bash.bashrc~" "request-key.conf" "protocols" "byobu/" "subuid" "apport/" "rmt" "kernel/" ".pwd.lock" "calendar/" "at.deny" "python2.7/" "lisp-config.lisp" "pm/" "cron.monthly/" "ftpusers" "chatscripts/" "ucf.conf" "default/" "debconf.conf" "rpc" "ConsoleKit/" "mongodb.conf" "rarfiles.lst" "dhcp3/" "printcap" "avahi/" "postgres-xc/" "resolvconf/" "lsb-release" "exports" "issue" "debian_version" "emacs/" "mailcap" "logrotate.d/" "pam.conf" "ssh/" "python3.3/" "group" "update-notifier/" "usb_modeswitch.conf" "idmapd.conf" "groff/" "passwd-" "init.d/" "drirc" "bash_completion" "ssl/" "initramfs-tools/" "fonts/" "security/" "perl/" "acpi/" "logrotate.conf" "polkit-1/" "adjtime" "common-lisp/" "apparmor.d/" "shadow-" "sudoers.d/" "ufw/" "apache2/" "blkid.conf" "aliases.db" "securetty" "vim/" "logcheck/" "libnl-3/" "vsftpd.conf" "postfix/" "emacs24/" "request-key.d/" "dictionaries-common/" "os-release" "netconfig" "networks" "uniconf.conf" "wgetrc" "rsyslog.d/" "rc6.d/" "rc2.d/" "modules" "profile" "gai.conf" "fstab" "dbus-1/" "udhcpd.conf" "gshadow-" "ImageMagick/" "zsh_command_not_found" "shadow" "resolv.conf" "kbd/" "mtab" "at-spi2/" "rc.local" "insserv.conf.d/" "cron.daily/" "update-motd.d/" "timezone" "libpaper.d/" "locale.alias" "magic.mime" "profile~" "depmod.d/" "grub.d/" "gtk-2.0/" "lighttpd/" "popularity-contest.conf" "mysql/" "bash_completion.d/" "rc1.d/" "udisks2/" "postgresql/" "environment" "mailcap.order" "inputrc" "xdg/" "newt/" "apm/" "ppp/" "gconf/" "usb_modeswitch.d/" "fstab.d/" "../" "./")
 
  ("/home/xlgwr/learn/ruby/" (21145 61885 753012 22000) "../" "./" "#hello.rb#")
 

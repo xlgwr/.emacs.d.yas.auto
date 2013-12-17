@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: atag <div><%= label_tag :name, 'Name:' %></div>
+# key: %div
+# --
+<div${1:}>
+<%= label_tag ${2::name} ${3:,'Name:'} %>
+<%= text_field_tag ${4::name} ${5:,params[:name]} %>
+</div>
+$0
