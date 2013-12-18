@@ -68,6 +68,12 @@
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist  '("\\.scss\\'" . scss-mode))
 
+(add-to-list 'load-path
+	     "~/.emacs.d/tools/yasnippet/snippets/yaml-mode/")
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist  '("\\.yml$'" . yaml-mode))
+
+
 (ido-mode t)
 (yas-global-mode 1)
 (global-rinari-mode t)
