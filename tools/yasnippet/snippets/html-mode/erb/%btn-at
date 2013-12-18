@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: at<%= button_to t('.add_html'),@cart %>
+# key: %btn
+# --
+<%= button_to t('${1:add_html}'), ${2:@cart} $3 %>
+$0

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rt<%= button_to t('.add_html'), line_items_path(product_id: product), remote: true %>
+# key: %btn
+# --
+<%= button_to t('${1:.add_html}'), ${2:url_or_other} ,remote: true $3 %>$0
