@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: aa label<%= label_tag :name, 'Name:' %>
+# key: %tag
+# --
+<%= ${1:label}_tag ${2::name}${3:, 'Name:'} ${4:} %>
+$0

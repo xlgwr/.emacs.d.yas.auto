@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: c<ul><% @user.each do |msg| %><li>...</ul>
+# key: %do
+# --
+<ul>
+<% ${1:@users.each} do |${2:f}| %>
+    <li><%= $2.${4:} %>$0</li>
+<% end %>
+</ul>

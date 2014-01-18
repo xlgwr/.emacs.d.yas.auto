@@ -1,8 +1,8 @@
 # -*- mode: snippet -*-
-# name: td<%= link_to 'new post',new_post_path %></td>
+# name: td<%= link_to name,options={},html_options={} %></td>
 # key: %lk
 # --
 <td>
- <%= link_to '${1:link_name}' ,  ${2:Action_controller_path} %>
+ <%= link_to '${1:link_name}' , ${2:Action_controller_path} ${3:html_options} %>
 </td>
 $0

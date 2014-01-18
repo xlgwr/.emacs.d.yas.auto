@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: b<% @user.each do |msg| %>
+# key: %do
+# --
+<% ${1:@user.each} do ${2:} %>
+    $0
+<% end %>

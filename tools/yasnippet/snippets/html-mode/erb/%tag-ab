@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: ab field<%= text_field_tag :name, params[:name] %>
+# key: %tag
+# --
+<%= ${1:text}_${2:field}_tag ${3::name}, params[$3]${4:} %>
+$0

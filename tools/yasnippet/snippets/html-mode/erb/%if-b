@@ -4,6 +4,5 @@
 # --
 <% if ${1:notice} %>
    <p id='${2:notice}'><%= ${3:notice} %> </p>
-   $4
+   $0
 <% end %>
-$0

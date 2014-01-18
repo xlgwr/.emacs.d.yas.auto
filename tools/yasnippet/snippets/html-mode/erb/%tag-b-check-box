@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: b check_box_tag <%= check_box_tag dom_id(sub), sub.name , class:"" %>
+# key: %tag
+# --
+<%= ${1:check_box}_tag '${2:item[]}',${3:item.id},${4:item_ids.include?id},id: dom_id(${5:item.id}, class: "${6:class}" %>
+$0

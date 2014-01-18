@@ -1,9 +1,8 @@
 # -*- mode: snippet -*-
-# name: a<% def() do %>
+# name: a<%= div_for aritcle do %>
 # key: %do
 # --
-<%= ${1:def()} do %>
-   <%= ${2:} %>
-   ${3:}
+<%= ${1:div_for} ${2:article} do %>
+   $0
+   <%= simple_format $2.body %>
 <% end %>
-$0

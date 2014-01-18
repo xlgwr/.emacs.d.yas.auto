@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: a label<%= label_tag dom_id(sub), sub.name , class:"" %>
+# key: %tag
+# --
+<%= ${1:label}_tag dom_id(${2:item}),$2.${4:name}, class:"${5:class}" %>
+$0

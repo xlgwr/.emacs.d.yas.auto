@@ -2,16 +2,29 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/home/xlgwr/work/depot2/app/views/" . "line_items/")
+ ("/home/xlgwr/work/depot2/app/controllers/" . "concerns/")
+ ("/home/xlgwr/work/mod/app/" . "controllers/")
+ ("/home/xlgwr/work/mod/" . "db/")
+ ("/home/xlgwr/work/models/app/" . "models/")
+ ("/home/xlgwr/work/models/" . "app/")
+ ("/home/xlgwr/work/blog/test/" . "fixtures/")
+ ("/home/xlgwr/work/blog/app/views/" . "sessions/")
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/ruby-mode/" . "collections/")
+ ("/home/xlgwr/work/blog/app/" . "views/")
+ ("/home/xlgwr/work/blog/" . "app/")
+ ("/etc/apache2/" . "sites-enabled/")
+ ("/home/xlgwr/work/depot/config/" . "locales/")
  ("/home/xlgwr/work/depot/app/views/" . "store/")
  ("/home/xlgwr/work/depot/app/" . "controllers/")
  ("/home/xlgwr/work/depot/" . "app/")
- ("/home/xlgwr/work/" . "depot/")
+ ("/home/xlgwr/work/" . "mod/")
  ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/" . "erb/")
  ("/usr/" . "local/")
  ("/home/xlgwr/share/" . "code/")
  ("/etc/" . "apt/")
  ("/home/" . "xlgwr/")
- ("/" . "usr/")
+ ("/" . "home/")
  ("/home/xlgwr/sites/railsGL/blog/app/" . "controllers/")
  ("/home/xlgwr/sites/railsGL/blog/" . "app/")
  ("/home/xlgwr/sites/railsGL/" . "blog/")
@@ -25,83 +38,233 @@
 
 ;; ----- ido-work-directory-list -----
 (
- "/home/xlgwr/work/depot/app/views/products/"
- "/home/xlgwr/work/depot/test/fixtures/"
- "/home/xlgwr/work/depot/app/controllers/"
- "/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/erb/"
- "/home/xlgwr/work/depot/"
+ "/home/xlgwr/work/depot2/app/views/line_items/"
+ "/home/xlgwr/work/depot2/"
+ "/home/xlgwr/work/depot2/app/assets/stylesheets/"
+ "/home/xlgwr/work/depot2/app/views/carts/"
  "/home/xlgwr/work/depot/app/views/line_items/"
- "/home/xlgwr/work/depot/app/views/store/"
- "/home/xlgwr/work/depot/app/views/carts/"
- "/home/xlgwr/work/depot/app/assets/stylesheets/"
- "/home/xlgwr/"
- "/home/xlgwr/lisps/"
+ "/home/xlgwr/work/depot2/app/controllers/"
+ "/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/erb/"
+ "/home/xlgwr/work/depot2/db/migrate/"
+ "/home/xlgwr/work/depot2/app/models/"
+ "/home/xlgwr/work/depot2/app/controllers/concerns/"
+ "/home/xlgwr/work/mod/app/controllers/"
+ "/home/xlgwr/work/mod/app/models/"
+ "/home/xlgwr/work/mod/db/migrate/"
+ "/home/xlgwr/work/mod/db/"
+ "/home/xlgwr/work/mod/app/"
+ "/home/xlgwr/work/mod/"
+ "/home/xlgwr/work/models/db/migrate/"
+ "/home/xlgwr/work/models/app/models/"
+ "/home/xlgwr/work/models/"
+ "/home/xlgwr/work/models/config/"
+ "/home/xlgwr/work/blog/config/"
+ "/home/xlgwr/work/blogsqlserver/"
+ "/home/xlgwr/work/blogsqlserver/config/"
+ "/home/xlgwr/work/blog/test/fixtures/"
+ "/home/xlgwr/work/blog/app/views/comments/"
+ "/home/xlgwr/work/blog/app/controllers/"
+ "/home/xlgwr/work/blog/app/views/articles/"
+ "/home/xlgwr/work/blog/app/views/sessions/"
+ "/home/xlgwr/.emacs.d/tools/yasnippet/snippets/ruby-mode/collections/"
+ "/home/xlgwr/work/blog/app/views/users/"
+ "~/work/blog/app/views/articles/"
  "/home/xlgwr/.emacs.d/"
- "/home/xlgwr/learn/ruby/"
+ "/home/xlgwr/work/blog/db/migrate/"
+ "/home/xlgwr/work/blog/app/models/"
+ "/home/xlgwr/.emacs.d/tools/yasnippet/snippets/ruby-mode/definitions/"
+ "/home/xlgwr/work/blog/"
+ "/home/xlgwr/work/depot/app/controllers/"
  "/etc/"
- "/etc/apt/"
- "/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/"
- "/home/xlgwr/sites/railsGL/blog/app/models/"
- "/home/xlgwr/sites/railsGL/blog/app/controllers/"
- "/home/xlgwr/sites/railsGL/blog/app/views/posts/"
- "/home/xlgwr/sites/railsGL/"
+ "/etc/apache2/conf.d/"
+ "/etc/apache2/sites-enabled/"
+ "/etc/apache2/sites-available/"
+ "/etc/apache2/"
+ "/etc/apache2/mods-enabled/"
+ "/etc/apache2/mods-available/"
+ "/home/xlgwr/work/depot/config/locales/"
+ "/home/xlgwr/work/depot/app/views/orders/"
+ "/home/xlgwr/work/depot/config/initializers/"
+ "/home/xlgwr/work/depot/app/views/admin/"
+ "/home/xlgwr/work/depot/app/views/users/"
+ "/home/xlgwr/work/depot/app/views/products/"
 )
 
 ;; ----- ido-work-file-list -----
 (
- "who_bought.atom.builder"
- "products.yml"
- "orders_controller.rb"
- "%if-else-c"
+ "_line_item.html.erb"
  "Gemfile"
- "%escape-a"
  "create.js.erb"
- "index.html.erb"
- "%btn-a"
- "%btn-c"
+ "application.css"
+ "_cart.html.erb"
+ "carts_controller.rb"
+ "carts.css.scss"
+ "%btn-dl"
+ "20140117073459_combine_items_in_cart.rb"
+ "%do-ul-c"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/etc/" (21167 1141 939318 701000) "cups/" "ldap/" "python3/" "mailman/" "python/" "squid3/" "selinux/" "rc0.d/" "mke2fs.conf" "ghostscript/" "postgresql-common/" "sudoers" "passwd" "X11/" "update-manager/" "hosts.deny" "gdb/" "gshadow" "gnome/" "issue.net" "sgml/" "apparmor/" "crontab" "ca-certificates/" "subgid" "gssapi_mech.conf" "dhcp/" "nsswitch.conf" "sysctl.d/" "blkid.tab" "vtrgb" "papersize" "console-setup/" "apt/" "hosts" "hosts.allow" "hdparm.conf" "updatedb.conf" "wvdial.conf" "email-addresses" "insserv.conf" "screenrc" "colord.conf" "apt-fast.conf" "wpa_supplicant/" "rc5.d/" "systemd/" "foomatic/" "sound/" "upstart-xsessions" "fuse.conf" "localtime" "insserv/" "nail.rc" "zsh/" "rc4.d/" "cron.hourly/" "exim4/" "bash.bashrc" "init/" "iscsi/" "sbcl.rc" "adduser.conf" "nanorc" "udev/" ".java/" "alternatives/" "host.conf" "deluser.conf" "mailname" "mime.types" "pam.d/" "profile.d/" "ca-certificates.conf" "aliases" "rc3.d/" "bonobo-activation/" "cron.d/" "wzdftpd/" "bindresvport.blacklist" "w3m/" "pulse/" "iproute2/" "opt/" "libaudit.conf" "samba/" "ca-certificates.conf.dpkg-old" "shells" "ld.so.conf" "xml/" "dpkg/" "hostname" "gtk-3.0/" "sane.d/" "legal" "rsyslog.conf" "magic" "login.defs" "landscape/" "manpath.config" "pkcs11/" "ifplugd/" "ld.so.cache" "emacs-snapshot/" "cron.weekly/" "terminfo/" "ld.so.conf.d/" "skel/" "network/" "group-" "ltrace.conf" "aolserver4/" "subversion/" "rcS.d/" "bind/" "kernel-img.conf" "java-7-openjdk/" "gnome-vfs-2.0/" "sysctl.conf" "modprobe.d/" "services" "bash.bashrc~" "request-key.conf" "protocols" "byobu/" "subuid" "apport/" "rmt" "kernel/" ".pwd.lock" "calendar/" "at.deny" "python2.7/" "lisp-config.lisp" "pm/" "cron.monthly/" "ftpusers" "chatscripts/" "ucf.conf" "default/" "debconf.conf" "rpc" "ConsoleKit/" "mongodb.conf" "rarfiles.lst" "dhcp3/" "printcap" "avahi/" "postgres-xc/" "resolvconf/" "lsb-release" "exports" "issue" "debian_version" "emacs/" "mailcap" "logrotate.d/" "pam.conf" "ssh/" "python3.3/" "group" "update-notifier/" "usb_modeswitch.conf" "idmapd.conf" "groff/" "passwd-" "init.d/" "drirc" "bash_completion" "ssl/" "initramfs-tools/" "fonts/" "security/" "perl/" "acpi/" "logrotate.conf" "polkit-1/" "adjtime" "common-lisp/" "apparmor.d/" "shadow-" "sudoers.d/" "ufw/" "apache2/" "blkid.conf" "aliases.db" "securetty" "vim/" "logcheck/" "libnl-3/" "vsftpd.conf" "postfix/" "emacs24/" "request-key.d/" "dictionaries-common/" "os-release" "netconfig" "networks" "uniconf.conf" "wgetrc" "rsyslog.d/" "rc6.d/" "rc2.d/" "modules" "profile" "gai.conf" "fstab" "dbus-1/" "udhcpd.conf" "gshadow-" "ImageMagick/" "zsh_command_not_found" "shadow" "resolv.conf" "kbd/" "mtab" "at-spi2/" "rc.local" "insserv.conf.d/" "cron.daily/" "update-motd.d/" "timezone" "libpaper.d/" "locale.alias" "magic.mime" "profile~" "depmod.d/" "grub.d/" "gtk-2.0/" "lighttpd/" "popularity-contest.conf" "mysql/" "bash_completion.d/" "rc1.d/" "udisks2/" "postgresql/" "environment" "mailcap.order" "inputrc" "xdg/" "newt/" "apm/" "ppp/" "gconf/" "usb_modeswitch.d/" "fstab.d/" "../" "./")
+ ("/home/xlgwr/work/depot2/app/views/line_items/" (21209 1052 635970 367000) "new.html.erb" "index.json.jbuilder" "edit.html.erb" "_line_item.html.erb" "create.js.erb~" "index.html.erb" "show.json.jbuilder" "show.html.erb" "_line_item.html.erb~" "../" "_form.html.erb" "./" "create.js.erb")
 
- ("/home/xlgwr/.emacs.d/" (21167 1364 800950 238000) "ido.last~" "etc/" ".gitignore" "init.sh" "auto-complete.el" "COPYING.GPLv3" "ido.last" "popup.el" "gitcmd" "eshell/" "Makefile" "ac-dict/" "elpa/" "doc/" "tools/" "tramp" ".git/" "../" "auto-complete-config.el" "./" "README.md" ".aliasrc" "ac-comphist.dat" "tests/" "auto-save-list/" "auto-complete-pkg.el" "auto-complete-pkg.elc" "COPYING.FDL" "TODO.md" "dict/" ".emacs")
+ ("/home/xlgwr/work/depot2/app/views/carts/" (21209 672 280752 79000) "_cart.html.erb" "new.html.erb" "index.json.jbuilder" "edit.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "_cart.html.erb~" "../" "_form.html.erb" "./")
 
- ("/home/xlgwr/" (21167 5397 88347 82000) ".gem/" ".lesshst" ".npm/" ".bower/" ".mysql_history" ".bash_history" ".bash_profile" ".viminfo" ".fbtermrc" ".fonts.conf" ".emacs.d/" ".emacs.d.bak/" ".config/" "tmp/" ".fbtermrc~" ".psql_history" ".bundler/" "sources.list.163" ".zprofile" ".rvm/" ".bash_profile~" ".zshrc" ".emacs~" ".cache/" ".vim/" "share/" ".node-gyp/" ".local/" ".w3m/" "learn/" "../" "163.txt" ".fonts.conf~" "./" ".bashrc~" ".gemrc" ".sqlite_history" ".emacs.d.new/" "softs/" ".bash_logout" "work/" "lisps/" ".smex-items" ".rnd" "sites/" ".subversion/" ".slime-history.eld" ".ssh/" ".profile~" ".profile" ".bashrc" ".emacs.bak" ".emacs")
+ ("/home/xlgwr/work/depot2/app/controllers/" (21209 84 604140 175000) "store_controller.rb" "application_controller.rb" "concerns/" "line_items_controller.rb" "../" "./" "carts_controller.rb" "products_controller.rb" "store_controller.rb~" "products_controller.rb~" "carts_controller.rb~" "line_items_controller.rb~")
 
- ("/home/xlgwr/work/depot/app/assets/stylesheets/" (21167 3636 194484 516000) ".sass-cache/" "carts.css.scss" "scaffolds.css.scss" "line_items.css.css" "products.css.css" "store.css.css" "store.css.scss" "scaffolds.css.css" "products.css.scss" "orders.css.scss" "carts.css.css" "../" "store.css.scss~" "./" "line_items.css.scss" "application.css" "orders.css.css")
+ ("/home/xlgwr/work/depot2/app/views/layouts/" (21208 63970 952879 100000) "application.html.erb" "../" "./" "application.html.erb~")
 
- ("/home/xlgwr/work/depot/app/views/carts/" (21167 2811 916847 89000) "_cart.html.erb" "new.html.erb" "index.json.jbuilder" "edit.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "show.html.erb~" "_cart.html.erb~" "../" "_form.html.erb" "./")
+ ("~/work/depot2/app/views/line_items/" (21208 64818 886219 134000) "new.html.erb" "index.json.jbuilder" "edit.html.erb" "_line_item.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "_line_item.html.erb~" "../" "_form.html.erb" "./")
 
- ("/home/xlgwr/work/depot/app/views/store/" (21165 55917 690150 164000) "index.html.erb" "../" "./" "index.html.erb~")
+ ("/home/xlgwr/work/depot2/app/assets/stylesheets/" (21208 64783 98669 45000) ".sass-cache/" "carts.css.scss" "scaffolds.css.scss" "products.css.scss~" "line_items.css.css" "products.css.css" "store.css.css" "store.css.scss" "scaffolds.css.css" "products.css.scss" "carts.css.css" "../" "store.css.scss~" "./" "line_items.css.scss" "application.css")
 
- ("/home/xlgwr/work/depot/app/views/line_items/" (21167 6143 330965 542000) "new.html.erb" "index.json.jbuilder" "edit.html.erb" "_line_item.html.erb" "create.js.erb~" "index.html.erb" "show.json.jbuilder" "show.html.erb" "_line_item.html.erb~" "../" "_form.html.erb" "./" "create.js.erb")
+ ("/home/xlgwr/work/depot/app/views/" (21171 777 423823 339000) "line_items/" "sessions/" "orders/" "store/" "users/" "products/" "../" "./" "layouts/" "order_notifier/" "admin/" "carts/")
 
- ("/home/xlgwr/work/depot/" (21165 55917 690150 164000) "db/" ".gitignore" "vendor/" "config.ru" "tmp/" "app/" "lib/" "Rakefile" "public/" "config/" "Gemfile.lock" ".git/" "../" "./" "bin/" "README.md" "test/" "README.rdoc" "log/" "Gemfile")
+ ("/etc/" (21208 61876 797247 861000) "cups/" "ldap/" "python3/" "mailman/" "python/" "squid3/" "selinux/" "rc0.d/" "mke2fs.conf" "ghostscript/" "postgresql-common/" "sudoers" "passwd" "X11/" "update-manager/" "hosts.deny" "gdb/" "gshadow" "gnome/" "issue.net" "sgml/" "apparmor/" "crontab" "ca-certificates/" "subgid" "gssapi_mech.conf" "dhcp/" "nsswitch.conf" "sysctl.d/" "blkid.tab" "vtrgb" "papersize" "console-setup/" "apt/" "hosts" "hosts.allow" "hdparm.conf" "updatedb.conf" "wvdial.conf" "email-addresses" "insserv.conf" "screenrc" "colord.conf" "apt-fast.conf" "wpa_supplicant/" "rc5.d/" "systemd/" "foomatic/" "sound/" "upstart-xsessions" "fuse.conf" "localtime" "insserv/" "nail.rc" "zsh/" "rc4.d/" "cron.hourly/" "exim4/" "bash.bashrc" "odbcinst.ini~" "init/" "hosts~" "iscsi/" "sbcl.rc" "odbcinst.ini" "adduser.conf" "nanorc" "udev/" ".java/" "alternatives/" "host.conf" "deluser.conf" "mailname" "mime.types" "pam.d/" "profile.d/" "ca-certificates.conf" "aliases" "rc3.d/" "bonobo-activation/" "cron.d/" "wzdftpd/" "bindresvport.blacklist" "w3m/" "pulse/" "iproute2/" "opt/" "libaudit.conf" "samba/" "ca-certificates.conf.dpkg-old" "shells" "ld.so.conf" "xml/" "dpkg/" "hostname" "gtk-3.0/" "sane.d/" "legal" "rsyslog.conf" "magic" "login.defs" "landscape/" "manpath.config" "pkcs11/" "ifplugd/" "ld.so.cache" "emacs-snapshot/" "cron.weekly/" "terminfo/" "ld.so.conf.d/" "skel/" "network/" "group-" "ltrace.conf" "aolserver4/" "subversion/" "rcS.d/" "freetds/" "bind/" "kernel-img.conf" "java-7-openjdk/" "gnome-vfs-2.0/" "sysctl.conf" "modprobe.d/" "services" "bash.bashrc~" "request-key.conf" "protocols" "byobu/" "subuid" "apport/" "rmt" "kernel/" ".pwd.lock" "calendar/" "at.deny" "python2.7/" "lisp-config.lisp" "pm/" "cron.monthly/" "ftpusers" "chatscripts/" "ucf.conf" "default/" "debconf.conf" "rpc" "ConsoleKit/" "mongodb.conf" "rarfiles.lst" "dhcp3/" "printcap" "avahi/" "postgres-xc/" "resolvconf/" "lsb-release" "exports" "issue" "debian_version" "emacs/" "mailcap" "odbc.ini" "logrotate.d/" "pam.conf" "ssh/" "python3.3/" "group" "update-notifier/" "usb_modeswitch.conf" "idmapd.conf" "groff/" "passwd-" "init.d/" "drirc" "bash_completion" "ssl/" "initramfs-tools/" "fonts/" "security/" "perl/" "acpi/" "logrotate.conf" "polkit-1/" "adjtime" "common-lisp/" "apparmor.d/" "shadow-" "sudoers.d/" "ufw/" "apache2/" "blkid.conf" "aliases.db" "securetty" "vim/" "logcheck/" "libnl-3/" "odbc.ini~" "vsftpd.conf" "postfix/" "emacs24/" "request-key.d/" "dictionaries-common/" "os-release" "netconfig" "networks" "uniconf.conf" "wgetrc" "rsyslog.d/" "rc6.d/" "rc2.d/" "modules" "profile" "gai.conf" "fstab" "dbus-1/" "udhcpd.conf" "gshadow-" "ImageMagick/" "zsh_command_not_found" "shadow" "resolv.conf" "kbd/" "mtab" "at-spi2/" "rc.local" "insserv.conf.d/" "cron.daily/" "update-motd.d/" "timezone" "libpaper.d/" "locale.alias" "magic.mime" "profile~" "depmod.d/" "grub.d/" "gtk-2.0/" "lighttpd/" "popularity-contest.conf" "mysql/" "bash_completion.d/" "rc1.d/" "udisks2/" "postgresql/" "environment" "ODBCDataSources/" "mailcap.order" "inputrc" "xdg/" "newt/" "apm/" "ppp/" "gconf/" "usb_modeswitch.d/" "fstab.d/" "../" "./")
 
- ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/erb/" (21167 1939 539814 354000) "%btn-b~" "%btn-c~" "%if-else-c~" "pa%" "%btn-dl~" "%lk-a" "%area-a" "%li-a~" "%if-else-c" "%escape-a" "%lkdl-td" "%lkdl-a" "%=" "%do-a" "%e" "pt%" "%each-a" "%if-b~" "%if-b" "%tp" "%btn-a~" "%btn-dl" "%if-a" "%area-o" "%a~" "%for-a" "%cache~" "%lk-p" "%lk-td" "%area-p" "%if-a~" "%li-a" "%t" "../" "%cache" "%b~" "./" "%err" "%btn-c" "p%" "%area-po" "%each-a~" "%0" "%f" "%btn-b" "%furl" "%btn-a" "%escape-a~" "%1~" "%render-a" "%render-a~" "%lkdl-p")
+ ("/home/xlgwr/.emacs.d/" (21208 59658 302505 449000) "ido.last~" "etc/" ".gitignore" "init.sh" "auto-complete.el" "COPYING.GPLv3" "ido.last" "popup.el" "gitcmd" "eshell/" "Makefile" "ac-dict/" "elpa/" "doc/" "tools/" "tramp" ".git/" "../" "auto-complete-config.el" "./" "README.md" ".aliasrc" "ac-comphist.dat" "tests/" "auto-save-list/" "auto-complete-pkg.el" "auto-complete-pkg.elc" "COPYING.FDL" "TODO.md" "dict/" ".emacs")
 
- ("/home/xlgwr/work/depot/app/views/products/" (21161 41868 581276 369000) "new.html.erb" "index.json.jbuilder" "edit.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "../" "_form.html.erb" "./")
+ ("/home/xlgwr/work/depot2/app/controllers/concerns/" (21208 52879 547725 937000) ".keep" "../" "./" "current_cart.rb")
 
- ("/home/xlgwr/work/depot/app/controllers/" (21167 7066 915354 514000) "orders_controller.rb" "store_controller.rb" "application_controller.rb" "concerns/" "line_items_controller.rb" "../" "./" "#store_controller.rb#" "carts_controller.rb" "products_controller.rb" "store_controller.rb~" "line_items_controller.rb~")
+ ("/home/xlgwr/work/depot2/app/models/" (21208 59287 319169 341000) "cart.rb" "product.rb" ".keep" "line_item.rb" "concerns/" "line_item.rb~" "../" "./" "cart.rb~")
 
- ("/home/xlgwr/work/depot/test/fixtures/" (21167 4431 376487 724000) "line_items.yml" "products.yml" ".keep" "orders.yml" "carts.yml" "../" "./")
+ ("/home/xlgwr/work/depot2/db/migrate/" (21208 57279 796407 320000) "20140116054432_create_products.rb~" "20140117062856_create_carts.rb" "20140116054432_create_products.rb" "20140117065348_create_line_items.rb" "20140117073459_combine_items_in_cart.rb~" "../" "20140116055226_remove_string_from_products.rb" "./" "20140117072101_add_quantity_to_line_items.rb~" "20140117072101_add_quantity_to_line_items.rb" "20140117073459_combine_items_in_cart.rb")
 
- ("/home/xlgwr/work/depot/app/views/orders/" (21167 2811 916847 89000) "new.html.erb" "index.json.jbuilder" "edit.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "../" "_form.html.erb" "./")
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/html-mode/erb/" (21208 58437 437853 796000) "%text-div-tag" "%btn-b~" "%btn-c~" "%if-else-c~" "pa%" "%btn-at" "%btn-dl~" "%lk-a" "%form-b" "%text-a~" "%do-b~" "%tag-a~" "%area-a" "%li-a~" "%form-b~" "%if-else-c" "%escape-a" "%tag-b-check-box" "%lkdl-td" "%form-a" "%lkdl-a" "%text-p" "%=" "%do-a" "%div-a" "%e" "pt%" "%each-a" "%if-b~" "%text-div-tag~" "%if-b" "%btn-remote-t" "%form-a~" "%btn-a~" "%btn-dl" "%div-a~" "%if-a" "%area-o" "%a~" "%for-a" "%tag-a" "%cache~" "%lk-p" "%lk-td" "%area-p" "%if-a~" "%li-a" "%text-p~" "%do-b" "../" "%cache" "%b~" "./" "%err" "%text-div~" "%btn-c" "%do-ul-c~" "p%" "%do-ul-c" "%area-po" "%each-a~" "%0" "%btn-b" "%furl" "%btn-a" "%escape-a~" "%text-div" "%1~" "%text-a" "%render-a" "%render-a~" "%tag-b-check-box~" "%lkdl-p")
+
+ ("/home/xlgwr/work/" (21207 28501 111031 19000) "blog/" "mod/" "blogsqlserver/" "../" "./" "depot2/" "rubycode/" "depot/")
+
+ ("/home/xlgwr/work/depot2/app/" (21207 28501 139030 667000) "models/" "controllers/" "views/" "mailers/" "../" "./" "assets/" "helpers/")
+
+ ("/home/xlgwr/work/depot2/app/views/" (21208 54140 859869 96000) "line_items/" "store/" "products/" "../" "./" "layouts/" "carts/")
+
+ ("/home/xlgwr/" (21202 3070 558797 303000) ".gem/" ".lesshst" ".npm/" ".bower/" ".mysql_history" ".bash_history" ".bash_profile" ".odbc.ini" ".viminfo" ".fbtermrc" ".fonts.conf" ".emacs.d/" ".emacs.d.bak/" ".config/" "sources.list" "tmp/" ".fbtermrc~" ".psql_history" ".bundler/" "sources.list.163" ".sqsh_history" ".zprofile" "Users guide Apache.html" ".rvm/" ".bash_profile~" ".zshrc" ".emacs~" ".sqsh_readline" ".cache/" ".vim/" "share/" ".node-gyp/" ".local/" ".w3m/" "learn/" "../" "163.txt" ".fonts.conf~" "./" ".bashrc~" ".gemrc" ".sqlite_history" ".emacs.d.new/" "softs/" ".bash_logout" "work/" "lisps/" ".smex-items" ".rnd" "sites/" ".subversion/" ".slime-history.eld" ".ssh/" ".profile~" ".irb-history" ".profile" ".bashrc" ".emacs.bak" ".emacs")
+
+ ("/home/xlgwr/work/depot/" (21207 28607 189697 430000) "db/" ".gitignore" "vendor/" "config.ru" "tmp/" "app/" "lib/" "Rakefile" ".bundle/" "public/" "config/" "Gemfile.lock" ".git/" "../" "./" "bin/" "README.md" "test/" "README.rdoc" "log/" "Gemfile")
+
+ ("/home/xlgwr/work/mod/db/" (21202 27317 577970 992000) "../" "./" "migrate/" "seeds.rb~" "development.sqlite3" "schema.rb" "seeds.rb")
+
+ ("/home/xlgwr/work/mod/db/migrate/" (21202 32037 218637 73000) "20140112093225_create_addresses.rb" "20140112093447_add_client_ref_to_orders.rb" "20140112113149_create_books.rb" "20140112052650_add_user_ref_to_posts.rb" "20140112083404_create_orders.rb" "20140112083727_add_customer_ref_to_orders.rb" "20140112033301_create_products.rb" "20140112045649_create_users.rb" "20140112034925_add_details_to_products.rb" "20140112034135_remove_part_number_from_products.rb" "20140112040522_create_join_table_customer_product.rb" "../" "20140112040522_create_join_table_customer_product.rb~" "./" "20140112033658_add_part_number_to_products.rb" "20140112040026_add_user_ref_to_products.rb~" "20140112093414_add_client_ref_to_address.rb" "20140112051808_create_posts.rb" "20140112093541_add_join_table_client_role.rb" "20140112093541_add_join_table_client_role.rb~" "20140112040026_add_user_ref_to_products.rb" "20140112083404_create_orders.rb~" "20140112084429_add_order_date_to_orders.rb" "20140112083307_create_customers.rb" "20140112093155_create_clients.rb" "20140112093244_create_roles.rb")
+
+ ("/home/xlgwr/work/mod/app/models/" (21202 32037 222637 23000) "post.rb" "post.rb~" "book.rb" "order.rb" "product.rb" ".keep" "user.rb~" "customer.rb" "concerns/" "../" "./" "role.rb~" "user.rb" "address.rb~" "customer.rb~" "client.rb~" "order.rb~" "address.rb" "client.rb" "role.rb")
+
+ ("/home/xlgwr/work/depot2/" (21208 52421 261487 376000) "db/" ".gitignore" "vendor/" "config.ru" "tmp/" "app/" "lib/" "Rakefile" "public/" "config/" "Gemfile.lock" ".git/" "../" "./" "bin/" "test/" "README.rdoc" "log/" "Gemfile")
+
+ ("/home/xlgwr/work/mod/app/views/layouts/" (21202 3013 715511 920000) "application.html.erb" "../" "./")
+
+ ("/home/xlgwr/work/mod/app/controllers/" (21202 31965 927533 324000) "books_controller.rb" "books_controller.rb~" "application_controller.rb" "concerns/" "../" "./" "products_controller.rb")
+
+ ("/home/xlgwr/work/mod/" (21202 3629 23776 448000) "db/" ".gitignore" "vendor/" "config.ru" "tmp/" "app/" "lib/" "Gemfile~" "Rakefile" ".bundle/" "public/" "config/" "Gemfile.lock" "../" "./" "bin/" "test/" "README.rdoc" "log/" "Gemfile")
+
+ ("/home/xlgwr/work/mod/config/" (21202 3013 747511 518000) "environment.rb" "routes.rb" "application.rb" "locales/" "database.yml" "initializers/" "../" "./" "boot.rb" "environments/")
+
+ ("/home/xlgwr/work/mod/app/" (21202 3013 715511 920000) "models/" "controllers/" "views/" "mailers/" "../" "./" "assets/" "helpers/")
+
+ ("/home/xlgwr/work/models/db/migrate/" (21202 2389 703356 815000) "20140112031741_add_part_number_to_products.rb" "../" "20140112030303_create_products.rb" "./" "20140112030303_create_products.rb~")
+
+ ("/home/xlgwr/work/models/app/models/" (21202 132 251736 826000) "product.rb" ".keep" "concerns/" "../" "./" "product.rb~")
+
+ ("/home/xlgwr/work/blog/app/views/comments/" (21193 16381 252795 0) "new.js.erb~" "fail_create.js.erb~" "new.html.erb" "new.html.erb~" "_comment.html.erb~" "destroy.js.erb" "../" "new.js.erb" "./" "_comment.html.erb" "create.js.erb" "fail_create.js.erb")
+
+ ("/home/xlgwr/work/blog/test/fixtures/" (21193 19380 667087 255000) "categories.yml" "profiles.yml" ".keep" "../" "./" "articles.yml" "comments.yml" "users.yml" "articles.yml~")
+
+ ("/home/xlgwr/work/blogsqlserver/config/" (21198 34308 3298 492000) "environment.rb" "routes.rb" "application.rb" "locales/" "database.yml~" "database.yml" "initializers/" "../" "./" "boot.rb" "environments/")
+
+ ("/home/xlgwr/work/blog/config/" (21200 5596 424270 597000) "environment.rb" "routes.rb" "application.rb" "#database.yml#" "application.rb~" "locales/" "database.yml" "initializers/" "routes.rb~" "../" "./" "boot.rb" "environments/")
+
+ ("/home/xlgwr/work/models/config/" (21201 20800 114773 78000) "environment.rb" "routes.rb" "application.rb" "locales/" "database.yml~" "database.yml" "initializers/" "../" "./" "boot.rb" "environments/")
+
+ ("/home/xlgwr/work/models/app/" (21201 18872 563005 685000) "models/" "controllers/" "views/" "mailers/" "../" "./" "assets/" "helpers/")
+
+ ("/home/xlgwr/work/models/" (21201 21610 504585 98000) "db/" ".gitignore" "vendor/" "config.ru" "tmp/" "app/" "lib/" "Gemfile~" "Rakefile" ".bundle/" "public/" "config/" "Gemfile.lock" "../" "./" "bin/" "test/" "README.rdoc" "log/" "Gemfile")
+
+ ("/home/xlgwr/work/blogsqlserver/" (21198 29230 179135 387000) "db/" ".gitignore" "vendor/" "config.ru" "tmp/" "app/" "lib/" "Gemfile~" "Rakefile" ".bundle/" "public/" "config/" "Gemfile.lock" "../" "./" "bin/" "test/" "README.rdoc" "log/" "Gemfile")
+
+ ("/home/xlgwr/work/blog/test/" (21182 19788 73384 353000) "integration/" "models/" "controllers/" "mailers/" "../" "./" "test_helper.rb" "helpers/" "fixtures/")
+
+ ("/home/xlgwr/work/blog/test/models/" (21182 60996 789451 665000) "user_test.rb" "comment_test.rb" "article_test.rb" ".keep" "category_test.rb" "../" "./" "profile_test.rb")
+
+ ("/home/xlgwr/work/blog/app/controllers/" (21193 15937 694371 284000) "comments_controller.rb" "users_controller.rb" "application_controller.rb" "concerns/" "articles_controller.rb~" "application_controller.rb~" "../" "./" "sessions_controller.rb~" "comments_controller.rb~" "articles_controller.rb" "users_controller.rb~" "sessions_controller.rb")
+
+ ("~/work/blog/app/views/articles/" (21190 56423 520194 929000) "new.html.erb" "index.json.jbuilder" "edit.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "_article.html.erb" "show.html.erb~" "../" "_form.html.erb" "./" "_form.html.erb~" "_article.html.erb~" "index.html.erb~")
+
+ ("/home/xlgwr/work/blog/app/views/articles/" (21190 56423 520194 929000) "new.html.erb" "index.json.jbuilder" "edit.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "_article.html.erb" "show.html.erb~" "../" "_form.html.erb" "./" "_form.html.erb~" "_article.html.erb~" "index.html.erb~")
+
+ ("/home/xlgwr/work/blog/app/models/" (21189 36064 48807 22000) "comment.rb~" "article.rb~" "comment.rb" "profile.rb~" "article.rb" "profile.rb" ".keep" "user.rb~" "concerns/" "category.rb" "../" "./" "user.rb" "category.rb~")
+
+ ("/home/xlgwr/work/blog/app/views/users/" (21189 33143 185527 247000) "new.html.erb" "../" "_form.html.erb" "./" "_form.html.erb~")
+
+ ("/home/xlgwr/work/blog/app/views/sessions/" (21185 38000 186419 24000) "new.html.erb" "new.html.erb~" "../" "./")
+
+ ("/home/xlgwr/work/blog/app/views/" (21185 36998 227015 359000) "sessions/" "articles/" "users/" "../" "./" "layouts/" "comments/")
+
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/extras/imported/rails-mode/Snippets/" (21099 56941 930570 641000) "form_for label.yasnippet" "xhr post.yasnippet" "render (action)... (ra).yasnippet" "logger_debug.yasnippet" "xhr get.yasnippet" "validates_exclusion_of (ve).yasnippet" "form_for checkbox.yasnippet" "mattr_accessor.yasnippet" "render (nothing) (rn).yasnippet" "3C= Fixtures_identify(3Asymbol) 3E.yasnippet" "cattr_accessor.yasnippet" "validates_uniqueness_of if (vuif).yasnippet" "lia.yasnippet" "form_for check_box.yasnippet" "redirect_to (nested path).yasnippet" "render (text,status) (rts).yasnippet" "gem git.yasnippet" "validates_numericality_of.yasnippet" "has_many (hm).yasnippet" "render (layout) (rl).yasnippet" "after_save.yasnippet" "Create functional test class.yasnippet" "render (partial,object) (rpo).yasnippet" "form_for submit.yasnippet" "scope with extension.yasnippet" "t_references (tcr).yasnippet" "page_hide (2Aids).yasnippet" "respond_to.yasnippet" "map(&3Asym_proc).yasnippet" "validates_acceptance_of if.yasnippet" "link_to (nested path).yasnippet" "f_fields_for (nff).yasnippet" "find(id).yasnippet" "format (respond_with).yasnippet" "page_replace (id, partial).yasnippet" "validates_format_of.yasnippet" "stylesheet_link_tag.yasnippet" "rails params.yasnippet" "Create string column.yasnippet" "validates_presence_of (vp).yasnippet" "Migration Create Column (mcc).yasnippet" "after_destroy.yasnippet" "scope.yasnippet" "page_replace_html (id, partial).yasnippet" "render (partial,collection) (rpc).yasnippet" "content_for.yasnippet" "layout.yasnippet" "Create decimal column.yasnippet" "scoped_by.yasnippet" "form_for submit 2.yasnippet" "link_to (path).yasnippet" "logger_fatal.yasnippet" "validates_length_of (vl).yasnippet" "link_to (nested path plural).yasnippet" "form_for radio_box.yasnippet" "find_each.yasnippet" "rec.yasnippet" "before_create.yasnippet" "Create controller class.yasnippet" "def get request.yasnippet" "form_for text_field 2.yasnippet" "before_destroy.yasnippet" "assert_no_difference.yasnippet" "form_for password_field 2.yasnippet" "Create boolean column.yasnippet" "submit_tag.yasnippet" "recai.yasnippet" "validates_confirmation_of if (vcif).yasnippet" "Migration Create Column Continue (mccc).yasnippet" "validates_presence_of if (vpif) 2.yasnippet" "def create - resource.yasnippet" "reai.yasnippet" "Create float column.yasnippet" "redirect_to (path).yasnippet" "validates.yasnippet" "link_to (path plural).yasnippet" "t_timestamps (tctss).yasnippet" "render (action,layout) (ral).yasnippet" "before_filter.yasnippet" "form_for with errors.yasnippet" "validates_inclusion_of if.yasnippet" "image_submit_tag.yasnippet" "redirect_to (nested path plural).yasnippet" "render (update).yasnippet" "redirect_to (path plural).yasnippet" "form_for hidden_field 2.yasnippet" "find(3Aall).yasnippet" "xhr put.yasnippet" "form_for file_field.yasnippet" "Create resources controller class.yasnippet" "render (inline,locals) (ril).yasnippet" "page_visual_effect (effect, id).yasnippet" "lica.yasnippet" "render (partial) (rp).yasnippet" "Migration Drop Create Table (mdct).yasnippet" "has_many (through).yasnippet" "assert_rjs.yasnippet" "t_integer (tci).yasnippet" "link_to_function.yasnippet" "t_binary (tcbi).yasnippet" "scope lambda.yasnippet" "render (nothing,status) (rns).yasnippet" "Create lock_version column.yasnippet" "assert_redirected_to (nested path plural).yasnippet" "link_to model.yasnippet" "render (text,layout) (rtl).yasnippet" "if (ERB).yasnippet" "validates_length_of if.yasnippet" "after_update.yasnippet" "form_for radio_box 2.yasnippet" "find(3Alast).yasnippet" "has_and_belongs_to_many (habtm).yasnippet" "Create text column.yasnippet" "page_insert_html (position, id, partial).yasnippet" "t_float (tcf).yasnippet" "RAILS_DEFAULT_LOGGER.debug (rdb).yasnippet" "before_save.yasnippet" "belongs_to (bt).yasnippet" "assert_redirected_to (path).yasnippet" "render (partial,status) (rps).yasnippet" "rea.yasnippet" "accepts_nested_attributes_for.yasnippet" "validates_associated (va).yasnippet" "def post request.yasnippet" "Create binary column.yasnippet" "render (file) (rf).yasnippet" "before_update.yasnippet" "page_toggle (2Aids).yasnippet" "t_change (tch).yasnippet" "logger_info.yasnippet" "end.yasnippet" "render (inline,type) (rit).yasnippet" "javascript_include_tag.yasnippet" "form_for hidden_field.yasnippet" "Create integer column.yasnippet" "rails session.yasnippet" "render (file,use_full_path) (rfu).yasnippet" "validates_numericality_of if.yasnippet" "reca.yasnippet" "has_one (ho).yasnippet" "render (text) (rt).yasnippet" "t_timestamp (tcts).yasnippet" "t_boolean (tcb).yasnippet" "map_resources.yasnippet" "Test Assert Response (are).yasnippet" "Table column(s) change.yasnippet" "match.yasnippet" "fields_for.yasnippet" "map_resource.yasnippet" "assert_redirected_to (path plural).yasnippet" "validates_uniqueness_of (vu).yasnippet" "after_validation.yasnippet" "Create references column.yasnippet" "logger_warn.yasnippet" "image_tag.yasnippet" "gem.yasnippet" "form_for file_field 2.yasnippet" "render (text,layout=3Etrue) (rtlt).yasnippet" "form_for label 2.yasnippet" "Test Assert Redirected To (art).yasnippet" "licai.yasnippet" "form_for text_field.yasnippet" "validates_confirmation_of (vc).yasnippet" "returning do 7Cvariable7C E280A6 end.yasnippet" "t_lock_version (tcl).yasnippet" "member routes.yasnippet" "t_text (tct).yasnippet" "form_for text_area 2.yasnippet" "find_in_batches.yasnippet" "map_catch_all.yasnippet" "test do__end.yasnippet" "render (inline) (ri).yasnippet" "Migration Remove and Add Column (mrac).yasnippet" "alias_attribute.yasnippet" "map_named_route.yasnippet" "assert(var = assigns(3Avar)).yasnippet" "Create timestamps columns.yasnippet" "setup do__end.yasnippet" "Table column(s) rename.yasnippet" "form_for.yasnippet" "rails flash.yasnippet" "validates_exclusion_of if (veif).yasnippet" "t_rename (tre).yasnippet" "for loop erb.yasnippet" "render (partial,locals) (rpl).yasnippet" "find(3Afirst).yasnippet" "t_string (tcs).yasnippet" "has_many dependent = destroy.yasnippet" "t_datetime (tcdt).yasnippet" "Create timestamp column.yasnippet" "assert_redirected_to (nested path).yasnippet" "respond_with.yasnippet" "Create datetime column.yasnippet" "validates_associated if (vaif).yasnippet" "verify (verify).yasnippet" "form_for password_field.yasnippet" "validates_inclusion_of.yasnippet" "default_scope.yasnippet" "after_create.yasnippet" "Create sweeper class.yasnippet" "form_for fields_for.yasnippet" "else (ERB).yasnippet" "180 rails form_tag.yasnippet" "before_validation.yasnippet" "validates_format_of if.yasnippet" "resources collection.yasnippet" "get.yasnippet" "form_for text_area.yasnippet" "get on = member.yasnippet" "caches_action.yasnippet" "lic.yasnippet" "redirect_to back.yasnippet" "validates_acceptance_of.yasnippet" "logger_error.yasnippet" "resources.yasnippet" "assert_difference.yasnippet" "map_with_options.yasnippet" "t_decimal (tcd).yasnippet" "verify - redirect (verify).yasnippet" "t_time (tcti).yasnippet" "xhr delete.yasnippet" "page_show (2Aids).yasnippet" "assert_select.yasnippet" "t_date (tcda).yasnippet" "Create time column.yasnippet" "liai.yasnippet" "Create date column.yasnippet" "../" "./")
+
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/ruby-mode/collections/" (21099 56941 954570 339000) "eawi" "collect" "eac" "eai" "reject" "deli" "all" "select" "eav" "classify" "inject" "ea" "det" "any" "../" "./" "zip")
+
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/ruby-mode/general/" (21099 56941 954570 339000) "req" "rb" "app" "case" "rreq" "../" "./" "=b" "y" "bm" "dee")
+
+ ("/home/xlgwr/learn/ruby/" (21181 41561 535207 917000) "class.rb~" "../" "class.rb" "./" "string.rb" "string.rb~")
+
+ ("/home/xlgwr/work/depot/app/assets/stylesheets/" (21171 777 419823 389000) ".sass-cache/" "carts.css.scss" "scaffolds.css.scss" "users.css.scss" "line_items.css.css" "sessions.css.scss" "products.css.css" "store.css.css" "store.css.scss" "scaffolds.css.css" "products.css.scss" "orders.css.scss" "admin.css.scss" "carts.css.css" "../" "./" "line_items.css.scss" "application.css" "orders.css.css")
+
+ ("/home/xlgwr/work/depot/app/views/carts/" (21171 777 423823 339000) "_cart.html.erb" "new.html.erb" "index.json.jbuilder" "edit.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "../" "_form.html.erb" "./")
+
+ ("/home/xlgwr/work/depot/app/views/store/" (21171 777 423823 339000) "index.html.erb" "../" "./")
+
+ ("/home/xlgwr/work/depot/app/views/line_items/" (21171 777 423823 339000) "new.html.erb" "_line_item.text.erb" "index.json.jbuilder" "edit.html.erb" "_line_item.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "../" "_form.html.erb" "./" "create.js.erb")
+
+ ("/home/xlgwr/work/depot/test/fixtures/" (21171 777 427823 289000) "line_items.yml" "products.yml" ".keep" "orders.yml" "carts.yml" "../" "./" "users.yml")
+
+ ("/home/xlgwr/work/depot/app/views/products/" (21171 777 423823 339000) "new.html.erb" "index.json.jbuilder" "edit.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "../" "_form.html.erb" "./" "who_bought.atom.builder")
+
+ ("/home/xlgwr/work/depot/app/views/users/" (21171 777 423823 339000) "new.html.erb" "index.json.jbuilder" "edit.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "../" "_form.html.erb" "./")
+
+ ("/home/xlgwr/work/depot/app/views/admin/" (21171 777 419823 389000) "index.html.erb" "../" "./")
+
+ ("/home/xlgwr/work/depot/config/initializers/" (21171 777 423823 339000) "session_store.rb" "backtrace_silencers.rb" "wrap_parameters.rb" "inflections.rb" "secret_token.rb" "../" "./" "mime_types.rb" "i18n.rb" "filter_parameter_logging.rb")
+
+ ("/home/xlgwr/work/depot/app/views/orders/" (21171 777 423823 339000) "new.html.erb" "index.json.jbuilder" "edit.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "../" "_form.html.erb" "./")
+
+ ("/home/xlgwr/work/depot/config/locales/" (21171 777 423823 339000) "es.yml" "en.yml" "../" "./" "cn.yml")
+
+ ("/etc/apache2/" (21170 65289 868691 170000) "#apache2.conf#" "apache2.conf" "ports.conf~" "magic" "sites-enabled/" "sites-available/" "envvars" "conf-available/" "ports.conf" "../" "ports.conf.dpkg-old" "./" "mods-available/" "conf-enabled/" "mods-enabled/" "apache2.conf~" "conf.d/")
+
+ ("/etc/apache2/sites-available/" (21170 64780 439095 567000) "000-default.conf" "depot.conf" "000-default.conf~" "../" "./" "depot.conf~" "default-ssl.conf")
+
+ ("/etc/apache2/conf.d/" (21170 64191 482021 372000) "../" "./" "mod_rails")
+
+ ("/home/xlgwr/work/depot/app/controllers/" (21171 5928 119070 331000) "orders_controller.rb" "store_controller.rb" "users_controller.rb" "application_controller.rb" "concerns/" "line_items_controller.rb" "../" "./" "admin_controller.rb" "carts_controller.rb" "products_controller.rb" "sessions_controller.rb" "#users_controller.rb#")
+
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/ruby-mode/definitions/" (21182 35696 753385 161000) "mod" "rw" "cls" "../" "./" "Comp" "mm" "am" "w" "r" "cla")
+
+ ("/home/xlgwr/work/blog/db/migrate/" (21183 48516 307973 178000) "20131228152908_create_comments.rb" "20131228143333_create_articles_categories.rb~" "20131228080336_create_users.rb" "20131228132614_add_user_id_to_articles.rb~" "../" "20131228143131_create_categories.rb" "./" "20131228080706_create_profiles.rb" "20131228041143_create_articles.rb" "20131229061217_rename_password_to_hashed_password.rb" "20131228143333_create_articles_categories.rb" "20131228132614_add_user_id_to_articles.rb" "20131229061217_rename_password_to_hashed_password.rb~")
+
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/ruby-mode/" (21099 56941 954570 339000) "general/" "definitions/" "../" "./" ".yas-parents" ".yas-make-groups" "collections/" "control structure/")
+
+ ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/" (21169 41657 202576 919000) "js-mode/" "css-mode/" "markdown-mode/" "html-mode/" "scss-mode/" "f90-mode/" "yaml-mode/" "cc-mode/" "python-mode/" "objc-mode/" "text-mode/" "erlang-mode/" "js2-mode/" "csharp-mode/" "snippet-mode/" "nxml-mode/" "emacs-lisp-mode/" "../" "latex-mode/" "cperl-mode/" "./" "c++-mode/" "perl-mode/" "rst-mode/" "c-mode/" "ruby-mode/" "scala-mode/" "sql-mode/")
+
+ ("/home/xlgwr/work/blog/app/" (21182 19788 21385 7000) "models/" "controllers/" "views/" "mailers/" "../" "./" "assets/" "helpers/")
+
+ ("/home/xlgwr/work/blog/" (21182 20711 665773 224000) "db/" ".gitignore" "vendor/" "config.ru" "tmp/" "app/" "lib/" "Gemfile~" "Rakefile" ".bundle/" "public/" "config/" "Gemfile.lock" "../" "./" "bin/" "test/" "README.rdoc" "log/" "Gemfile")
+
+ ("/home/xlgwr/work/depot/app/" (21171 777 419823 389000) "models/" "controllers/" "views/" "mailers/" "../" "./" "assets/" "helpers/")
+
+ ("/etc/apache2/mods-available/" (21169 56391 715234 876000) "session_crypto.load" "dav_fs.conf" "slotmem_plain.load" "autoindex.conf" "proxy_balancer.conf" "session_dbd.load" "setenvif.load" "alias.load" "request.load" "headers.load" "socache_dbm.load" "proxy_connect.load" "rewrite.load" "mime_magic.conf" "filter.load" "dav_lock.load" "authz_core.load" "proxy_balancer.load" "sed.load" "ratelimit.load" "proxy_fdpass.load" "authz_host.load" "proxy_fcgi.load" "proxy_ftp.load" "authz_dbm.load" "proxy_ftp.conf" "negotiation.conf" "auth_mysql.load" "proxy_wstunnel.load" "dav_svn.conf" "cgi.load" "authz_user.load" "vhost_alias.load" "authn_core.load" "socache_shmcb.load" "actions.conf" "userdir.conf" "mime_magic.load" "expires.load" "heartbeat.load" "heartmonitor.load" "mpm_worker.load" "deflate.conf" "passenger.conf" "proxy_ajp.load" "proxy.conf" "slotmem_shm.load" "lbmethod_byrequests.load" "mime.load" "mpm_worker.conf" "dump_io.load" "auth_form.load" "authn_socache.load" "buffer.load" "info.load" "log_forensic.load" "suexec.load" "ldap.load" "dav.load" "authz_groupfile.load" "access_compat.load" "info.conf" "userdir.load" "lbmethod_bytraffic.load" "cgid.load" "authn_anon.load" "negotiation.load" "remoteip.load" "mpm_event.load" "macro.load" "passenger.load" "authn_dbd.load" "ext_filter.load" "mpm_prefork.load" "dialup.load" "dir.conf" "data.load" "autoindex.load" "file_cache.load" "substitute.load" "reqtimeout.conf" "dbd.load" "cache_disk.conf" "proxy_http.load" "passenger.load~" "ssl.load" "authnz_ldap.load" "authz_owner.load" "reflector.load" "session.load" "lbmethod_heartbeat.load" "session_cookie.load" "ssl.conf" "proxy_scgi.load" "xml2enc.load" "authz_svn.load" "cache.load" "dav_fs.load" "log_debug.load" "cache_disk.load" "unique_id.load" "usertrack.load" "authn_dbm.load" "speling.load" "socache_memcache.load" "reqtimeout.load" "actions.load" "mpm_itk.load" "lbmethod_bybusyness.load" "charset_lite.load" "asis.load" "ldap.conf" "setenvif.conf" "dav_svn.load" "passenger.conf~" "cache_socache.load" "status.load" "proxy_html.load" "deflate.load" "authn_file.load" "authz_dbd.load" "status.conf" "mpm_event.conf" "mpm_prefork.conf" "allowmethods.load" "alias.conf" "auth_digest.load" "proxy_express.load" "mpm_itk.conf" "echo.load" "lua.load" "dir.load" "auth_basic.load" "mime.conf" "cgid.conf" "proxy.load" "env.load" "include.load" "../" "./")
+
+ ("/etc/apache2/mods-enabled/" (21169 56800 102100 758000) "autoindex.conf" "setenvif.load" "alias.load" "filter.load" "authz_core.load" "authz_host.load" "negotiation.conf" "dav_svn.conf" "authz_user.load" "authn_core.load" "mpm_worker.load" "deflate.conf" "mime.load" "mpm_worker.conf" "dav.load" "authz_groupfile.load" "access_compat.load" "cgid.load" "negotiation.load" "dir.conf" "autoindex.load" "reqtimeout.conf" "../" "./" "authz_svn.load" "reqtimeout.load" "setenvif.conf" "dav_svn.load" "status.load" "deflate.load" "authn_file.load" "status.conf" "alias.conf" "dir.load" "auth_basic.load" "mime.conf" "cgid.conf" "env.load")
+
+ ("/etc/apache2/sites-enabled/" (21169 56820 409845 455000) "depot.conf" "../" "./")
+
+ ("/home/xlgwr/work/depot/config/" (21169 41620 571037 440000) "environment.rb" "routes.rb" "application.rb" "locales/" "database.yml" "initializers/" "../" "./" "boot.rb" "environments/")
+
+ ("/home/xlgwr/.emacs.d/tools/" (21167 1364 800950 238000) "coffee-mode/" "rinari/" "yasnippet/" "../" "./" "jquery-doc/")
+
+ ("/home/xlgwr/work/depot/app/views/sessions/" (21168 23178 926911 435000) "destroy.html.erb" "new.html.erb" "create.html.erb" "../" "./")
 
  ("/home/xlgwr/work/depot/app/views/layouts/" (21165 52163 821342 686000) "application.html.erb" "../" "./")
 
- ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/" (21161 49686 985328 583000) "js-mode/" "css-mode/" "markdown-mode/" "html-mode/" "scss-mode/" "f90-mode/" "cc-mode/" "python-mode/" "objc-mode/" "text-mode/" "erlang-mode/" "csharp-mode/" "snippet-mode/" "nxml-mode/" "emacs-lisp-mode/" "../" "latex-mode/" "cperl-mode/" "./" "c++-mode/" "perl-mode/" "rst-mode/" "c-mode/" "ruby-mode/" "scala-mode/" "sql-mode/")
-
  ("/home/xlgwr/.emacs.d/tools/yasnippet/" (21148 36037 77972 978000) "yasnippet-debug.el" ".gitignore" "yasnippet-tests.el" ".gitmodules" "doc/" "Rakefile" "README.mdown" "../" "yasnippet.el" "./" "snippets/" "extras/")
-
- ("/home/xlgwr/.emacs.d/tools/" (21161 50440 295858 187000) "rinari/" "yasnippet/" "../" "./")
-
- ("/home/xlgwr/work/" (21161 41860 593376 790000) "../" "./" "depot/")
-
- ("/home/xlgwr/work/depot/app/" (21161 41868 581276 369000) "models/" "controllers/" "views/" "mailers/" "../" "./" "assets/" "helpers/")
-
- ("/home/xlgwr/work/depot/app/views/" (21163 11133 282421 432000) "line_items/" "store/" "products/" "../" "./" "layouts/" "carts/")
 
  ("/usr/local/" (21060 21025 763459 425000) "etc/" "lib/" "sbin/" "include/" "share/" "../" "src/" "games/" "./" "sbcl/" "bin/" "man/" "pgsql/")
 
@@ -112,8 +275,6 @@
  ("/home/xlgwr/share/code/" (21148 37513 639410 87000) "node/" "../" "./" "sbcl/" "ruby/" "deb/" "resolv.conf")
 
  ("/etc/common-lisp/" (20952 15480 543467 420000) "source-registry.conf.d/" "../" "./" "asdf-output-translations.conf.d/")
-
- ("/home/xlgwr/learn/ruby/" (21145 61885 753012 22000) "../" "./" "#hello.rb#")
 
  ("/home/xlgwr/learn/" (21145 57342 594127 264000) "../" "./" "ruby/")
 

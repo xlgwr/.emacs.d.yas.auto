@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: etag<div><%= label_tag :text_field %></div>
+# key: %text
+# --
+<div class="${5:field}">
+<%= label_tag :${2:title} %><br />
+<%= ${4:text}_${5:field}_${6:tag} :$2 %>
+</div>
+$0
