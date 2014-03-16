@@ -4536,6 +4536,19 @@ upon.")
       (make-obsolete backported sym "yasnippet 0.8")
       (defalias backported sym))))
 
+(defun keyword-find (yas-text dbs)
+	 (if (> (length yas-text) 0)
+	     (let* (
+		    (db dbs)
+		    (yas-len (length yas-text))
+		    (str-end "")
+		    (args (mapcar '(lambda (x) (if (string-prefix-p (upcase yas-text) (upcase x))
+						   (setq str-end x)))
+				  (split-string db ","))))
+	       (if (string= str-end "")
+		   (concat "\n\:\>" (make-string (current-column) 32) dbs)
+		 (if (>= (1- (length str-end)) (length yas-text))
+		     (substring str-end (length yas-text)))))))
 
 (provide 'yasnippet)
 

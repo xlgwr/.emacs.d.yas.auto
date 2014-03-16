@@ -73,6 +73,10 @@
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist  '("\\.yml$'" . yaml-mode))
 
+;;; auto-load progress-mode code
+(autoload 'progress-mode "progress-mode")
+(setq auto-mode-alist (cons '("\\.p\\'" . progress-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.i\\'" . progress-mode) auto-mode-alist))
 
 (ido-mode t)
 (yas-global-mode 1)

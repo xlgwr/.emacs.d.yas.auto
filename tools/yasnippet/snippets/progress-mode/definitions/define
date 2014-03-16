@@ -1,0 +1,7 @@
+# -*- coding: utf-8 -*-
+# name: def
+# contributor: xlgwr
+# contributor: xlgwr <xlgwr@163.com>
+# key: def
+# --
+Define ${1:New$$(capitalize yas-text)}${1:$(keyword-find yas-text "New,Shared,Input,Output,Input-Output,Return")} ${20:Variable$$(capitalize yas-text)}${20:$(keyword-find yas-text "Variable,Parameter,Browse,Buffer,Frame,Image,Menu,Query,Rectangle,Stream,Sub-Menu,Temp-Table,Work-Table,WorkFile")} ${30:name} ${51:As$$(capitalize yas-text)}${51:$(keyword-find yas-text "As,Like,For")} ${61:Integer$$(capitalize yas-text)}${61:$(keyword-find yas-text "Character,Integer,Decimal,Date,Logical,Com-Handle,Anytype,Float,Double,Short,Unsigned-Short,Long,Byte,Memptr")}$0
