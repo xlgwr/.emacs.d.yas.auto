@@ -1,6 +1,5 @@
-# contributor: Anders Bach Nielsen <abachn@abachn.net>
-# name: <table>...</table>
-# key: table
+#contributor : Anders Bach Nielsen <abachn@abachn.net>
+#name : <table>...</table>
 # --
 <table>
   $0
