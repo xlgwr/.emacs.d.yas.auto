@@ -8,7 +8,7 @@
 (add-to-list 'load-path
 	     "~/.emacs.d/tools/yasnippet")
 (require 'yasnippet)
-(setq yas-snippet-dirs '("~/.emacs.d/tools/yasnippet/snippets" "~/.emacs.d/tools/yasnippet/extras/imported"))
+(setq yas-snippet-dirs '("~/.emacs.d/tools/yasnippet/snippets" "~/.emacs.d/tools/yasnippet/yasmate/snippets"))
 
 
 ;; add ido
@@ -44,7 +44,7 @@
 
 ;; add slime
 (add-to-list 'load-path "~/.emacs.d/elpa/slime/")  ; your SLIME directory
-
+(require 'slime-autoloads)
 ;;;your Lisp system
 
 ;;linux
@@ -58,8 +58,8 @@
 
 ;(require 'slime)
 ;(slime-setup)
-(require 'slime-autoloads)
-(slime-setup '(slime-fancy))
+;(slime-setup '(slime-fancy))
+(setq slime-contribs '(slime-fancy))
 
 ;;add scss mode
 

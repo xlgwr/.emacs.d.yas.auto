@@ -65,7 +65,8 @@
            #:eval-in-emacs
            #:y-or-n-p-in-emacs
            #:*find-definitions-right-trim*
-           #:*find-definitions-left-trim*))
+           #:*find-definitions-left-trim*
+           #:*after-toggle-trace-hook*))
 
 (in-package :swank)
 
@@ -1701,7 +1702,7 @@ Return nil if no package matches."
 
 (defun guess-buffer-package (string)
   "Return a package for STRING. 
-Fall back to the the current if no such package exists."
+Fall back to the current if no such package exists."
   (or (and string (guess-package string))
       *package*))
 
@@ -2144,28 +2145,35 @@ conditions are simply reported."
     (send-to-emacs `(:debug-condition ,(current-thread-id)
                                       ,(princ-to-string real-condition)))))
 
-(defun condition-message (condition)
-  (let ((*print-pretty* t)
-        (*print-right-margin* 65)
-        (*print-circle* t))
-    (format-sldb-condition condition)))
+(defun %%condition-message (condition)
+  (let ((limit (ash 1 16)))
+    (with-string-stream (stream :length limit)
+      (handler-case
+          (let ((*print-pretty* t)
+                (*print-right-margin* 65)
+                (*print-circle* t)
+                (*print-length* (or *print-length* limit))
+                (*print-level* (or *print-level* limit))
+                (*print-lines* (or *print-lines* limit)))
+            (print-condition condition stream))
+        (serious-condition (c)
+          (ignore-errors
+            (with-standard-io-syntax
+              (let ((*print-readably* nil))
+                (format stream "~&Error (~a) during printing: " (type-of c))
+                (print-unreadable-object (condition stream :type t
+                                                    :identity t))))))))))
 
-(defvar *sldb-condition-printer* #'condition-message
+(defun %condition-message (condition)
+  (string-trim #(#\newline #\space #\tab)
+               (%%condition-message condition)))
+
+(defvar *sldb-condition-printer* #'%condition-message
   "Function called to print a condition to an SLDB buffer.")
 
 (defun safe-condition-message (condition)
-  "Safely print condition to a string, handling any errors during
-printing."
-  (truncate-string
-   (handler-case
-       (funcall *sldb-condition-printer* condition)
-     (error (cond)
-       ;; Beware of recursive errors in printing, so only use the condition
-       ;; if it is printable itself:
-       (format nil "Unable to display error condition~@[: ~A~]"
-               (ignore-errors (princ-to-string cond)))))
-   (ash 1 16)
-   "..."))
+  "Print condition to a string, handling any errors during printing."
+  (funcall *sldb-condition-printer* condition))
 
 (defun debugger-condition-for-emacs ()
   (list (safe-condition-message *swank-debugger-condition*)
@@ -2845,16 +2853,32 @@ Include the nicknames if NICKNAMES is true."
 (defun tracedp (fspec)
   (member fspec (eval '(trace))))
 
+(defvar *after-toggle-trace-hook* nil
+  "Hook called whenever a SPEC is traced or untraced.
+
+If non-nil, called with two arguments SPEC and TRACED-P." )
 (defslimefun swank-toggle-trace (spec-string)
-  (let ((spec (from-string spec-string)))
-    (cond ((consp spec) ; handle complicated cases in the backend
+  (let* ((spec (from-string spec-string))
+         (retval (cond ((consp spec) ; handle complicated cases in the backend
            (toggle-trace spec))
           ((tracedp spec)
 	   (eval `(untrace ,spec))
 	   (format nil "~S is now untraced." spec))
 	  (t
            (eval `(trace ,spec))
-	   (format nil "~S is now traced." spec)))))
+                        (format nil "~S is now traced." spec))))
+         (traced-p (let* ((tosearch "is now traced.")
+                          (start (- (length retval)
+                                    (length tosearch)))
+                          (end (+ start (length tosearch))))
+                     (search tosearch (subseq retval start end))))
+         (hook-msg (when *after-toggle-trace-hook*
+                     (funcall *after-toggle-trace-hook*
+                              spec
+                              traced-p))))
+    (if hook-msg
+        (format nil "~a~%(also ~a)" retval hook-msg)
+        retval)))
 
 (defslimefun untrace-all ()
   (untrace))
@@ -3191,7 +3215,12 @@ DSPEC is a string and LOCATION a source location. NAME is a string."
     (lcons (llist-range list start end))))
 
 (defslimefun inspector-nth-part (index)
-  (aref (istate.parts *istate*) index))
+  "Return the current inspector's INDEXth part.
+The second value indicates if that part exists at all."
+  (let* ((parts (istate.parts *istate*))
+         (foundp (< index (length parts))))
+    (values (and foundp (aref parts index))
+            foundp)))
 
 (defslimefun inspect-nth-part (index)
   (with-buffer-syntax ()
