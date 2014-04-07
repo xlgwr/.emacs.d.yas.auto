@@ -58,8 +58,8 @@
 
 ;(require 'slime)
 ;(slime-setup)
-;(slime-setup '(slime-fancy))
-(setq slime-contribs '(slime-fancy))
+(slime-setup '(slime-fancy))
+;(setq slime-contribs '(slime-fancy))
 
 ;;add scss mode
 

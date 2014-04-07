@@ -1,0 +1,6 @@
+#name : do |items| { ... }
+#group : control structure
+# --
+    do ${1:|${10:items}|}
+    $0
+    end
