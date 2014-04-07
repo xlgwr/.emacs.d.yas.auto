@@ -5,15 +5,6 @@
 ;; # as in Snippets/embed string variable.yasnippet
 ;; `yas-selected-text`                                                                        =yyas> (yas-unknown)
 ;; 
-;; # as in Snippets/assert_kind_of(..) (asko).yasnippet
-;; `"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb"`                                                =yyas> (yas-unknown)
-;; 
-;; # as in Snippets/assert_kind_of(..) (asko).yasnippet
-;; `"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb" end`                                            =yyas> (yas-unknown)
-;; 
-;; # as in Snippets/assert_kind_of(..) (asko).yasnippet
-;; $TM_BUNDLE_SUPPORT                                                                         =yyas> (yas-unknown)
-;; 
 ;; # as in Snippets/define_method ___ end.yasnippet
 ;; ${2/.+/ |/}                                                                                =yyas> (yas-unknown)
 ;; 
