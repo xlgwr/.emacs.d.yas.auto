@@ -231,9 +231,30 @@ buffer."
                (format "%s=%s" (car pair) (cdr pair)))
              pairs " "))
 
+(defvar ruby-compilation-rake-tasks-cache nil
+  "An alist with Rakefile directories as keys, and (MODTIME . (TASK-NAMES)) as values.")
+
+(defun ruby-compilation-rake--clear-task-cache-for-dir (dir)
+  "Remove any cached rake tasks for DIR."
+  (setq ruby-compilation-rake-tasks-cache
+        (delq (assoc dir ruby-compilation-rake-tasks-cache)
+              ruby-compilation-rake-tasks-cache)))
+
 (defun pcmpl-rake-tasks ()
    "Return a list of all the rake tasks defined in the current projects."
-   (ruby-compilation-extract-output-matches "rake -T" "rake \\([^ ]+\\)"))
+   (let ((rakefile-dir (locate-dominating-file default-directory "Rakefile")))
+     (unless rakefile-dir
+       (error "No Rakefile found"))
+     (let ((cached (assoc rakefile-dir ruby-compilation-rake-tasks-cache))
+           (rakefile-modtime (elt (file-attributes (expand-file-name "Rakefile" rakefile-dir)) 5)))
+       (if (and cached (equal (cadr cached) rakefile-modtime))
+           (cddr cached)
+         (let ((tasks (ruby-compilation-extract-output-matches "rake -T" "rake \\([^ ]+\\)")))
+           (ruby-compilation-rake--clear-task-cache-for-dir rakefile-dir)
+           (setq ruby-compilation-rake-tasks-cache
+                 (push (cons rakefile-dir (cons rakefile-modtime tasks))
+                       ruby-compilation-rake-tasks-cache))
+           tasks)))))
 
 ;;;###autoload
 (defun pcomplete/rake ()
@@ -241,11 +262,25 @@ buffer."
   (pcomplete-here (pcmpl-rake-tasks)))
 
 ;;;###autoload
+(defun ruby-compilation-rake-refresh-tasks ()
+  "Reset the list of available rake tasks for the current Rakefile environment."
+  (interactive)
+  (ruby-compilation-rake--clear-task-cache-for-dir
+   (locate-dominating-file default-directory "Rakefile")))
+
+;;;###autoload
 (defun ruby-compilation-rake (&optional edit task env-vars)
   "Run a rake process dumping output to a ruby compilation buffer.
 If EDIT is t, prompt the user to edit the command line.  If TASK
 is not supplied, the user will be prompted.  ENV-VARS is an
-optional list of (name . value) pairs which will be passed to rake."
+optional list of (name . value) pairs which will be passed to rake.
+
+The list of rake tasks will be remembered between invocations (on
+a per-Rakefile basis) in the variable
+`ruby-compilation-rake-tasks-cache'.  If the Rakefile is updated,
+the available tasks will automatically be refreshed.  Use function
+`ruby-compilation-rake-refresh-tasks' to force an update of the
+available tasks, e.g. if tasks defined outside the Rakefile change."
   (interactive "P")
   (let* ((task (concat
                 (or task (if (stringp edit) edit)
