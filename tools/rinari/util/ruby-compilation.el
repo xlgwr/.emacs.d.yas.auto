@@ -249,6 +249,7 @@ buffer."
            (rakefile-modtime (elt (file-attributes (expand-file-name "Rakefile" rakefile-dir)) 5)))
        (if (and cached (equal (cadr cached) rakefile-modtime))
            (cddr cached)
+         (message "Building task completion list...")
          (let ((tasks (ruby-compilation-extract-output-matches "rake -T" "rake \\([^ ]+\\)")))
            (ruby-compilation-rake--clear-task-cache-for-dir rakefile-dir)
            (setq ruby-compilation-rake-tasks-cache
