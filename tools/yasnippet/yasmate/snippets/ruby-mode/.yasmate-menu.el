@@ -34,8 +34,8 @@
                    
                    ;; Ignoring Execute Line / Selection as Ruby
                    (yas-ignore-item "EE5F1FB2-6C02-11D9-92BA-0011242E4184")
-                   ;; Execute and Update ‘# =>’ Markers
-                   (yas-item "FBFC214F-B019-4967-95D2-028F374A3221")
+                   ;; Ignoring Execute and Update ‘# =>’ Markers
+                   (yas-ignore-item "FBFC214F-B019-4967-95D2-028F374A3221")
                    ;; Add ‘# =>’ Marker
                    (yas-item "88BC3896-DC39-4307-A271-21D33340F15A")
                    (yas-separator)
@@ -180,8 +180,8 @@
                                                (yas-item "ECBA4CA0-275F-460E-85BE-E82FEA2E2B26")
                                                ;; each_byte { |byte| .. }
                                                (yas-item "338EC03D-3FF4-4435-94E8-1CEF20CEC75D")
-                                               ;; each_char { |chr| .. }
-                                               (yas-item "7E084412-80E6-4B70-8092-C03D1ECE4CD2")
+                                               ;; Ignoring each_char { |chr| .. }
+                                               (yas-ignore-item "7E084412-80E6-4B70-8092-C03D1ECE4CD2")
                                                ;; each_char { |chr| .. }
                                                (yas-item "FDD73070-6D32-4301-A86A-C55B77C3D8ED")
                                                ;; Ignoring each_cons(..) { |group| .. }
@@ -434,6 +434,7 @@
                        "47D203ED-EB9B-4653-A07B-A897800CEB76"
                        "DAA69A0C-FC1E-4509-9931-DFFB38B4D6AE"
                        "2DDB6FE0-6111-4C40-A149-8E67E76F8272"
+                       "FBFC214F-B019-4967-95D2-028F374A3221"
                        "97054C4D-E4A3-45B1-9C00-B82DBCB30CAD"
                        "76FCF165-54CB-4213-BC55-BD60B9C6A3EC"
                        "0275EF39-9357-408F-AF20-79E415CA9504"
@@ -442,6 +443,7 @@
                        "9FB64639-F776-499B-BA6F-BB45F86F80FD"
                        "EE5F19BA-6C02-11D9-92BA-0011242E4184"
                        "5289EE40-86B8-11D9-A8D4-000A95E13C98"
+                       "63F3B3B7-CBE2-426B-B551-657733F3868B"
                        "EE5F1FB2-6C02-11D9-92BA-0011242E4184"
                        "1AD6A138-2E89-4D6A-AB3F-416BF9CE968D"
                        "825B721D-4367-4DF7-98C0-F005695DF9E3"
@@ -452,6 +454,7 @@
                        "EC73D5CC-5F05-46B9-A6F4-82037E4A38C9"
                        "121B334B-2AA6-4E9A-A8B8-BF93B627982B"
                        "9460392B-C036-4A76-A5AE-1191F10E4B1B"
+                       "7E084412-80E6-4B70-8092-C03D1ECE4CD2"
                        "C649F945-DAB8-4DA2-B73C-2EFF9D7D34F3"
                        "A83F68A9-F751-4BB4-AE16-56812878C16A"
                        "33969819-62C5-4E03-B824-C2337205F364"

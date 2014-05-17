@@ -5,29 +5,29 @@
                    (yas-ignore-item "88047A77-B889-4F47-892D-4C3EBA98D968")
                    
                    (yas-submenu "Go To"
-                                (;; Alternate File
-                                 (yas-item "0CCC8443-40F3-4BAB-9440-D737562B5F45")
-                                 ;; File on Current Line
-                                 (yas-item "09BB96F2-75FD-48A7-8314-B5B56B09B477")
-                                 (yas-separator)
-                                 ;; Go to Model
-                                 (yas-item "C7151BF3-7068-4344-9B09-86F3BF4A9C63")
-                                 ;; Go to Controller
-                                 (yas-item "9453F0B3-B946-445F-BDB0-B01DE70732FC")
-                                 ;; Go to View
-                                 (yas-item "EE862691-A624-4797-90CF-EDD39EFB2D8E")
-                                 ;; Go to Functional Test
-                                 (yas-item "DFE393BE-0764-49FE-B464-6350A50921E6")
-                                 ;; Go to Helper
-                                 (yas-item "51C9C27A-D931-49F9-B6D8-C0E7ABEC992D")
-                                 ;; Go to Javascript
-                                 (yas-item "B078346F-61D8-4E75-9427-80720FBC67F7")
-                                 ;; Go to Stylesheet
-                                 (yas-item "B207BBD4-D6AA-41E9-9530-27210F2D7B66")
-                                 ;; Go to Unit Test
-                                 (yas-item "BDBB15A4-2824-4BEC-93A5-7475F9C46A39")
-                                 ;; Go to Fixture
-                                 (yas-item "638D94A4-BDFC-4FE9-8909-9934F3FD2899")))
+                                (;; Ignoring Alternate File
+                                 (yas-ignore-item "0CCC8443-40F3-4BAB-9440-D737562B5F45")
+                                 ;; Ignoring File on Current Line
+                                 (yas-ignore-item "09BB96F2-75FD-48A7-8314-B5B56B09B477")
+                                 
+                                 ;; Ignoring Go to Model
+                                 (yas-ignore-item "C7151BF3-7068-4344-9B09-86F3BF4A9C63")
+                                 ;; Ignoring Go to Controller
+                                 (yas-ignore-item "9453F0B3-B946-445F-BDB0-B01DE70732FC")
+                                 ;; Ignoring Go to View
+                                 (yas-ignore-item "EE862691-A624-4797-90CF-EDD39EFB2D8E")
+                                 ;; Ignoring Go to Functional Test
+                                 (yas-ignore-item "DFE393BE-0764-49FE-B464-6350A50921E6")
+                                 ;; Ignoring Go to Helper
+                                 (yas-ignore-item "51C9C27A-D931-49F9-B6D8-C0E7ABEC992D")
+                                 ;; Ignoring Go to Javascript
+                                 (yas-ignore-item "B078346F-61D8-4E75-9427-80720FBC67F7")
+                                 ;; Ignoring Go to Stylesheet
+                                 (yas-ignore-item "B207BBD4-D6AA-41E9-9530-27210F2D7B66")
+                                 ;; Ignoring Go to Unit Test
+                                 (yas-ignore-item "BDBB15A4-2824-4BEC-93A5-7475F9C46A39")
+                                 ;; Ignoring Go to Fixture
+                                 (yas-ignore-item "638D94A4-BDFC-4FE9-8909-9934F3FD2899")))
                    (yas-submenu "Run Tests"
                                 (;; Ignoring Test All
                                  (yas-ignore-item "DC549A45-D9B0-11DC-94E9-00112475D960")
@@ -53,9 +53,9 @@
                                  (yas-ignore-item "07C696F8-79F5-4E0B-9EE9-03B693A54ABB")
                                  ;; Ignoring Migrate to Previous Version
                                  (yas-ignore-item "9A1AE6BA-8350-4AB7-B5BD-969A7E64CF29")
-                                 ;; Redo Last Migration
-                                 (yas-item "CFDA9F62-D071-4E0F-AD10-66AE0729FFCF")
-                                 (yas-separator)
+                                 ;; Ignoring Redo Last Migration
+                                 (yas-ignore-item "CFDA9F62-D071-4E0F-AD10-66AE0729FFCF")
+                                 
                                  ;; Ignoring Load Fixtures (Development DB)
                                  (yas-ignore-item "5EEA0C71-B34B-4408-953B-F47AAD343CCC")
                                  ;; Ignoring Load Fixtures (Test DB)
@@ -288,9 +288,9 @@
                                  ;; verify — redirect
                                  (yas-item "7BBD3F57-57A5-4CD0-8E79-B931021FC110")))
                    (yas-submenu "View Templates"
-                                (;; Create Partial From Selection
-                                 (yas-item "1DD8A214-1C97-45BA-ADEE-8F888DDE8570")
-                                 (yas-separator)
+                                (;; Ignoring Create Partial From Selection
+                                 (yas-ignore-item "1DD8A214-1C97-45BA-ADEE-8F888DDE8570")
+                                 
                                  ;; form_for
                                  (yas-item "7D99041D-C3B7-4940-AE64-6B1758CDB47C")
                                  ;; form_for with errors
@@ -410,12 +410,12 @@
                                  (yas-ignore-item "D696FA2C-785A-4B73-A2F6-F750904DD7C2")
                                  
                                  (yas-submenu "Columns"
-                                              (;; Add / Remove Column
-                                               (yas-item "18C76913-061C-4D65-866D-67AA3724AFEF")
+                                              (;; Ignoring Add / Remove Column
+                                               (yas-ignore-item "18C76913-061C-4D65-866D-67AA3724AFEF")
                                                ;; Ignoring Add / Remove Several Columns
                                                (yas-ignore-item "7BC860E6-7561-4E6E-983B-507D7A6F6228")
-                                               ;; Add / Remove Several Columns (marcc)
-                                               (yas-item "27A6C58A-896B-4956-BA81-D671A2EF9C7D")
+                                               ;; Ignoring Add / Remove Several Columns (marcc)
+                                               (yas-ignore-item "27A6C58A-896B-4956-BA81-D671A2EF9C7D")
                                                ;; Ignoring Add / Remove Timestamps
                                                (yas-ignore-item "221969A1-A5EA-4A8E-8817-C74EBED63901")
                                                ;; Ignoring Change Column
@@ -439,9 +439,9 @@
                                                (yas-ignore-item "FD8CC811-2AD3-480F-B975-DF959DC96C67")
                                                ;; Drop / Create Table
                                                (yas-item "20375601-B13F-4314-B8E4-362706566636")
-                                               ;; Change / Change Table
-                                               (yas-item "20FC02C5-32A3-4F20-B163-FF75C9FDFABF")
-                                               (yas-separator)
+                                               ;; Ignoring Change / Change Table
+                                               (yas-ignore-item "20FC02C5-32A3-4F20-B163-FF75C9FDFABF")
+                                               
                                                (yas-submenu "Create columns t. drop-down list"
                                                             (;; t.string (tcs)
                                                              (yas-item "B757F7E5-E4BD-11DC-A11A-00112475D960")
@@ -622,8 +622,8 @@
                    (yas-separator)
                    ;; Ignoring View demo help
                    (yas-ignore-item "964436B8-E578-11DC-8177-00112475D960")
-                   ;; Documentation for Word
-                   (yas-item "32F30207-D827-46D9-889A-451C35269D52")
+                   ;; Ignoring Documentation for Word
+                   (yas-ignore-item "32F30207-D827-46D9-889A-451C35269D52")
                    ;; Ignoring Jump to Method Definition
                    (yas-ignore-item "AECD46CF-9031-4059-B386-262DBABD97B1")
                    ;; Ignoring List columns of a model
@@ -645,21 +645,36 @@
                        "6F2AB859-46E3-4FF5-A9A7-E9A813AB5DE1"
                        "9A1AE6BA-8350-4AB7-B5BD-969A7E64CF29"
                        "5EEA0C71-B34B-4408-953B-F47AAD343CCC"
+                       "638D94A4-BDFC-4FE9-8909-9934F3FD2899"
                        "275C0B86-F735-49B6-8A22-218A8F4CC2E0"
+                       "C7151BF3-7068-4344-9B09-86F3BF4A9C63"
                        "964436B8-E578-11DC-8177-00112475D960"
                        "F4EA552D-D9B0-11DC-94E9-00112475D960"
+                       "CFDA9F62-D071-4E0F-AD10-66AE0729FFCF"
+                       "32F30207-D827-46D9-889A-451C35269D52"
                        "212C3047-D9B1-11DC-94E9-00112475D960"
                        "0D966168-D9B1-11DC-94E9-00112475D960"
                        "0742F232-38ED-4C52-AD68-1858F0F2C601"
                        "1970AE74-3949-40B3-B263-727AA3FF167A"
                        "07C696F8-79F5-4E0B-9EE9-03B693A54ABB"
+                       "DFE393BE-0764-49FE-B464-6350A50921E6"
+                       "51C9C27A-D931-49F9-B6D8-C0E7ABEC992D"
+                       "9453F0B3-B946-445F-BDB0-B01DE70732FC"
+                       "09BB96F2-75FD-48A7-8314-B5B56B09B477"
                        "310C901C-EF32-4E88-938A-804ABBF8C428"
+                       "BDBB15A4-2824-4BEC-93A5-7475F9C46A39"
+                       "EE862691-A624-4797-90CF-EDD39EFB2D8E"
                        "4904EDC7-5ED3-4132-AAB2-C2AD87C97EFE"
                        "6DEF923E-2347-46EC-AFBE-183D08E63DC1"
+                       "0CCC8443-40F3-4BAB-9440-D737562B5F45"
                        "985F56D4-82ED-4C45-8250-2ECCFC71957E"
+                       "1DD8A214-1C97-45BA-ADEE-8F888DDE8570"
+                       "B078346F-61D8-4E75-9427-80720FBC67F7"
+                       "B207BBD4-D6AA-41E9-9530-27210F2D7B66"
                        "809BCA42-5C49-4B08-B3C4-BB773036C086"
                        "A2135370-67A1-488D-B43C-B4F221127C2F"
                        "95F83E1D-5B03-424F-8BEC-8AF66C8939BC"
+                       "20FC02C5-32A3-4F20-B163-FF75C9FDFABF"
                        "25F8F5D8-2BD1-45D8-8B2A-9F2EA4F73AA2"
                        "04A86178-71B1-430A-A06D-DFF7C9A338B5"
                        "33057A79-677B-4DFB-99D4-1492778BDDC6"
@@ -667,6 +682,8 @@
                        "FD8CC811-2AD3-480F-B975-DF959DC96C67"
                        "A7F692C1-778A-48B8-945E-573568BA0403"
                        "42DE1441-D1B7-4998-BAF9-16B1EC7E210C"
+                       "27A6C58A-896B-4956-BA81-D671A2EF9C7D"
+                       "18C76913-061C-4D65-866D-67AA3724AFEF"
                        "F03162DE-9DB6-417B-9DD7-52D9F11EA736"
                        "E885A3E8-8020-4AC3-A25E-510B26F114B2"
                        "A219EBB8-004A-4012-B5B2-232C9A5C94F8"

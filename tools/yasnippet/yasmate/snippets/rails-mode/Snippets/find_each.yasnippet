@@ -5,6 +5,6 @@
 # name: find_each
 ## condition: "
 # --
-find_each(${1::conditions => {:${2:field} => ${3:true}\}}) do |${4:`(downcase (replace-regexp-in-string "\..*$"  "" (current-word)))`}|
+find_each(${1::conditions => {:${2:field} => ${3:true}\}}) do |${4:${TM_CURRENT_WORD/(\w+)\./\L$1/g}}|
 	$0
 end

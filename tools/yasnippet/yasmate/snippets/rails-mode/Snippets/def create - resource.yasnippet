@@ -3,10 +3,10 @@
 # key: defcreate
 # contributor: Translated from textmate snippet by PROGRAM_NAME
 # name: def create - resource
-# condition: (yas-rails-controller-p)
+## condition: "meta.rails.controller
 # --
 def create
-	@${1:model} = ${2:${1:$(replace-regexp-in-string "_" "" (capitalize yas-text))}}.new(params[:$1])
+	@${1:model} = ${2:${1/[[:alpha:]]+|(_)/(?1::\u$0)/g}}.new(params[:$1])
 	$0
 	respond_to do |wants|
 		if @$1.save

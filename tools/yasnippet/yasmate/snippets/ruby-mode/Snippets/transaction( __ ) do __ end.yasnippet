@@ -5,4 +5,4 @@
 # name: transaction( .. ) { .. }
 ## condition: "
 # --
-transaction${1:$(and (string-match "[^\s\t]" yas-text) "(" )}${1:true}${1:$(and (string-match "[^\s\t]" yas-text) ")" )} { $0 }
+transaction${1/(^.*?\S.*)|.*/(?1:\()/}${1:true}${1/(^.*?\S.*)|.*/(?1:\))/} { $0 }

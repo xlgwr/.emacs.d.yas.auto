@@ -5,6 +5,6 @@
 # name: returning do |variable| … end
 ## condition: "
 # --
-returning ${1:variable} do${2:$(and (yas-text) " |")}${2:v}${2:$(and (yas-text) "|")}
+returning ${1:variable} do${2/(^(?<var>\s*[a-z_][a-zA-Z0-9_]*\s*)(,\g<var>)*,?\s*$)|.*/(?1: |)/}${2:v}${2/(^(?<var>\s*[a-z_][a-zA-Z0-9_]*\s*)(,\g<var>)*,?\s*$)|.*/(?1:|)/}
 	$0
 end

@@ -5,7 +5,7 @@
 # name: find_in_batches
 ## condition: "
 # --
-find_in_batches(${1::conditions => {:${2:field} => ${3:true}\}}) do |${4:`(downcase (replace-regexp-in-string "\..*$"  "" (current-word)))`}s|
+find_in_batches(${1::conditions => {:${2:field} => ${3:true}\}}) do |${4:${TM_CURRENT_WORD/(\w+)\./\L$1/g}}s|
 	$4s.each do |$4|
 		$0
 	end

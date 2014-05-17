@@ -1,15 +1,15 @@
 ;; Translated menu
 ;; 
 (yas-define-menu 'html-mode
-                 '(;; Documentation for Tag
-                   (yas-item "637CEA2B-578C-429C-BB74-30E8D42BFA22")
+                 '(;; Ignoring Documentation for Tag
+                   (yas-ignore-item "637CEA2B-578C-429C-BB74-30E8D42BFA22")
                    ;; Ignoring Validate Syntax (W3C)
                    (yas-ignore-item "3F26240E-6E4A-11D9-B411-000D93589AF6")
                    
                    ;; Ignoring Show Web Preview
                    (yas-ignore-item "AC5F664E-86BA-4D81-B6CE-1B12F69FA490")
-                   ;; Open Document in Running Browser(s)
-                   (yas-item "970EE6B4-A091-11D9-A5A2-000D93C8BE28")
+                   ;; Ignoring Open Document in Running Browser(s)
+                   (yas-ignore-item "970EE6B4-A091-11D9-A5A2-000D93C8BE28")
                    ;; Ignoring Refresh Running Browser(s)
                    (yas-ignore-item "B8651C6E-A05E-11D9-86AC-000D93C8BE28")
                    
@@ -36,8 +36,8 @@
                    
                    ;; Ignoring CodeCompletion HTML Attributes
                    (yas-ignore-item "CBD82CF3-74E9-4E7A-B3F6-9348754EB5AA")
-                   ;; Insert Open/Close Tag (With Current Word)
-                   (yas-item "2ED44A32-C353-447F-BAE4-E3522DB6944D")
+                   ;; Ignoring Insert Open/Close Tag (With Current Word)
+                   (yas-ignore-item "2ED44A32-C353-447F-BAE4-E3522DB6944D")
                    ;; Ignoring Insert Close Tag
                    (yas-ignore-item "0658019F-3635-462E-AAC2-74E4FE508A9B")
                    (yas-submenu "Insert DocType"
@@ -140,8 +140,8 @@
                    
                    ;; Wrap Selection in Open/Close Tag
                    (yas-item "BC8B8AE2-5F16-11D9-B9C3-000D93589AF6")
-                   ;; Wrap Each Selected Line in Open/Close Tag
-                   (yas-item "991E7EBD-F3F5-469A-BA01-DC30E04AD472")
+                   ;; Ignoring Wrap Each Selected Line in Open/Close Tag
+                   (yas-ignore-item "991E7EBD-F3F5-469A-BA01-DC30E04AD472")
                    ;; Wrap in <?= … ?>
                    (yas-item "912906A0-9A29-434B-AE98-E9DFDE6E48B4")
                    (yas-separator)
@@ -159,17 +159,21 @@
                        "AC5F664E-86BA-4D81-B6CE-1B12F69FA490"
                        "3463E85F-F500-49A0-8631-D78ED85F9D60"
                        "4400BCE9-20E3-426E-B1D7-2C0BCA53BCF8"
+                       "2ED44A32-C353-447F-BAE4-E3522DB6944D"
                        "2C4C9673-B166-432A-8938-75A5CA622481"
                        "20D760B5-A127-11D9-A5A2-000D93C8BE28"
                        "45F92B81-6F0E-11D9-A1E4-000D9332809C"
                        "0658019F-3635-462E-AAC2-74E4FE508A9B"
+                       "991E7EBD-F3F5-469A-BA01-DC30E04AD472"
                        "C183920D-A126-11D9-A5A2-000D93C8BE28"
                        "3DD8406C-A116-11D9-A5A2-000D93C8BE28"
                        "B8651C6E-A05E-11D9-86AC-000D93C8BE28"
                        "43C9E8AE-3E53-4B82-A1AF-56697BB3EF09"
+                       "637CEA2B-578C-429C-BB74-30E8D42BFA22"
                        "89E5CC0A-3EFF-4DEF-A299-2E9651DE6529"
                        "6B024865-6095-4CE3-8EDD-DC6F2230C2FF"
                        "3F26240E-6E4A-11D9-B411-000D93589AF6"
+                       "970EE6B4-A091-11D9-A5A2-000D93C8BE28"
                        "B23D6E15-6B33-11D9-86C1-000D93589AF6"
                        "C8B717C2-6B33-11D9-BB47-000D93589AF6"
                        "CD6D2CC6-6B33-11D9-BDFD-000D93589AF6"

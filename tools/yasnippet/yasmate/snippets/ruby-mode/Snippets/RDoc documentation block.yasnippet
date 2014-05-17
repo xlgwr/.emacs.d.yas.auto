@@ -5,6 +5,6 @@
 # name: New Block
 ## condition: "
 # --
-`(concat (if (eq 0 current-line) "\n" "") "\n")`=begin rdoc
+`[[ $TM_LINE_INDEX != 0 ]] && echo; echo`=begin rdoc
 	$0
 =end

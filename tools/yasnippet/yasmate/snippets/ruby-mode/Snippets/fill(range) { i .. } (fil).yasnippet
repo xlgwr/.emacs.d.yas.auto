@@ -5,4 +5,4 @@
 # name: fill(range) { |i| .. }
 ## condition: "
 # --
-fill(${1:range}) { ${2:$(and (yas-text) "|")}${2:i}${2:$(and (yas-text) "| ")}$0 }
+fill(${1:range}) { ${2/(^(?<var>\s*(?:\*|\*?[a-z_])[a-zA-Z0-9_]*\s*)(,\g<var>)*,?\s*$)|.*/(?1:|)/}${2:i}${2/(^(?<var>\s*(?:\*|\*?[a-z_])[a-zA-Z0-9_]*\s*)(,\g<var>)*,?\s*$)|.*/(?1:| )/}$0 }
