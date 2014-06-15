@@ -22,6 +22,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/")
 (require 'auto-complete-config)
+(require 'php-mode)
 (ac-config-default)
 
 ;; add js json js.erb mode
