@@ -1,3 +1,5 @@
 alias cls='clear'
 alias lm='more '
 alias update='sudo apt-fast update && echo '\''y'\'' | sudo apt-fast upgrade'
+# restore white color
+echo -ne "\e]P7ffffff"
