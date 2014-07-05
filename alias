@@ -1,5 +1,5 @@
 alias cls='clear'
 alias lm='more '
-alias update='sudo apt-fast update && echo '\''y'\'' | sudo apt-fast upgrade'
+alias update='sudo apt-fast update && echo y | sudo apt-fast upgrade && echo y | sudo apt-fast dist-upgrade'
 # restore white color
-echo -ne "\e]P7ffffff"
+fbterm && echo -ne "\e]P7ffffff" && clear

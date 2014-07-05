@@ -1,3 +1,6 @@
+(require 'package)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(package-initialize)
 ;;hide tool-bar
 ;;hide scroll-bar-mode
 (tool-bar-mode 0)
@@ -11,6 +14,13 @@
 (setq yas-snippet-dirs '("~/.emacs.d/tools/yasnippet/snippets" "~/.emacs.d/tools/yasnippet/yasmate/snippets"))
 
 
+(add-to-list 'load-path "~/.emacs.d/elpa/angular-snippets-0.2.3")
+(add-to-list 'load-path "~/.emacs.d/elpa/dash-2.7.0")
+(add-to-list 'load-path "~/.emacs.d/elpa/s-1.9.0")
+(require 'angular-snippets)
+
+(add-to-list 'load-path "~/.emacs.d/elpa/nodejs-repl-20130520.842")
+(require 'nodejs-repl)
 ;; add ido
 (require 'ido)
 
