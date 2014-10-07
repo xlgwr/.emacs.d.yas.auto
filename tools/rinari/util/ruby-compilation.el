@@ -101,9 +101,6 @@ Should be used with `make-local-variable'.")
         (ansi-color-apply-on-region beg end)
         (ruby-compilation--adjust-paths beg end)))))
 
-(defvar ruby-compilation--buffer-name nil
-  "Used to store compilation name so recompilation works as expected.")
-(make-variable-buffer-local 'ruby-compilation--buffer-name)
 
 (defun ruby-compilation--kill-any-orphan-proc ()
   "Ensure any dangling buffer process is killed."
@@ -117,7 +114,6 @@ Should be used with `make-local-variable'.")
     (set (make-local-variable 'compilation-error-regexp-alist) ruby-compilation-error-regexp-alist)
     (add-hook 'compilation-filter-hook 'ruby-compilation-filter nil t)
     ;; Set any bound buffer name buffer-locally
-    (setq ruby-compilation--buffer-name ruby-compilation--buffer-name)
     (set (make-local-variable 'kill-buffer-hook)
          'ruby-compilation--kill-any-orphan-proc)))
 
@@ -128,17 +124,14 @@ Returns the compilation buffer."
   (save-some-buffers (not compilation-ask-about-save)
                      (when (boundp 'compilation-save-buffers-predicate)
                        compilation-save-buffers-predicate))
-  (let* ((this-dir default-directory)
-         (ruby-compilation--buffer-name (concat "*" name "*"))
-         (existing-buffer (get-buffer ruby-compilation--buffer-name)))
-    (when existing-buffer (with-current-buffer existing-buffer
-                            (setq default-directory this-dir)))
-    (with-current-buffer
+  (let* ((this-dir default-directory))
+    (with-current-buffer (get-buffer-create (concat "*" name "*"))
+        (setq default-directory this-dir)
         (compilation-start
          (concat (car cmdlist) " "
                  (mapconcat 'shell-quote-argument (cdr cmdlist) " "))
          'ruby-compilation-mode
-         (lambda (b) ruby-compilation--buffer-name)))))
+         (lambda (m) (buffer-name))))))
 
 (defun ruby-compilation--skip-past-errors (line-incr)
   "Repeatedly move LINE-INCR lines forward until the current line is not an error."

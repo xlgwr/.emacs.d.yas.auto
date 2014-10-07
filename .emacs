@@ -74,16 +74,15 @@
 
 ;;add scss mode
 
-(add-to-list 'load-path
-	     "~/.emacs.d/tools/yasnippet/snippets/scss-mode/")
-(autoload 'scss-mode "scss-mode")
-(add-to-list 'auto-mode-alist  '("\\.scss\\'" . scss-mode))
+
 
 (add-to-list 'load-path
 	     "~/.emacs.d/tools/yaml/")
 (require 'yaml-mode)
 (require 'slim-mode)
 (require 'haml-mode)
+(autoload 'scss-mode "scss-mode")
+(add-to-list 'auto-mode-alist  '("\\.scss\\'" . scss-mode))
 (add-to-list 'auto-mode-alist  '("\\.yml$'" . yaml-mode))
 (add-to-list 'auto-mode-alist  '("\\.slim$'" . slim-mode))
 
