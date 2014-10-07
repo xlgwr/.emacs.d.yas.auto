@@ -32,9 +32,8 @@
 
 (add-to-list 'load-path "~/.emacs.d/")
 (require 'auto-complete-config)
-(require 'php-mode)
-(ac-config-default)
 
+(ac-config-default)
 ;; add js json js.erb mode
 (add-to-list 'auto-mode-alist '("\\.erb$" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
@@ -72,10 +71,17 @@
 (slime-setup '(slime-fancy))
 ;(setq slime-contribs '(slime-fancy))
 
+
+(add-to-list 'load-path
+	     "~/.emacs.d/tools/other-mode/")
+(require 'php-mode)
+
+;;; auto-load progress-mode code
+(autoload 'progress-mode "progress-mode")
+(setq auto-mode-alist (cons '("\\.p\\'" . progress-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.i\\'" . progress-mode) auto-mode-alist))
+
 ;;add scss mode
-
-
-
 (add-to-list 'load-path
 	     "~/.emacs.d/tools/yaml/")
 (require 'yaml-mode)
@@ -84,12 +90,8 @@
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist  '("\\.scss\\'" . scss-mode))
 (add-to-list 'auto-mode-alist  '("\\.yml$'" . yaml-mode))
+(add-to-list 'auto-mode-alist  '("\\.haml$'" . haml-mode))
 (add-to-list 'auto-mode-alist  '("\\.slim$'" . slim-mode))
-
-;;; auto-load progress-mode code
-(autoload 'progress-mode "progress-mode")
-(setq auto-mode-alist (cons '("\\.p\\'" . progress-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.i\\'" . progress-mode) auto-mode-alist))
 
 (ido-mode t)
 (yas-global-mode 1)
