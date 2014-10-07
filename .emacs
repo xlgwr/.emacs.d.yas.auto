@@ -80,9 +80,12 @@
 (add-to-list 'auto-mode-alist  '("\\.scss\\'" . scss-mode))
 
 (add-to-list 'load-path
-	     "~/.emacs.d/tools/yasnippet/snippets/yaml-mode/")
+	     "~/.emacs.d/tools/yaml/")
 (require 'yaml-mode)
+(require 'slim-mode)
+(require 'haml-mode)
 (add-to-list 'auto-mode-alist  '("\\.yml$'" . yaml-mode))
+(add-to-list 'auto-mode-alist  '("\\.slim$'" . slim-mode))
 
 ;;; auto-load progress-mode code
 (autoload 'progress-mode "progress-mode")

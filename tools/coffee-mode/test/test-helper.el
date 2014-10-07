@@ -1,6 +1,6 @@
 ;;; test-helper.el --- helper for testing coffee-mode
 
-;; Copyright (C) 2013 by Syohei YOSHIDA
+;; Copyright (C) 2014 by Syohei YOSHIDA
 
 ;; Author: Syohei YOSHIDA <syohex@gmail.com>
 
@@ -33,12 +33,14 @@
      (font-lock-fontify-buffer)
      ,@body))
 
-(defun forward-cursor-on (pattern)
-  (re-search-forward pattern)
+(defun forward-cursor-on (pattern &optional count)
+  (let ((case-fold-search nil))
+    (re-search-forward pattern nil nil (or count 1)))
   (goto-char (match-beginning 0)))
 
-(defun backward-cursor-on (pattern)
-  (re-search-backward pattern)
+(defun backward-cursor-on (pattern &optional count)
+  (let ((case-fold-search nil))
+    (re-search-backward pattern nil nil (or count 1)))
   (goto-char (match-beginning 0)))
 
 (defun face-at-cursor-p (face)

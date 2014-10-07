@@ -16,9 +16,12 @@
 /log/*.log
 /tmp
 *~
+*~*
 *secrt
 *#*
 *#
 .*rc
 *.dat
-session.*
+session.
+*.*~
+*.*#
