@@ -3,7 +3,7 @@
 # uuid: B078346F-61D8-4E75-9427-80720FBC67F7
 # contributor: Translated from textmate snippet by PROGRAM_NAME
 # name: Go to Javascript
-## binding: "~$@
-## condition: "text.html.erb.rails, source.ruby.rails.embedded.html, meta.rails.controller, meta.rails.helper, text.haml
+# binding: [M-S-s-down]
+# condition: text.html.erb.rails, source.ruby.rails.embedded.html, (yas-rails-controller-p), meta.rails.helper, text.haml
 # --
-(yas-unimplemented)
+(if (featurep 'rinari) (rinari-find-javascript) (yas-unimplemented 'rinari))

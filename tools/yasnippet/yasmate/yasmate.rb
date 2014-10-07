@@ -139,8 +139,6 @@ class SkipSnippet < RuntimeError; end
 class TmSnippet
   @@known_substitutions = {
     "content"   => {
-      %r'`"\$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb"`' => " ",
-      %r'`"\$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb" end`' => " ",
       "${TM_RAILS_TEMPLATE_START_RUBY_EXPR}"   => "<%= ",
       "${TM_RAILS_TEMPLATE_END_RUBY_EXPR}"     => " %>",
       "${TM_RAILS_TEMPLATE_START_RUBY_INLINE}" => "<% ",

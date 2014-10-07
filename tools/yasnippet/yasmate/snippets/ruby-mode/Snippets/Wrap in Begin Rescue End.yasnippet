@@ -3,11 +3,11 @@
 # key: begin
 # contributor: Translated from textmate snippet by PROGRAM_NAME
 # name: begin … rescue … end
-## binding: "^W
-## condition: "
+# binding: C-c M-w
+# condition: 'force-in-comment
 # --
-${TM_SELECTED_TEXT/([\t ]*).*/$1/m}begin
-	${3:${TM_SELECTED_TEXT/(\A.*)|(.+)|\n\z/(?1:$0:(?2:\t$0))/g}}
-${TM_SELECTED_TEXT/([\t ]*).*/$1/m}rescue ${1:Exception}${2/.+/ => /}${2:e}
-${TM_SELECTED_TEXT/([\t ]*).*/$1/m}	$0
-${TM_SELECTED_TEXT/([\t ]*).*/$1/m}end
+begin
+	${3:`yas-selected-text`}
+rescue ${1:Exception}${2:$(and (yas-text) " => ")}${2:e}
+	$0
+end

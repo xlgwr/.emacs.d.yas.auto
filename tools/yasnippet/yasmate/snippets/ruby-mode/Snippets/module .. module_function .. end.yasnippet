@@ -5,7 +5,7 @@
 # name: module .. module_function .. end
 ## condition: "
 # --
-module ${1:${TM_FILENAME/(?:\A|_)([A-Za-z0-9]+)(?:\.rb)?/(?2::\u$1)/g}}
+module ${1:`(yas-ruby-infer-class-name)`}
 	module_function
 	
 	$0

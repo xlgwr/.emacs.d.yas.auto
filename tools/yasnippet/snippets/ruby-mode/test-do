@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: test "desc" do ... end
-# key: td
-# --
-test "${1:desc}" do
-      $0
-end

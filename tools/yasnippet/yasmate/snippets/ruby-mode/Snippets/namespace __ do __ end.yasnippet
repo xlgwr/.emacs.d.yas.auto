@@ -5,6 +5,6 @@
 # name: namespace :.. do .. end
 ## condition: "
 # --
-namespace :${1:${TM_FILENAME/\.\w+//}} do
+namespace :${1:$(and buffer-file-name (file-name-sans-extension buffer-file-name))}} do
 	$0
 end

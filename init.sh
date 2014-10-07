@@ -6,6 +6,9 @@
    sudo add-apt-repository ppa:rwky/redis
    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
    echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+    sudo apt-get install libxss1  
+    sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb  
+    sudo dpkg -i google-chrome*.deb  
    sudo  apt-get update && sudo apt-get upgrade
    sudo apt-get install apt-fast
    sudo apt-fast install libc6:i386 libstdc++6:i386

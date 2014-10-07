@@ -5,4 +5,4 @@
 # name: Documentation for Word / Selection
 ## condition: "
 # --
-(yas-unimplemented)
+(call-interactively (if (featurep 'yari) 'yari 'yas-ri))

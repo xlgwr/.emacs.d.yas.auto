@@ -5,4 +5,4 @@
 # name: belongs_to
 ## condition: "meta.rails.model
 # --
-belongs_to :${1:object}${2:, :class_name => "${3:${1/[[:alpha:]]+|(_)/(?1::\u$0)/g}}", :foreign_key => "${4:$1_id}"}
+belongs_to :${1:object}${2:, :class_name => "${3:${1:$(replace-regexp-in-string "_" "" (capitalize yas-text))}}", :foreign_key => "${4:$1_id}"}

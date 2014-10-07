@@ -1,13 +1,412 @@
-;; skeleton .yas-setup.el file for ruby-mode
+;; .yas-setup.el for ruby-mode
+;; -*- coding: utf-8 -*-
+;;
+(defvar yas-ruby-snippet-open-paren " "
+  "The open parenthesis used in ruby-mode snippets. Normally blank but could be (")
+(defvar yas-ruby-snippet-close-paren " "
+  "The close parenthesis used in ruby-mode snippets. Normally blank but could be )")
+(defvar yas-ruby-shebang-args " -wKU"
+  "Arguments for the ruby shebang line.")
+
+(defun yas-ruby-infer-class-name ()
+  "Infer the class name from the buffer. Thanks to hitesh <hitesh.jasani@gmail.com>"
+  (if buffer-file-name
+      (let ((fn (capitalize (file-name-nondirectory
+                             (file-name-sans-extension
+                              (buffer-file-name))))))
+        (cond
+         ((string-match "_" fn) (replace-match "" nil nil fn))
+         (t fn)))
+    "SomeClass"))
+
+(defun yas-ruby-chomp (x)
+  "Chomp string X, return nil if X became empty"
+  (let ((len (length x))
+        (start 0)
+        (end (1- (length x))))
+    (unless (zerop len)
+      (while (and (< start len)
+                  (memq (aref x start)
+                        '(?  ?\t ?\n)))
+        (setq start (1+ start)))
+      (while (and (> end start)
+                  (memq (aref x end)
+                        '(?  ?\t ?\n)))
+        (setq end (1- end)))
+      (unless (<= end start)
+        (substring x start (1+ end))))))
+
+(defvar yas-ruby-block-start-regexp "\\(^\\|[\s\t\n^]\\)\\(do\\)[\s\t\n]\\(|.*|\\)?")
+
+(defun yas-ruby-toggle-single-multi-line-block ()
+  "Toggle \"do .. end\" blocks into  \"{ .. }\" blocks back and forth."
+  ;;
+  ;; TODO: Some code to be refactored here.
+  ;; 
+  ;; FIXME: correctly detect statements in { .. } block, split-string(";") is no good
+  ;;
+  (interactive)
+  (let* ((do-block-bounds (save-excursion
+                            (when (or (save-excursion (beginning-of-line)
+                                                      (looking-at yas-ruby-block-start-regexp))
+                                      (save-excursion (ruby-beginning-of-block)
+                                                      (looking-at yas-ruby-block-start-regexp)))
+                              (cons (match-beginning 1)
+                                    (progn (goto-char (match-beginning 1))
+                                           (ruby-end-of-block) (point))))))
+         (brace-block-bounds (condition-case nil
+                                 (let ((syntax-info (syntax-ppss)))
+                                   (if (fourth syntax-info)
+                                       (goto-char (ninth syntax-info)))
+                                   (while (progn (up-list -1) (not (eq (char-after) ?{))))
+                                   (cons (point)
+                                         (progn (forward-sexp) (point))))
+                               (error nil)))
+         (block-region)
+         (statements))
+    (if (and do-block-bounds brace-block-bounds)
+        (if (< (car do-block-bounds) (car brace-block-bounds))
+            (setq do-block-bounds nil)
+          (setq brace-block-bounds nil)))
+    (cond (do-block-bounds
+           (goto-char (car do-block-bounds))
+           (setq block-region (buffer-substring-no-properties (+ 2 (car do-block-bounds)) (cdr do-block-bounds)))
+           (delete-region (car do-block-bounds) (+ 3 (cdr do-block-bounds)))
+           (insert "{")
+           (when (string-match "\\(|.*|\\).*" block-region)
+             (insert " " (match-string 1 block-region))
+             (setq block-region (substring block-region (match-end 1))))
+           (setq statements (remove nil (mapcar #'yas-ruby-chomp
+                                                (split-string block-region "\n"))))
+           (mapc #'(lambda (string)
+                     (insert " " string)
+                     (if (member (aref string (1- (length string))) '(?;
+                                                                      ?|))
+                         (insert " ")
+                       (insert ";")))
+                 statements)
+           (when statements (delete-backward-char 1))
+           (save-excursion
+             (insert " }")))
+          (brace-block-bounds
+           ;; (message "found a brace block")
+           (goto-char (car brace-block-bounds))
+           (setq block-region (buffer-substring (1+ (car brace-block-bounds)) (1- (cdr brace-block-bounds))))
+           (delete-region (car brace-block-bounds) (cdr brace-block-bounds))
+           (insert "do")
+           (when (string-match "\\(|.*|\\).*" block-region)
+             (insert " " (match-string 1 block-region))
+             (setq block-region (substring block-region (match-end 1))))
+           (setq statements (remove nil (mapcar #'yas-ruby-chomp
+                                                (split-string block-region ";"))))
+           (mapc #'(lambda (string)
+                     (insert "\n" string)
+                     (indent-according-to-mode))
+                 statements)
+           (unless statements (insert "\n") (indent-according-to-mode))
+           (save-excursion
+             (insert "\nend")
+             (indent-according-to-mode)))
+          (t
+           (message "No enclosing block found.")))))
+
+(defvar yas-ruby-require-regexps
+  '(("abbrev"                            . ("abbrev"))
+    ("base64"                            . ("Base64"))
+    ("benchmark"                         . ("Benchmark"))
+    ("bigdecimal"                        . ("BigDecimal"))
+    ("bigdecimal/math"                   . ("BigMath"))
+    ("cgi"                               . ("CGI"))
+    ("complex"                           . ("Complex"))
+    ("csv"                               . ("CSV"))
+    ("curses"                            . ("Curses"))
+    ("date"                              . ("Date(?:Time)?"))
+    ("dbm"                               . ("DBM"))
+    ("delegate"                          . ("DelegateClass" "Delegator" "SimpleDelegator "))
+    ("digest"                            . ("MD5" "SHA1"))
+    ("dl"                                . ("DL"))
+    ("enumerator"                        . ("(?:enum|each)_(?:cons|slice)" "enum_(?:for|with_index)" "to_enum "))
+    ("erb"                               . ("ERB"))
+    ("etc"                               . ("Etc"))
+    ("fcntl"                             . ("Fcntl"))
+    ("fileutils"                         . ("FileUtils"))
+    ("find"                              . ("Find(?:\.|::)find"))
+    ("forwardable"                       . ("(?:Single)?Forwardable"))
+    ("gdbm"                              . ("GDBM"))
+    ("generator"                         . ("Generator" "SyncEnumerator"))
+    ("getoptlong"                        . ("GetoptLong"))
+    ("gserver"                           . ("GServer"))
+    ("iconv"                             . ("Iconv"))
+    ("ipaddr"                            . ("IpAddr"))
+    ("logger"                            . ("Logger"))
+    ("matrix"                            . ("Matrix" "Vector"))
+    ("monitor"                           . ("Monitor(?:Mixin)?"))
+    ("net/ftp"                           . ("Net::FTP"))
+    ("net/http"                          . ("Net::HTTP"))
+    ("net/imap"                          . ("Net::IMAP"))
+    ("net/pop"                           . ("Net::(?:APOP|POP3)"))
+    ("net/smtp"                          . ("Net::SMTP"))
+    ("net/telnet"                        . ("Net::Telnet"))
+    ("nkf"                               . ("NKF"))
+    ("observer"                          . ("Observable"))
+    ("open3"                             . ("Open3"))
+    ("optparse"                          . ("OptionParser"))
+    ("ostruct"                           . ("OpenStruct"))
+    ("pathname"                          . ("Pathname"))
+    ("ping"                              . ("Ping"))
+    ("pp"                                . ("pp"))
+    ("pstore"                            . ("PStore"))
+    ("rational"                          . ("Rational"))
+    ("rdoc/usage"                        . ("RDoc(?:\.|::)usage"))
+    ("rdoc/markup/simple_markup"         . ("SM::SimpleMarkup"))
+    ("rdoc/markup/simple_markup/to_html" . ("SM::SimpleMarkup"))
+    ("rdoc/usage"                        . ("RDoc(?:\.|::)usage"))
+    ("resolv"                            . ("Resolv"))
+    ("rexml/document"                    . ("REXML"))
+    ("rinda/tuplespace"                  . ("Rinda::TupleSpace(?:Proxy)?"))
+    ("rinda/ring"                        . ("Rinda::Ring(?:Finger|Server)?"))
+    ("rss"                               . ("RSS"))
+    ("scanf"                             . ("scanf"))
+    ("sdbm"                              . ("SDBM"))
+    ("set"                               . ("(?:Sorted)?Set"))
+    ("singleton"                         . ("Singleton"))
+    ("soap"                              . ("SOAP"))
+    ("socket"                            . (" (?:TCP|UNIX)(?:Socket|Server)" "(?:UDP)?Socket"))
+    ("stringio"                          . ("StringIO"))
+    ("strscan"                           . ("StringScanner"))
+    ("syslog"                            . ("Syslog"))
+    ("tempfile"                          . ("Tempfile"))
+    ("test/unit"                         . ("Test::Unit"))
+    ("thread"                            . (" ConditionVariable" "Mutex" "(?:Sized)?Queue "))
+    ("time"                              . ("Time(?:\.|::)parse"))
+    ("timeout"                           . ("Timeout(?:\.|::)timeout"))
+    ("tk"                                . ("TK"))
+    ("tmpdir"                            . ("Dir(?:\.|::)tmpdir"))
+    ("tracer"                            . ("Tracer"))
+    ("tsort"                             . ("TSort"))
+    ("uri"                               . ("URI"))
+    ("weakref"                           . ("WeakRef"))
+    ("webrick"                           . ("WEBrick"))
+    ("Win32API"                          . ("Win32(?:API)?"))
+    ("win32ole"                          . ("WIN32OLE"))
+    ("wsdl"                              . ("WSDL"))
+    ("xmlrpc"                            . ("XMLRPC"))
+    ("yaml"                              . ("YAML"))
+    ("zlib"                              . ("Zlib"))))
+
+(defun yas-ruby-require (package)
+  (save-excursion
+    (goto-char (point-min))
+    (unless (search-forward-regexp (format "^[\s\t]*require[( ][ ]*\"%s\"[ )]*$"
+                                           package) nil t)
+      (unless (search-forward-regexp "^[\s\t]*require.*\n" nil t)
+        (search-forward-regexp "^[\s\t]*[^#]" nil t)
+        (goto-char (line-beginning-position)))
+      (insert "require \"" package "\"\n"))))
+
+(defun yas-ruby-pipe-through-xmpfilter ()
+  (interactive)
+  (let ((start (or (and mark-active
+                        (region-beginning))
+                   (point-min)))
+        (end (or (and mark-active
+                      (region-end))
+                 (point-max)))
+        (orig (point))
+        retval
+        (orig-line (count-screen-lines (window-start) (line-beginning-position))))
+    
+    (unless (zerop (shell-command-on-region start end "xmpfilter" (get-buffer-create "*xmpfilter*") t (get-buffer-create "*xmpfilter errors*") t))
+      (undo)
+      )
+    (goto-char (min (point-max) orig))
+    (recenter orig-line)
+    retval))
+
+(put (intern "ruby-thing") 'bounds-of-thing-at-point 'yas-ri-ruby-thing-bounds)
+(defun yas-ri-ruby-thing-bounds ()
+  (let ((start (point))
+        (end (point)))
+    (save-excursion
+      (while (not (and (zerop (skip-syntax-forward "\w\_"))
+                       (zerop (skip-chars-forward "#:"))))
+        (setq end (point)))
+      (while (not (and (zerop (skip-syntax-backward "\w\_"))
+                       (zerop (skip-chars-backward "#:"))))
+        (setq start (point))))
+    (unless (= start end)
+      (cons start end))))
+
+(defvar yas-ri-history nil
+  "History of yas-ri queries.")
+(defvar yas-ri-executable "ri")
+(require 'ansi-color)
+(defun yas-ri (query)
+  (interactive (list (read-from-minibuffer "Ri query: "
+                                           (thing-at-point 'ruby-thing)
+                                           nil
+                                           nil
+                                           'ri-history)))
+  (with-current-buffer (get-buffer-create "*Ri*")
+    (setq buffer-read-only nil)
+    (erase-buffer)
+    (setq default-directory "~")
+    (setq buffer-read-only nil)
+    (shell-command (concat yas-ri-executable " -f ansi " query) "*Ri*")
+    (ansi-color-apply-on-region (point-min) (point-max))
+    (yas-ri-mode)
+    (display-buffer (current-buffer)))
+  t)
+
+(defun yas-ri-mode ()
+  "Mode for viewing Ruby documentation."
+  (buffer-disable-undo)
+  (kill-all-local-variables)
+  (local-set-key (kbd "q") 'quit-window)
+  (local-set-key (kbd "RET") 'yas-ri)
+  (setq mode-name "ri")
+  (setq major-mode 'yas-ri-mode)
+  (setq buffer-read-only t)
+  (run-hooks 'yas-ri-mode-hook))
+
+;; conditions
 ;; 
-(load "/home/xlgwr/.emacs.d/tools/yasnippet/yasmate/snippets/ruby-mode/.yasmate-menu.el")
+(yas-define-condition-cache yas-ruby-in-interpolated-string-p (member (fourth (syntax-ppss)) (list ?\" ?\`)))
+(yas-define-condition-cache yas-ruby-in-comment-p (fifth (syntax-ppss)))
+(yas-define-condition-cache yas-ruby-in-string-p (fourth (syntax-ppss)))
+(yas-define-condition-cache yas-ruby-end-is-block-end-p
+                            (save-excursion
+                              (ruby-backward-sexp)
+                              (not (eq (point) (point-min)))))
+
+(provide 'yas-ruby)
+
+;; My work in progress substitutions
+;;
+;; Substitutions for: content
+;;
+;; ${1/.+/(/}                                                                        =yyas> ${1:$(and (yas-text) "(")}
+;; ${1/.+/)/}                                                                        =yyas> ${1:$(and (yas-text) ")")}
+;; ${2/.+/ => /}                                                                     =yyas> ${2:$(and (yas-text) " => ")}
+;; ${1:${TM_FILENAME/\.\w+//}                                                        =yyas> ${1:$(and buffer-file-name (file-name-sans-extension buffer-file-name))}
+;; ${1/(^.*?\S.*)|.*/(?1:\()/}                                                       =yyas> ${1:$(and (string-match "[^\s\t]" yas-text) "(" )}
+;; ${1/(^.*?\S.*)|.*/(?1:\))/}                                                       =yyas> ${1:$(and (string-match "[^\s\t]" yas-text) ")" )}
+;; ${2/(^.*?\S.*)|.*/(?1:\()/}                                                       =yyas> ${2:$(and (string-match "[^\s\t]" yas-text) "(" )}
+;; ${2/(^.*?\S.*)|.*/(?1:\))/}                                                       =yyas> ${2:$(and (string-match "[^\s\t]" yas-text) ")" )}
+;; ${3/(^.*?\S.*)|.*/(?1:\()/}                                                       =yyas> ${3:$(and (string-match "[^\s\t]" yas-text) "(" )}
+;; ${3/(^.*?\S.*)|.*/(?1:\))/}                                                       =yyas> ${3:$(and (string-match "[^\s\t]" yas-text) ")" )}
+;; ${2/^\s*$|(.*\S.*)/(?1: )/}                                                       =yyas> ${2:$(and (string-match "[^\s\t]" yas-text) " " )}
+;; ${3/^\s*$|(.*\S.*)/(?1: )/}                                                       =yyas> ${3:$(and (string-match "[^\s\t]" yas-text) " " )}
+;; ${3/(^[rwab+]+$)|.*/(?1:, ")/}                                                    =yyas> ${3:$(and (string-match "^[rwab+]+$" yas-text) ", \\"" )}
+;; ${3/(^[rwab+]+$)|.*/(?1:")/}                                                      =yyas> ${3:$(and (string-match "^[rwab+]+$" yas-text) "\\"" )}
+;; ${3/^\s*$|(.*\S.*)/(?1:, )/}                                                      =yyas> ${3:$(and (string-match "[^\s\t]" (yas-text) ", ")}
+;; ${TM_SELECTED_TEXT/([\t ]*).*/$1/m}                                               =yyas>
+;; ${TM_SELECTED_TEXT/(\A.*)|(.+)|\n\z/(?1:$0:(?2:\t$0))/g}                          =yyas> `yas-selected-text`
+;; (yas-multi-line-unknown BF487539-8085-4FF4-8601-1AD20FABAEDC)                     =yyas> `(yas-ruby-infer-class-name)`
+;; (yas-multi-line-unknown 2B73EC5F-06D2-460C-A14F-6FA05AFCF0CC)                     =yyas> `(yas-ruby-infer-class-name)`
+;; 
+;; ${TM_FILENAME/(?:\A|_)([A-Za-z0-9]+)(?:\.rb)?/(?2::\u$1)/g}                       =yyas> `(yas-ruby-infer-class-name)`
+;; 
+;; ${1/(^(?<var>\s*[a-z_][a-zA-Z0-9_]*\s*)(,\g<var>)*,?\s*$)|.*/(?1:|)/}             =yyas> ${1:$(and (yas-text) "|")}
+;; ${1/(^(?<var>\s*[a-z_][a-zA-Z0-9_]*\s*)(,\g<var>)*,?\s*$)|.*/(?1: |)/}            =yyas> ${1:$(and (yas-text) " |")}
+;; ${1/(^(?<var>\s*[a-z_][a-zA-Z0-9_]*\s*)(,\g<var>)*,?\s*$)|.*/(?1:| )/}            =yyas> ${1:$(and (yas-text) "| ")}
+;;
+;; ${1/(^(?<var>\s*(?:\*|\*?[a-z_])[a-zA-Z0-9_]*\s*)(,\g<var>)*,?\s*$)|.*/(?1:|)/}   =yyas> ${1:$(and (yas-text) "|")}
+;; ${1/(^(?<var>\s*(?:\*|\*?[a-z_])[a-zA-Z0-9_]*\s*)(,\g<var>)*,?\s*$)|.*/(?1:| )/}  =yyas> ${1:$(and (yas-text) "| ")}
+;; ${2/(^(?<var>\s*(?:\*|\*?[a-z_])[a-zA-Z0-9_]*\s*)(,\g<var>)*,?\s*$)|.*/(?1:|)/}   =yyas> ${2:$(and (yas-text) "|")}
+;; ${2/(^(?<var>\s*(?:\*|\*?[a-z_])[a-zA-Z0-9_]*\s*)(,\g<var>)*,?\s*$)|.*/(?1:| )/}  =yyas> ${2:$(and (yas-text) "| ")}
+;; 
+;; ${1/([\w&&[^_]]+)|./\u$1/g}                                                       =yyas> ${1:$(replace-regexp-in-string "[_/]" "" (capitalize yas-text))}
+;;
+;; 7990EE60-C850-4779-A8C0-7FD2C853B99B               =yyas> (yas-ruby-toggle-single-multi-line-block)
+;; 7E084412-80E6-4B70-8092-C03D1ECE4CD2               =yyas> (yas-ruby-require "eac")(yas-expand-uuid 'ruby-mode "FDD73070-6D32-4301-A86A-C55B77C3D8ED")
+;; FBFC214F-B019-4967-95D2-028F374A3221               =yyas> (yas-ruby-pipe-through-xmpfilter)
+;; 63F3B3B7-CBE2-426B-B551-657733F3868B               =yyas> (call-interactively (if (featurep 'yari) 'yari 'yas-ri))
+
+;;
+;; `[[ $TM_LINE_INDEX != 0 ]] && echo; echo`                                         =yyas> `(concat (if (eq 0 current-line) "\n" "") "\n")`
+;; `snippet_paren.rb`                                                                =yyas> `yas-ruby-snippet-open-paren`
+;; `snippet_paren.rb end`                                                            =yyas> `yas-ruby-snippet-close-paren`
+;; ${TM_RUBY_SWITCHES: -wKU}                                                         =yyas> `yas-ruby-shebang-args`
+;; 
+;; Substitutions for: condition
+;;
+;; 7990EE60-C850-4779-A8C0-7FD2C853B99B                                              =yyas> 'force-in-comment
+;; FBFC214F-B019-4967-95D2-028F374A3221                                              =yyas> 'force-in-comment
+;; 88BC3896-DC39-4307-A271-21D33340F15A                                              =yyas> 'force-in-comment
+;; 0F940CBC-2173-49FF-B6FD-98A62863F8F2                                              =yyas> 'force-in-comment
+;; 451A0596-1F72-4AFB-AF2F-45900FABB0F7                                              =yyas> (not (yas-ruby-end-is-block-end-p))
+;; (string.quoted.double.ruby|string.interpolated.ruby) - string source              =yyas> (and (yas-ruby-in-interpolated-string-p) 'force-in-comment)
+;; text.html.ruby, text.html source.ruby                                             =yyas> (yas-unimplemented)
+;; text.html, source.yaml, meta.erb                                                  =yyas> (yas-unimplemented)
+;; keyword.control.start-block.ruby, meta.syntax.ruby.start-block                    =yyas>
+;; 
+;; Substitutions for: binding
+;;
+;; # as in Commands/New Method.yasnippet
+;; $                                                                               =yyas> C-c M-m
+;; ^W                                                                                =yyas> C-c M-w
+;; #                                                                                 =yyas> #
+;; ^{                                                                                =yyas> C-c M-{
+;; @R                                                                                =yyas> C-c M-R
+;; @r                                                                                =yyas> C-c M-r
+;; ^R                                                                                =yyas> C-c M-S-r
+;; @i                                                                                =yyas> s-i
+;; @b                                                                                =yyas> s-b
+;; ^@E                                                                               =yyas> C-c M-e
+;; ^:                                                                                =yyas> C-c M-:
+;; ^>                                                                                =yyas> C-c M->
+;; ^h                                                                                =yyas> C-c M-h
+;;
+;;
+;; # as in Commands/Enclose in + (RDoc comments).yasnippet
+;; @k                                                                                         =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Check Ruby Syntax.yasnippet
+;; ^V                                                                                         =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Omit from RDoc.yasnippet
+;; ^@O                                                                                        =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Enclose in (RDoc comments).yasnippet
+;; @b                                                                                         =yyas> (yas-unknown)
+;; 
+;; # as in Snippets/hash pointer.yasnippet
+;; ^l                                                                                         =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Make Destructive Call.yasnippet
+;; ^!                                                                                         =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Toggle Quote Style.yasnippet
+;; ^"                                                                                         =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Open Require.yasnippet
+;; @D                                                                                         =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Execute Line with Ruby.yasnippet
+;; ^E                                                                                         =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Completion Ruby (rcodetools).yasnippet
+;; ~                                                                                         =yyas> (yas-unknown)
+;; 
+;; # as in Macros/Delete forwardbackward.yasnippet
+;;                                                                                           =yyas> (yas-unknown)
+;; 
+;; --**--
+;; Automatically generated code, do not edit this part
+;; 
+;; Translated menu
+;; 
 (yas-define-menu 'ruby-mode
                  '(;; Ignoring Run
                    (yas-ignore-item "35222962-C50D-4D58-A6AE-71E7AD980BE4")
                    ;; Ignoring Run Focused Unit Test
                    (yas-ignore-item "5289EE40-86B8-11D9-A8D4-000A95E13C98")
+                   ;; Ignoring Run Rake Task
+                   (yas-ignore-item "569C9822-8C41-4907-94C7-1A8A0031B66D")
                    
-                   
+                   ;; Documentation for Word / Selection
+                   (yas-item "63F3B3B7-CBE2-426B-B551-657733F3868B")
                    (yas-submenu "RDoc"
                                 (;; Ignoring Show for Current File / Project
                                  (yas-ignore-item "1AD6A138-2E89-4D6A-AB3F-416BF9CE968D")
@@ -27,7 +426,21 @@
                                  
                                  ;; :yields:
                                  (yas-item "ED6368FB-A11D-4622-9F42-7879481094F1")))
-                   
+                   (yas-separator)
+                   (yas-submenu "Rake"
+                                (;; namespace :name ... end
+                                 (yas-item "A3D89AAA-9156-4077-A026-37BB7358C3BA")
+                                 ;; namespace :name ... task :default ... end
+                                 (yas-item "2031FC41-CBD3-41CC-B9A9-7F068E607A05")
+                                 ;; desc ...
+                                 (yas-item "F686E1AD-B03D-45A6-BD51-6E3FD1298FE0")
+                                 ;; task :name ... end
+                                 (yas-item "CB81DA55-F3BC-4BFB-B0C5-29F0EE6F8081")
+                                 ;; desc ... task :name ... end
+                                 (yas-item "FE9A8EDA-C243-4068-8F38-A615B82D08C9")
+                                 ;; Ignoring Rake/Sake task using file path
+                                 (yas-ignore-item "E07FF68B-C87D-4332-8477-D026929FDADA")))
+                   (yas-separator)
                    ;; Ignoring Open Require
                    (yas-ignore-item "8646378E-91F5-4771-AC7C-43FC49A93576")
                    ;; Ignoring Validate Syntax
@@ -35,8 +448,8 @@
                    
                    ;; Ignoring Execute Line / Selection as Ruby
                    (yas-ignore-item "EE5F1FB2-6C02-11D9-92BA-0011242E4184")
-                   ;; Ignoring Execute and Update ‘# =>’ Markers
-                   (yas-ignore-item "FBFC214F-B019-4967-95D2-028F374A3221")
+                   ;; Execute and Update ‘# =>’ Markers
+                   (yas-item "FBFC214F-B019-4967-95D2-028F374A3221")
                    ;; Add ‘# =>’ Marker
                    (yas-item "88BC3896-DC39-4307-A271-21D33340F15A")
                    (yas-separator)
@@ -50,17 +463,12 @@
                    (yas-item "FDFABCB9-DF58-4469-AE11-5407A4FF4D70")
                    (yas-separator)
                    (yas-submenu "Declarations"
-                                (;; Ignoring New Method
-                                 (yas-ignore-item "0275EF39-9357-408F-AF20-79E415CA9504")
-                                 
-                                 ;; begin … rescue … end
+                                (;; begin … rescue … end
                                  (yas-item "0F940CBC-2173-49FF-B6FD-98A62863F8F2")
                                  ;; case … end
                                  (yas-item "667083EE-62C3-11D9-B8CF-000D93589AF6")
                                  ;; when …
                                  (yas-item "48D8E498-C9A5-4B1B-9A18-71A5860276FB")
-                                 ;; def … end
-                                 (yas-item "4E9A7A73-875C-11D9-897C-000393CBCE2E")
                                  ;; if … end
                                  (yas-item "6670835F-62C3-11D9-B8CF-000D93589AF6")
                                  ;; if … else … end
@@ -99,7 +507,10 @@
                                                ;; module .. ClassMethods .. end
                                                (yas-item "A71A18CF-2D71-4BFF-AA0C-D9B8C59BC4EB")))
                                  (yas-submenu "Methods"
-                                              (;; attr_reader ..
+                                              (;; Ignoring New Method
+                                               (yas-ignore-item "0275EF39-9357-408F-AF20-79E415CA9504")
+                                               
+                                               ;; attr_reader ..
                                                (yas-item "A150C2D8-25B3-4339-BC92-8A0160A70486")
                                                ;; attr_writer ..
                                                (yas-item "3D383096-A03F-4EF8-9060-3C727045AB34")
@@ -116,10 +527,10 @@
                                                ;; extend Forwardable
                                                (yas-item "7F46C90A-595B-4B83-A4F7-058F63CE4218")
                                                (yas-separator)
+                                               ;; def … end
+                                               (yas-item "4E9A7A73-875C-11D9-897C-000393CBCE2E")
                                                ;; def self .. end
                                                (yas-item "7C6E88FA-CA0E-4110-8C75-A94E54286A75")
-                                               ;; def initialize .. end
-                                               (yas-item "4E9D15B5-65D6-4A9A-9DEC-DE041D68C06F")
                                                ;; def method_missing .. end
                                                (yas-item "87D5F8AD-8DA6-4AED-A0D8-B51CAC980445")
                                                ;; def_delegator ..
@@ -128,23 +539,14 @@
                                                (yas-item "4A6EFD6B-88E2-4822-AD48-03460EDBC796")
                                                (yas-separator)
                                                ;; alias_method ..
-                                               (yas-item "988C8AEF-FC71-4455-9C4F-9338C05685A4")
-                                               (yas-separator)
-                                               ;; define_method ... end
-                                               (yas-item "7BC1E159-0C90-4B0D-8808-80165C11F59C")))
+                                               (yas-item "988C8AEF-FC71-4455-9C4F-9338C05685A4")))
                                  ;; __END__
                                  (yas-item "451A0596-1F72-4AFB-AF2F-45900FABB0F7")
                                  (yas-separator)
                                  ;; #!/usr/bin/env ruby -wKU
                                  (yas-item "A05CBDD6-845D-45EB-94FB-F8787F5456BE")
-                                 ;; # encoding: UTF-8
-                                 (yas-item "B2C3ADE8-E19E-4B87-9C6C-593D490114C7")
                                  ;; require ".."
                                  (yas-item "97DE939B-D243-4D5C-B953-1C9090912E7C")
-                                 ;; Ignoring require_gem ".."
-                                 (yas-ignore-item "33969819-62C5-4E03-B824-C2337205F364")
-                                 ;; require_gem ".."
-                                 (yas-item "34FEBB9F-73CD-4DD4-A0A3-1CF2A5E3DE78")
                                  ;; application { .. }
                                  (yas-item "E16D24D2-CC7E-4786-BE0B-1725FC865D78")
                                  ;; usage_if()
@@ -181,8 +583,8 @@
                                                (yas-item "ECBA4CA0-275F-460E-85BE-E82FEA2E2B26")
                                                ;; each_byte { |byte| .. }
                                                (yas-item "338EC03D-3FF4-4435-94E8-1CEF20CEC75D")
-                                               ;; Ignoring each_char { |chr| .. }
-                                               (yas-ignore-item "7E084412-80E6-4B70-8092-C03D1ECE4CD2")
+                                               ;; each_char { |chr| .. }
+                                               (yas-item "7E084412-80E6-4B70-8092-C03D1ECE4CD2")
                                                ;; each_char { |chr| .. }
                                                (yas-item "FDD73070-6D32-4301-A86A-C55B77C3D8ED")
                                                ;; Ignoring each_cons(..) { |group| .. }
@@ -217,6 +619,20 @@
                                                (yas-ignore-item "BFB65D1C-62F1-485D-8A67-3E5A2E55107C")
                                                ;; map_with_index { |e, i| .. }
                                                (yas-item "BD4CFD7B-1AC0-4569-9BDA-FD491F41F4E6")))
+                                 (yas-submenu "Files"
+                                              (;; Dir.glob("..") { |file| .. }
+                                               (yas-item "332AA973-AA71-48CB-AEE9-1D71E11019AC")
+                                               ;; File.foreach ("..") { |line| .. }
+                                               (yas-item "8F594E5E-6F46-4E98-B5FB-1C8F3BA9828F")
+                                               ;; open("path/or/url", "w") { |io| .. }
+                                               (yas-item "418F1817-255F-430A-B09A-222964ED66A7")
+                                               ;; unix_filter { .. }
+                                               (yas-item "8CEF9711-88D5-4202-AFB9-29EF4EFD25C1")
+                                               (yas-separator)
+                                               ;; option_parse { .. }
+                                               (yas-item "C3C48948-4F49-484E-A8DE-DEB44723099E")
+                                               ;; option(..)
+                                               (yas-item "209D5D73-7A77-4931-A158-3FB6D5B48A88")))
                                  (yas-submenu "Ordering"
                                               (;; sort { |a, b| .. }
                                                (yas-item "9E0B4D4B-2956-4B3A-800A-3D8CE54E66BF")
@@ -263,9 +679,9 @@
                                                ;; scan(/../) { |match| .. }
                                                (yas-item "66802933-B49F-479B-9DF9-1D898FF1FA90")))))
                    (yas-submenu "Blocks"
-                                (;; Ignoring Toggle ‘do … end’ / ‘{ … }’
-                                 (yas-ignore-item "59E811FF-E722-46BE-8938-04713612FABB")
-                                 
+                                (;; Toggle ‘do … end’ / ‘{ … }’
+                                 (yas-item "7990EE60-C850-4779-A8C0-7FD2C853B99B")
+                                 (yas-separator)
                                  ;; Insert { |variable| … }
                                  (yas-item "855FC4EF-7B1E-48EE-AD4E-5ECB8ED79D1C")
                                  ;; Insert do |variable| … end
@@ -280,36 +696,7 @@
                                  ;; Hash Pair — :key => "value"
                                  (yas-item "840B9C4C-7037-4C3B-9028-EB9DC75EDB3E")
                                  ;; Hash Pointer — =>
-                                 (yas-item "B9E3A6DF-875D-11D9-897C-000393CBCE2E")
-                                 (yas-separator)
-                                 ;; Ignoring Toggle Ruby Hash 1.8/1.9 Syntax
-                                 (yas-ignore-item "F4EEB2B6-07D8-402F-8FC3-79B7308D2576")))
-                   (yas-submenu "Files"
-                                (;; open("path/or/url", "w") { |io| .. }
-                                 (yas-item "418F1817-255F-430A-B09A-222964ED66A7")
-                                 (yas-separator)
-                                 ;; File.foreach ("..") { |line| .. }
-                                 (yas-item "8F594E5E-6F46-4E98-B5FB-1C8F3BA9828F")
-                                 ;; File.read("..")
-                                 (yas-item "50C56AC8-48F3-42A0-AF10-8164464AFAEF")
-                                 ;; File.open("..") { |file| .. }
-                                 (yas-item "397FA09F-A30F-4EE4-920C-318D5004EE97")
-                                 (yas-separator)
-                                 ;; Dir.glob("..") { |file| .. }
-                                 (yas-item "332AA973-AA71-48CB-AEE9-1D71E11019AC")
-                                 ;; Dir[".."]
-                                 (yas-item "8EBBB26F-980E-404E-8366-74E5772298F6")
-                                 ;; directory()
-                                 (yas-item "678BDB83-FBBD-4E8E-BE0B-E1A98AECB247")
-                                 ;; path_from_here( .. )
-                                 (yas-item "A4E89D97-D5ED-48BB-B5FF-1BFB79211FCD")
-                                 (yas-separator)
-                                 ;; unix_filter { .. }
-                                 (yas-item "8CEF9711-88D5-4202-AFB9-29EF4EFD25C1")
-                                 ;; option_parse { .. }
-                                 (yas-item "C3C48948-4F49-484E-A8DE-DEB44723099E")
-                                 ;; option(..)
-                                 (yas-item "209D5D73-7A77-4931-A158-3FB6D5B48A88")))
+                                 (yas-item "B9E3A6DF-875D-11D9-897C-000393CBCE2E")))
                    (yas-submenu "Tests"
                                 (;; class .. < Test::Unit::TestCase .. end
                                  (yas-item "31D1F145-33AB-4441-BA11-4D1C46928C4C")
@@ -356,13 +743,8 @@
                                  (yas-item "05655BD8-23C6-445F-BFD1-420BF25C3030")
                                  ;; assert_nothing_thrown { .. }
                                  (yas-item "33639D7A-BD8C-4396-9C44-307B8AC87C9E")
-                                 (yas-separator)
                                  ;; flunk(..)
                                  (yas-item "DB457094-1AC9-4856-AEFC-43A9576B6775")
-                                 ;; skip(..)
-                                 (yas-item "B186BAC0-D981-41AC-B8F4-34BAD2BC4EE6")
-                                 ;; pass(..)
-                                 (yas-item "F46A4687-E52D-40D2-9072-C215645EDBC6")
                                  (yas-separator)
                                  ;; Ignoring Benchmark.bmbm do .. end
                                  (yas-ignore-item "C649F945-DAB8-4DA2-B73C-2EFF9D7D34F3")
@@ -403,18 +785,25 @@
                                  (yas-item "2DBEE50B-3097-4A57-AB48-3586CF392D8B")
                                  ;; deep_copy(..)
                                  (yas-item "0BA2B2F1-E767-4A03-9791-0AC0183251F1")
+                                 ;; path_from_here( .. )
+                                 (yas-item "A4E89D97-D5ED-48BB-B5FF-1BFB79211FCD")
                                  ;; singleton_class()
                                  (yas-item "B46D35B8-5DEB-4C10-A110-BA1965A2EB9C")
                                  ;; Ignoring word_wrap()
                                  (yas-ignore-item "97054C4D-E4A3-45B1-9C00-B82DBCB30CAD")))
-                   (yas-submenu "Rake"
-                                (;; Ignoring Run Rake Task
-                                 (yas-ignore-item "569C9822-8C41-4907-94C7-1A8A0031B66D")
-                                 
-                                 ;; namespace :.. do .. end
-                                 (yas-item "05EE1046-5ED7-48F5-8693-1F066163B2F4")
-                                 ;; task :task_name => [:dependent, :tasks] do .. end
-                                 (yas-item "A7BF14E6-59B1-42E5-8755-8A72BF13685E"))))
+                   (yas-submenu "File"
+                                (;; require File.dirname(__FILE__) + "/.."
+                                 (yas-item "7C42D878-FD0F-4181-A71A-57A091C0154A")
+                                 (yas-separator)
+                                 ;; File.dirname(__FILE__)
+                                 (yas-item "16920DC1-6FA6-48C8-90C5-C19E2C734303")
+                                 (yas-separator)
+                                 ;; File.read(filename)
+                                 (yas-item "FAFE9F5C-BF9C-4416-8623-2CB8EBC31B3C")
+                                 ;; File.open(filename, 'r') { |f| f.read }
+                                 (yas-item "005EB926-4BFE-4BFA-93B2-C9030636289C")))
+                   ;; class .. < Test::Unit::TestCase with test_helper
+                   (yas-item "228CAB3A-E221-4727-B430-31E94F76C9D3"))
                     '("E5158F94-CC52-4424-A495-14EF9272653F"
                        "EEE6D060-C5A0-400D-A2E0-0835013C5365"
                        "76FCF165-54CB-4213-BC55-BD60B9C6A3EC"
@@ -422,42 +811,222 @@
                        "835FAAC6-5431-436C-998B-241F7226B99B"
                        "A83F68A9-F751-4BB4-AE16-56812878C16A"
                        "47D203ED-EB9B-4653-A07B-A897800CEB76"
-                       "8646378E-91F5-4771-AC7C-43FC49A93576"
-                       "B297E4B8-A8FF-49CE-B9C4-6D4911724D43"
-                       "BF4CA9F1-51CD-48D4-8357-852234F59046"
-                       "931DD73E-615E-476E-9B0D-8341023AE730"
-                       "35222962-C50D-4D58-A6AE-71E7AD980BE4"
-                       "59E811FF-E722-46BE-8938-04713612FABB"
-                       "FE882491-07FA-4497-B675-97FCF2FC3BF5"
-                       "F4EEB2B6-07D8-402F-8FC3-79B7308D2576"
-                       "569C9822-8C41-4907-94C7-1A8A0031B66D"
-                       "835FAAC6-5431-436C-998B-241F7226B99B"
                        "47D203ED-EB9B-4653-A07B-A897800CEB76"
-                       "DAA69A0C-FC1E-4509-9931-DFFB38B4D6AE"
+                       "931DD73E-615E-476E-9B0D-8341023AE730"
                        "2DDB6FE0-6111-4C40-A149-8E67E76F8272"
-                       "FBFC214F-B019-4967-95D2-028F374A3221"
-                       "97054C4D-E4A3-45B1-9C00-B82DBCB30CAD"
+                       "DAA69A0C-FC1E-4509-9931-DFFB38B4D6AE"
+                       "BF4CA9F1-51CD-48D4-8357-852234F59046"
+                       "8646378E-91F5-4771-AC7C-43FC49A93576"
+                       "E07FF68B-C87D-4332-8477-D026929FDADA"
+                       "569C9822-8C41-4907-94C7-1A8A0031B66D"
+                       "35222962-C50D-4D58-A6AE-71E7AD980BE4"
+                       "835FAAC6-5431-436C-998B-241F7226B99B"
+                       "B297E4B8-A8FF-49CE-B9C4-6D4911724D43"
+                       "E0E058FC-0DC3-4872-A1C2-0B1A322A0CF5"
+                       "B3875596-723C-41EE-9E6F-F84930C3B568"
                        "76FCF165-54CB-4213-BC55-BD60B9C6A3EC"
-                       "0275EF39-9357-408F-AF20-79E415CA9504"
-                       "6519CB08-8326-4B77-A251-54722FFBFC1F"
-                       "7F79BC8D-8A4F-4570-973B-05DFEC25747F"
-                       "9FB64639-F776-499B-BA6F-BB45F86F80FD"
                        "EE5F19BA-6C02-11D9-92BA-0011242E4184"
-                       "5289EE40-86B8-11D9-A8D4-000A95E13C98"
-                       "63F3B3B7-CBE2-426B-B551-657733F3868B"
                        "EE5F1FB2-6C02-11D9-92BA-0011242E4184"
+                       "9FB64639-F776-499B-BA6F-BB45F86F80FD"
+                       "7F79BC8D-8A4F-4570-973B-05DFEC25747F"
+                       "0275EF39-9357-408F-AF20-79E415CA9504"
+                       "5289EE40-86B8-11D9-A8D4-000A95E13C98"
                        "1AD6A138-2E89-4D6A-AB3F-416BF9CE968D"
-                       "825B721D-4367-4DF7-98C0-F005695DF9E3"
-                       "2C07D4E7-D74F-4AE4-82BE-B0BA82247AFA"
-                       "58FDEA60-10AF-4C49-AA09-29B77030DB25"
+                       "6519CB08-8326-4B77-A251-54722FFBFC1F"
+                       "97054C4D-E4A3-45B1-9C00-B82DBCB30CAD"
                        "E5158F94-CC52-4424-A495-14EF9272653F"
-                       "BFB65D1C-62F1-485D-8A67-3E5A2E55107C"
-                       "EC73D5CC-5F05-46B9-A6F4-82037E4A38C9"
-                       "121B334B-2AA6-4E9A-A8B8-BF93B627982B"
                        "9460392B-C036-4A76-A5AE-1191F10E4B1B"
-                       "7E084412-80E6-4B70-8092-C03D1ECE4CD2"
+                       "2C07D4E7-D74F-4AE4-82BE-B0BA82247AFA"
+                       "121B334B-2AA6-4E9A-A8B8-BF93B627982B"
+                       "EC73D5CC-5F05-46B9-A6F4-82037E4A38C9"
+                       "825B721D-4367-4DF7-98C0-F005695DF9E3"
+                       "58FDEA60-10AF-4C49-AA09-29B77030DB25"
+                       "BFB65D1C-62F1-485D-8A67-3E5A2E55107C"
                        "C649F945-DAB8-4DA2-B73C-2EFF9D7D34F3"
                        "A83F68A9-F751-4BB4-AE16-56812878C16A"
-                       "33969819-62C5-4E03-B824-C2337205F364"
-                       "F6BF907E-FDF7-4D9B-9E57-BE159561349D"
-                       "5AE7CFB4-418E-4E00-AD76-06DB755EE876"))
+                       "5AE7CFB4-418E-4E00-AD76-06DB755EE876"
+                       "F6BF907E-FDF7-4D9B-9E57-BE159561349D"))
+
+;; Unknown substitutions
+;; 
+;; Substitutions for: content
+;; 
+;; # as in Snippets/open yield block ({).yasnippet
+;; `yas-selected-text`                                                                        =yyas> (yas-unknown)
+;; 
+;; # as in Snippets/RDoc documentation block.yasnippet
+;; `(concat (if (eq 0 current-line) "\n" "") "\n")`                                           =yyas> (yas-unknown)
+;; 
+;; # as in Snippets/flunk(..) (fl).yasnippet
+;; `yas-ruby-snippet-open-paren`                                                              =yyas> (yas-unknown)
+;; 
+;; # as in Snippets/flunk(..) (fl).yasnippet
+;; `yas-ruby-snippet-close-paren`                                                             =yyas> (yas-unknown)
+;; 
+;; # as in Snippets/class __ TestUnitTestCase with test_helper.yasnippet
+;; (yas-multi-line-unknown 228CAB3A-E221-4727-B430-31E94F76C9D3)                              =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Completion Ruby (rcodetools).yasnippet
+;; 47D203ED-EB9B-4653-A07B-A897800CEB76                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Enclose in (RDoc comments).yasnippet
+;; 931DD73E-615E-476E-9B0D-8341023AE730                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Enclose in + (RDoc comments).yasnippet
+;; 2DDB6FE0-6111-4C40-A149-8E67E76F8272                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Enclose in _ (RDoc comments).yasnippet
+;; DAA69A0C-FC1E-4509-9931-DFFB38B4D6AE                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Omit from RDoc.yasnippet
+;; BF4CA9F1-51CD-48D4-8357-852234F59046                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Open Require.yasnippet
+;; 8646378E-91F5-4771-AC7C-43FC49A93576                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/RakeSake task using file path.yasnippet
+;; E07FF68B-C87D-4332-8477-D026929FDADA                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Run Rake Task.yasnippet
+;; 569C9822-8C41-4907-94C7-1A8A0031B66D                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Run.yasnippet
+;; 35222962-C50D-4D58-A6AE-71E7AD980BE4                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Toggle ERb Tags.yasnippet
+;; 835FAAC6-5431-436C-998B-241F7226B99B                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Toggle StringSymbol.yasnippet
+;; B297E4B8-A8FF-49CE-B9C4-6D4911724D43                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Validate and Save.yasnippet
+;; E0E058FC-0DC3-4872-A1C2-0B1A322A0CF5                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/gsub - remove whitespace from front of line.yasnippet
+;; B3875596-723C-41EE-9E6F-F84930C3B568                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Check ERB Syntax.yasnippet
+;; 76FCF165-54CB-4213-BC55-BD60B9C6A3EC                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Check Ruby Syntax.yasnippet
+;; EE5F19BA-6C02-11D9-92BA-0011242E4184                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Execute Line with Ruby.yasnippet
+;; EE5F1FB2-6C02-11D9-92BA-0011242E4184                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Insert Missing Requires.yasnippet
+;; 9FB64639-F776-499B-BA6F-BB45F86F80FD                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Make Destructive Call.yasnippet
+;; 7F79BC8D-8A4F-4570-973B-05DFEC25747F                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/New Method.yasnippet
+;; 0275EF39-9357-408F-AF20-79E415CA9504                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Run focused unit test.yasnippet
+;; 5289EE40-86B8-11D9-A8D4-000A95E13C98                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Show RDoc for this file.yasnippet
+;; 1AD6A138-2E89-4D6A-AB3F-416BF9CE968D                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Toggle Quote Style.yasnippet
+;; 6519CB08-8326-4B77-A251-54722FFBFC1F                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Commands/word_wrap() (worw).yasnippet
+;; 97054C4D-E4A3-45B1-9C00-B82DBCB30CAD                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Macros/Overwrite } in #{ .. }.yasnippet
+;; E5158F94-CC52-4424-A495-14EF9272653F                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Macros/YAML.dump(.., file) (Yd).yasnippet
+;; 9460392B-C036-4A76-A5AE-1191F10E4B1B                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Macros/YAML.load(file) (Yl).yasnippet
+;; 2C07D4E7-D74F-4AE4-82BE-B0BA82247AFA                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Macros/class .. DelegateClass .. initialize .. end (class).yasnippet
+;; 121B334B-2AA6-4E9A-A8B8-BF93B627982B                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Macros/each_cons(..) { group .. } (eac).yasnippet
+;; EC73D5CC-5F05-46B9-A6F4-82037E4A38C9                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Macros/each_slice(..) { group .. } (eas).yasnippet
+;; 825B721D-4367-4DF7-98C0-F005695DF9E3                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Macros/extend Forwardable (Forw).yasnippet
+;; 58FDEA60-10AF-4C49-AA09-29B77030DB25                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Macros/map_with_index { e, i .. } (mapwi).yasnippet
+;; BFB65D1C-62F1-485D-8A67-3E5A2E55107C                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Snippets/class .. TestUnitTestCase .. end (tc).yasnippet
+;; (yas-multi-line-unknown 31D1F145-33AB-4441-BA11-4D1C46928C4C)                              =yyas> (yas-unknown)
+;; 
+;; # as in Snippets/module .. end.yasnippet
+;; `(yas-ruby-infer-class-name)`                                                              =yyas> (yas-unknown)
+;; 
+;; # as in Macros/Benchmark_bmbm(__) do __ end.yasnippet
+;; C649F945-DAB8-4DA2-B73C-2EFF9D7D34F3                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Macros/Delete forwardbackward.yasnippet
+;; A83F68A9-F751-4BB4-AE16-56812878C16A                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Macros/PStore_new( __ ).yasnippet
+;; 5AE7CFB4-418E-4E00-AD76-06DB755EE876                                                       =yyas> (yas-unknown)
+;; 
+;; # as in Macros/xmlread(__).yasnippet
+;; F6BF907E-FDF7-4D9B-9E57-BE159561349D                                                       =yyas> (yas-unknown)
+;; 
+;; 
+
+;; Substitutions for: condition
+;; 
+;; # as in Macros/xmlread(__).yasnippet
+;;                                                                                            =yyas> (yas-unknown)
+;; 
+;; # as in Snippets/Insert ERb's __ or = __.yasnippet
+;; text.html, source.yaml                                                                     =yyas> (yas-unknown)
+;; 
+;; 
+
+;; Substitutions for: binding
+;; 
+;; # as in Commands/Completion Ruby (rcodetools).yasnippet
+;; ~                                                                                         =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Enclose in + (RDoc comments).yasnippet
+;; @k                                                                                         =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Omit from RDoc.yasnippet
+;; ^@O                                                                                        =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Open Require.yasnippet
+;; @D                                                                                         =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Validate and Save.yasnippet
+;; @s                                                                                         =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Check Ruby Syntax.yasnippet
+;; ^V                                                                                         =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Execute Line with Ruby.yasnippet
+;; ^E                                                                                         =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Make Destructive Call.yasnippet
+;; ^!                                                                                         =yyas> (yas-unknown)
+;; 
+;; # as in Commands/Toggle Quote Style.yasnippet
+;; ^"                                                                                         =yyas> (yas-unknown)
+;; 
+;; # as in Macros/Overwrite } in #{ .. }.yasnippet
+;; }                                                                                          =yyas> (yas-unknown)
+;; 
+;; # as in Snippets/hash pointer.yasnippet
+;; ^l                                                                                         =yyas> (yas-unknown)
+;; 
+;; # as in Macros/Delete forwardbackward.yasnippet
+;;                                                                                           =yyas> (yas-unknown)
+;; 
+;; 
+
+;; .yas-setup.el for ruby-mode ends here

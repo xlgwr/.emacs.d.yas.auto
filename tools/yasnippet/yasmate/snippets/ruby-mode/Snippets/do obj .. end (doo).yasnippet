@@ -5,6 +5,6 @@
 # name: Insert do |variable| … end
 ## condition: "
 # --
-do ${1:|${2:item}|}
+do${1:$(and (yas-text) " |")}${1:variable}${1:$(and (yas-text) "|")}
 	$0
 end

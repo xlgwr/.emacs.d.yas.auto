@@ -3,7 +3,7 @@
 # key: tct
 # contributor: Translated from textmate snippet by PROGRAM_NAME
 # name: Table column text
-## condition: "meta.rails.migration.create_table, meta.rails.migration.change_table
+# condition: (or (yas-rails-in-create-table-p) (yas-rails-in-change-table-p))
 # --
 t.text :${1:title}
 $0

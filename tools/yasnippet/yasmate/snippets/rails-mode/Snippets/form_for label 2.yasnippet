@@ -5,4 +5,4 @@
 # name: form_for label
 ## condition: "text.html.erb.rails, text.haml
 # --
-<%= f.label :${1:attribute}${2:, "${3:${1/[[:alpha:]]+|(_)/(?1: :\u$0)/g}}"} %>
+<%= f.label :${1:attribute}${2:, "${3:${1:$(capitalize (replace-regexp-in-string "_" " " yas-text))}}"} %>
