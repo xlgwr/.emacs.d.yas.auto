@@ -92,6 +92,16 @@
 (add-to-list 'auto-mode-alist  '("\\.yml$'" . yaml-mode))
 (add-to-list 'auto-mode-alist  '("\\.haml$'" . haml-mode))
 (add-to-list 'auto-mode-alist  '("\\.slim$'" . slim-mode))
+;; add fsarp-model
+(add-to-list 'load-path "~/.emacs.d/tools/fsharp-mode/")
+(autoload 'fsharp-mode "fsharp-mode"     "Major mode for editing F# code." t)
+(add-to-list 'auto-mode-alist '("\\.fs[iylx]?$" . fsharp-mode))
+;;linux
+(setq inferior-fsharp-program "/usr/bin/fsharpi --readline-")
+(setq fsharp-compiler "/usr/bin/fsharpc")
+;;windows
+;;(setq inferior-fsharp-program "\"c:\\Path\To\Fsi.exe\"")
+;;(setq fsharp-compiler "\"c:\\Path\To\Fsc.exe\"")
 
 (ido-mode t)
 (yas-global-mode 1)
