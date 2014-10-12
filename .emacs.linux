@@ -75,7 +75,8 @@
 (add-to-list 'load-path
 	     "~/.emacs.d/tools/other-mode/")
 (require 'php-mode)
-
+;;add golang
+(require 'go-mode-load)
 ;;; auto-load progress-mode code
 (autoload 'progress-mode "progress-mode")
 (setq auto-mode-alist (cons '("\\.p\\'" . progress-mode) auto-mode-alist))
