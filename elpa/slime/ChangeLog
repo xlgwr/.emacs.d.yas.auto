@@ -1,3 +1,359 @@
+2014-10-10  Luís Oliveira  <loliveira@common-lisp.net>
+
+	* swank-loader.lisp (init): Delete swank/* packages.
+	(dump-image): use SWANK/BACKEND.
+
+2014-10-09  Luís Oliveira  <loliveira@common-lisp.net>
+
+	* swank/backend.lisp (swank/backend): Add SWANK-BACKEND nickname
+	to ease the migration of external projects.
+
+2014-10-02  Helmut Eller  <heller@common-lisp.net>
+
+	Can't use Gray streams for ABCL
+
+	* swank/abcl.lisp (make-output-stream, make-input-stream): Use
+	ext:make-slime-output-stream because ABCL's Gray streams don't
+	work well enough.
+	* swank-loader.lisp (*sysdep-files*, *swank-files*): Don't load
+	swank/gray.lisp for ABCL.
+
+2014-10-01  Luís Oliveira  <luismbo@gmail.com>
+
+	* swank-loader.lisp (src-files): inherit src-dir's defaults,
+	otherwise things like the Windows drive won't be picked up.
+
+2014-09-30  Robert P. Goldman  <rpgoldman@gmail.com>
+
+	* doc/slime.texi (Other configurables): fixed anchor and
+	cross-reference since makeinfo doesn't colons in reference
+	targets.
+
+2014-09-30  Helmut Eller  <heller@common-lisp.net>
+
+	* swank/backend.lisp (codepoint-length): Deleted. No longer used.
+
+2014-09-30  Helmut Eller  <heller@common-lisp.net>
+
+	Fix some compiler warnings.
+
+	* slime-tests.el (slime-tests--undefine-all): Use cl-remprop
+	instead of remprop.
+	(slime-test--compile-defun): Fix typo.
+
+2014-09-30  Helmut Eller  <heller@common-lisp.net>
+
+	Fix github issue #193.  Respect compilation-ask-about-save.
+
+	* slime.el (slime--save-some-buffers): New helper.
+	(slime-compile-file): Use it.
+
+	* slime.el (slime-echo-arglist): Renamed from slime-show-arglist
+	as there still users of it.
+
+2014-09-30  Helmut Eller  <heller@common-lisp.net>
+
+	* swank/cmucl.lisp: Require at least version 20c and remove some
+	code that was there only for compatibility with older versions.
+
+2014-09-30  Helmut Eller  <heller@common-lisp.net>
+
+	* swank/cmucl.lisp, swank/sbcl.lisp: Whitespace cleanup.
+
+2014-09-30  Helmut Eller  <heller@common-lisp.net>
+
+	Fix github issue #192
+
+	sb-sys:enable-interrupt does not exist on SBCL +win32
+	so disable it on Windows.
+
+	* swank/sbcl.lisp (add-sigio-handler, remove-sigio-handlers):
+	Disable it on Windows along with install-sigint-handler.
+
+2014-09-29  Helmut Eller  <heller@common-lisp.net>
+
+	More deadlock workaround workarounds.
+
+	* swank/sbcl.lisp (stream-force-output): Use swank/gray.
+
+2014-09-26  Helmut Eller  <heller@common-lisp.net>
+
+	* slime-tests.el (compile-defun-with-backquote): Fails for
+	SBCL also on Travis now.
+	(compile-file): Works for LispWorks.
+
+2014-09-26  Helmut Eller  <heller@common-lisp.net>
+
+	Fix github issue#190
+
+	* swank/clisp.lisp: Use swank/clisp as package qualifier where
+	needed.
+
+2014-09-13  Helmut Eller  <heller@common-lisp.net>
+
+	Move backend files to new swank/ directory.
+
+	In the swank/ directory drop the swank- prefix from filenames.
+
+	To mirror the directory structure in package names use swank/
+	instead of swank- as prefix.  (This will presumably break a lot of
+	code as many people seem to assume that a swank-backend package
+	exists.)
+
+	* swank-loader.lisp (src-files): Treat lists like (swank foo) as
+	the filename swank/foo.lisp.
+
+2014-09-13  Helmut Eller  <heller@common-lisp.net>
+
+ 	Add support for MKCL
+
+	* swank-mkcl.lisp: New file. Mostly the one from MLCL's contrib/
+	directory.
+	* swank-loader.lisp (*sysdep-files*): Add swank-mkcl and move
+	swank-gray to the shared *swank-files*.
+
+2014-09-13  Helmut Eller  <heller@common-lisp.net>
+
+	Remove no longer needed indirections.
+
+	* slime.el (slime-echo-arglist-function, slime-echo-arglist):
+	Deleted.  slime-autodoc was the only client and the indirection
+	makes the code unnecessary complicated.
+	(slime-space): Call slime-show-arglist directly.
+
+2014-09-12  Douglas Katzman <dougk@google.com>
+
+	* swank-sbcl.lisp (macroexpand-all): sb-cltl2:macroexpand-all is
+	preferable to using sb-walker directly
+
+2014-09-10  Helmut Eller  <heller@common-lisp.net>
+
+	Fix gray stream issue for SBCL
+
+	The pretty printer seems to call the non-standard
+	stream-line-length generic function.
+
+	* swank-sbcl.lisp (sb-gray:stream-line-length): Implement default.
+
+2014-09-10  Helmut Eller  <heller@common-lisp.net>
+
+	* swank-sbcl.lisp (frame-call): Muffle unreachable code warnings.
+
+2014-09-09  Helmut Eller  <heller@common-lisp.net>
+
+	Rename destructure-case -> slime-dcase.
+
+	That keeps the namespace clean, even though it's unlikely that
+	anybody else would have used that name.
+	Do the analog destructure-case -> dcase renaming on the CL side
+	to keep the names similar.
+
+	* slime.el (slime-dcase): Renamed from destructure-case. Update
+	users accordingly.
+	* swank.lisp (dcase): Renamed from destructure-case. Update users
+	accordingly.
+
+2014-09-09  Helmut Eller  <heller@common-lisp.net>
+
+	* swank-backend.lisp (gray-package-name): Fix docstring.
+
+2014-09-09  Helmut Eller  <heller@common-lisp.net>
+
+	Make the ugly deadlock workaround even more ugly.
+
+	* swank-sbcl.lisp (stream-force-output): Create swank-gray package
+	early enough.
+
+2014-09-09  Helmut Eller  <heller@common-lisp.net>
+
+	Remove non-used optional gray stream methods.
+
+	* swank-gray.lisp (stream-read-char-will-hang-p)
+	(stream-line-length): Deleted.
+
+2014-09-08  Helmut Eller  <heller@common-lisp.net>
+
+	Use a separate package for swank-gray.lisp.
+	Use gray streams also for CMUCL, SCL, and ABCL.
+
+	* swank-backend.lisp (gray-package-name): New interface function.
+	(import-from): Deleted. No longer used.
+	(*gray-stream-symbols*): Moved to swank-gray.lisp.
+	* swank-abcl.lisp, swank-cmucl.lisp, swank-scl.lisp
+	(gray-package-name): Implemented and delete old implementations of
+	make-input-stream and make-output-stream.
+	* swank-allegro.lisp, swank-ccl.lisp, swank-clisp, swank-ecl.lisp,
+	swan-lispworks.lisp, swank-sbcl.lisp,  (gray-package-name):
+	Implemented.
+	* swank-gray.lisp: Make and use swank-gray package for this file.
+	* swank-loader.lisp (*sysdep-files*): Load swank-gray for CMUCL,
+	SCL, and ABCL.
+
+2014-09-07  Helmut Eller  <heller@common-lisp.net>
+
+	Replace cl-values with list because that's shorter.
+
+	* slime.el (slime-group-and-sort-notes,
+	(slime-insert-compilation-log)
+	(slime-goto-next-xref): Use list.
+
+2014-09-07  Helmut Eller  <heller@common-lisp.net>
+
+	* swank-cmucl.lisp, swank-scl.lisp (*source-snippet-size*):
+	Remove redundant definitions.
+
+2014-09-07  Helmut Eller  <heller@common-lisp.net>
+
+	* Makefile (compile-swank, run-swank): New targets.
+	(clean-fasls): Also remove ~/.slime/fasl/.
+
+2014-09-07  Helmut Eller  <heller@common-lisp.net>
+
+	Clear all tests out at the beginning.
+
+	* slime-tests.el (slime-tests--undefine-all): New function.
+
+2014-09-07  Helmut Eller  <heller@common-lisp.net>
+
+	Use one package per backend to make interfaces more explicit.
+
+	* swank-abcl.lisp, swank-allergo.lisp, swank-ccl.lisp,
+	swank-clisp.lisp, swank-ecl.lisp, swank-lispworks,
+	swank-sbcl.lisp, swank-scl.lisp, swank-source-file-cache.lisp,
+	swank-source-path-parser.lisp: Use packages.
+	* swank-backend.lisp: Export some more stuff.
+
+2014-09-07  Helmut Eller  <heller@common-lisp.net>
+
+	Get rid of when-let as it conflicts with a definition subr-x.el
+
+	* slime.el (when-let): Deleted. Update all uses accordingly.
+
+2014-09-02  Luís Oliveira  <loliveira@common-lisp.net>
+
+	* doc/slime.texi: use plain rather than typographical quotes in
+	code blocks so that examples from the PDF manual can be copy and
+	pasted directly.
+
+2014-09-02  Helmut Eller  <heller@common-lisp.net>
+
+	Factor out the backquote test.
+
+	* slime-tests.el (slime-test--compile-defun): New helper.
+	([test] compile-defun, compile-defun-with-reader-conditionals):
+	Use it.
+	([test] compile-defun-with-backquote): New.
+
+2014-09-02  Helmut Eller  <heller@common-lisp.net>
+
+	Allow partially visible lines when scrolling.
+	[github issue #186]
+
+	* slime.el (slime--adjust-window-start)
+	(slime--adjust-window-point): Relax the assertion to allow
+	partially vsible lines.
+
+2014-08-26  Helmut Eller  <heller@common-lisp.net>
+
+	SBCL's reader changed recently. Fix some issues caused by that.
+
+	* swank-source-path-parser.lisp (make-source-recording-readtable):
+	Wrap the sharp-dot "#." reader before wrapping the dispatch macro
+	"#" because with the new reader get-dispatch-macro-character
+	doesn't work if "#" is wrapped first.  Suggested by Paulo Madeira.
+	(skip-whitespace): New helper.
+	(read-source-form): Use it.  Skipping over whitespace is a slight
+	improvement and seems fairly conservative.
+	* slime-tests.el ([test] find-definition.2-2): New test.
+
+2014-08-18  Mark Evenson  <evenson.not.org@gmail.com>
+
+	* swank-abcl.lisp: Adjust MOP symbols to publically exported
+	version.
+
+   	* swank-abcl.lisp (frame-locals): Implement inspection of sldb
+ 	frame args.  Thanks to Theam Yong Chew.
+
+2014-08-01  Helmut Eller  <heller@common-lisp.net>
+
+	For CMUCL, make M-. work on condition classes.
+
+	* swank-cmucl.lisp (pcl-class-location): Renamed from
+	class-location.
+	(class-location): New.
+	(class-definitions): Search condition classes in infodb.
+
+2014-07-29  Helmut Eller  <heller@common-lisp.net>
+
+	* Makefile (clean-fasls): Recognize more file extensions.
+
+2014-07-29  Helmut Eller  <heller@common-lisp.net>
+
+	Avoid some compiler warnings.
+
+	* swank-backend.lisp (utf8-encode): Avoid unreachable code
+	warnings.
+	(%utf8-encode): New helper.
+	* swank-sbcl.lisp (sbcl-wrap): Add ignore declaration.
+	* swank.lisp (before-init): Don't call
+	warn-unimplemented-interfaces as it confuses first time users.
+	(thread-for-evaluation): Suppress unused var warnings.
+
+2014-07-28  Helmut Eller  <heller@common-lisp.net>
+
+	Fix bug involving stale window-end.
+
+	Call window-end with update=t.  That works better than calling
+	redisplay when we scroll because window-end may be wrong even
+	without scrolling.
+
+	* slime.el (slime--adjust-window-point): Call window-end with
+	update argument.
+	(slime--adjust-window-start): Remove explicit call to redisplay.
+	Stricter assertion: LAST should be visible as long as
+	REGION-HEIGHT <= WINDOW-HEIGHT not <.
+	* slime-tests.el (display-region): Actually check point ends up as
+	expected.  The old code was buggy and only checked for non-nil.
+
+2014-07-27  Helmut Eller  <heller@common-lisp.net>
+
+	Fix another off-by-one bug.
+
+	* slime.el (slime--adjust-window-start): Scroll one line more.
+	Also handle case when (= start end 1).
+	* slime-tests.el (display-region): Add test.
+
+2014-07-27  Helmut Eller  <heller@common-lisp.net>
+
+	Don't use cl-labels as it is miscompiled in some Emacs versions.
+
+	* slime.el (define-slime-contrib): Get rid of cl-labels.
+	(slime-contrib--enable-fun, slime-contrib--disable-fun): New
+	helpers.
+
+2014-07-27  Helmut Eller  <heller@common-lisp.net>
+
+	Update modeline more often.
+
+	The numbers in the modeline can be out of date when all RPCs
+	complete without user input; probably because modeline updating is
+	performed in some lazy way.
+
+	* slime.el (slime--recompute-modelines): Resurrected.
+	(slime-dispatch-event): Force modeline updates.
+	(slime-modeline-string): Deleted. The variable is no longer
+	needed.
+
+2014-07-27  Helmut Eller  <heller@common-lisp.net>
+
+	Fix display related bugs.
+
+	* slime.el (slime--adjust-window-start): Consider the END argument
+	exclusive but count trailing newlines normally.  Adjust the
+	assertion so that (1- END) is the last visible position.
+	* slime-tests.el (display-region):  Add tests for the situation
+	when (1- END) should be visible but not END.
+
 2014-06-17  Stas Boukarev  <stassats@gmail.com>
 
 	* swank-sbcl.lisp (emacs-inspect sb-kernel:code-component):
