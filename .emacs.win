@@ -74,9 +74,14 @@
 
 (add-to-list 'load-path
 	     "~/.emacs.d/tools/other-mode/")
+;;add php
 (require 'php-mode)
 ;;add golang
 (require 'go-mode-load)
+;;add erlang
+;;(setq load-path (cons  "C:/Program Files/erl<Ver>/lib/tools-<ToolsVer>/emacs" load-path))
+;;(setq erlang-root-dir "C:/Program Files/erl<Ver>")
+(require 'erlang-start)
 ;;; auto-load progress-mode code
 (autoload 'progress-mode "progress-mode")
 (setq auto-mode-alist (cons '("\\.p\\'" . progress-mode) auto-mode-alist))
