@@ -6,6 +6,10 @@
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 
+
+(add-to-list 'load-path "~/.emacs.d/lisp")
+(require 'auto-complete-config)
+
 ;;add yasnippet
 
 (add-to-list 'load-path
@@ -29,9 +33,6 @@
 	     "~/.emacs.d/tools/rinari")
 (require 'rinari)
 
-
-(add-to-list 'load-path "~/.emacs.d/")
-(require 'auto-complete-config)
 
 (ac-config-default)
 ;; add js json js.erb mode

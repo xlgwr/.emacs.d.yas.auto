@@ -2,6 +2,9 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/home/irobot/0base/0F#/" . "code/")
+ ("/home/irobot/0base/" . "0F#/")
+ ("/home/irobot/" . "0site/")
  ("/home/xlgwr/sites/pdf_renderer/test/" . "dummy/")
  ("/home/xlgwr/sites/pdf_renderer/" . "test/")
  ("/home/xlgwr/sites/pdf_renderer/test/dummy/lib/" . "assets/")
@@ -60,6 +63,14 @@
 
 ;; ----- ido-work-directory-list -----
 (
+ "/home/irobot/0site/demo/"
+ "/home/irobot/0base/0F#/code/"
+ "/home/irobot/0base/lisp/"
+ "/home/irobot/0base/0ruby/"
+ "/home/irobot/0site/"
+ "/home/irobot/0base/0C/"
+ "/home/irobot/"
+ "~/"
  "/home/xlgwr/sites/pdf_renderer/lib/"
  "/home/xlgwr/sites/pdf_renderer/test/"
  "/home/xlgwr/sites/pdf_renderer/test/dummy/test/integration/"
@@ -102,32 +113,46 @@
  "/home/xlgwr/work/blogsqlserver/config/"
  "/home/xlgwr/work/blog/test/fixtures/"
  "/home/xlgwr/work/blog/app/views/comments/"
- "/home/xlgwr/work/blog/app/controllers/"
- "/home/xlgwr/work/blog/app/views/articles/"
- "/home/xlgwr/work/blog/app/views/sessions/"
- "/home/xlgwr/.emacs.d/tools/yasnippet/snippets/ruby-mode/collections/"
- "/home/xlgwr/work/blog/app/views/users/"
- "~/work/blog/app/views/articles/"
- "/home/xlgwr/.emacs.d/"
- "/home/xlgwr/work/blog/db/migrate/"
 )
 
 ;; ----- ido-work-file-list -----
 (
+ "Gemfile"
+ "test.fs"
+ "hello.el"
+ "hello.fs"
+ "hello.rb"
+ "hello.p"
+ "hello.c"
+ ".emacs"
  "pdf_renderer.rb"
  "test_helper.rb"
- "pdf_delivery_test.rb"
- "index.pdf.erb"
- "home_controller.rb"
- "Gemfile"
- "Rakefile"
- "renderers.rb"
- "ruby"
- "error.log"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/home/irobot/0site/demo/" (21575 8938 100522 291000) "config/" "../" "db/" "config.ru" "README.rdoc" "Rakefile" "Gemfile" "log/" "app/" "./" "public/" "tmp/" "vendor/" ".gitignore" "test/" "bin/" "lib/")
+
+ ("/home/irobot/0base/0F#/code/" (21575 8862 721469 934000) ".#hello.fs" "../" "hello.fs" "#hello.fs#" ".#test.fs" "./" "hello.fs~" "test.fs")
+
+ ("~/" (21575 8271 616901 125000) ".slime/" ".gnome2/" "node_modules/" ".npmrc" ".bowerrc.bak~" ".gitconfig" ".emacs" ".npm/" "bower.json" ".zlogin" "../" "0site/" "npm-install-26646.sh" "Public/" ".emacs.d/" ".bowerrc" ".#.bashrc" ".bash_logout" ".gnome2_private/" ".bash_profile" ".dmrc" "emacs-24.4/" ".dbus/" ".ido.last~" ".rvm/" ".profile" "index.html.1" "examples.desktop" ".config/" "app/" "Templates/" "./" "0base/" ".slime-history.eld" ".gconf/" "emacs-24.4.tar.gz" ".bowerrc~" "tmp/" "Music/" ".ido.last" "Pictures/" ".npmrc~" ".emacs~" "Downloads/" ".gvfs/" "#.bashrc#" ".Xauthority" "test/" "Documents/" ".gem/" ".compiz/" ".xinputrc" ".fbtermrc" "Desktop/" ".bashrc" ".bowerrc.bak" ".ICEauthority" ".gemrc" ".bashrc~" ".local/" ".xsession-errors.old" ".xsession-errors" ".bash_history" ".mozilla/" "Videos/" ".zshrc" "index.html" ".cache/")
+
+ ("/home/irobot/0base/0C/" (21575 8697 839542 780000) "../" "hello.c" "./" "hello.c~")
+
+ ("/home/irobot/0base/0ruby/" (21575 8697 207550 726000) "../" "hello.rb~" "hello.rb" "./")
+
+ ("/home/irobot/0base/" (21575 8527 485684 418000) "../" "0C/" "0ruby/" "0F#/" "./" "angularjs/")
+
+ ("/home/irobot/" (21575 8271 616901 125000) ".slime/" ".gnome2/" "node_modules/" ".npmrc" ".bowerrc.bak~" ".gitconfig" ".emacs" ".npm/" "bower.json" ".zlogin" "../" "0site/" "npm-install-26646.sh" "Public/" ".emacs.d/" ".bowerrc" ".#.bashrc" ".bash_logout" ".gnome2_private/" ".bash_profile" ".dmrc" "emacs-24.4/" ".dbus/" ".ido.last~" ".rvm/" ".profile" "index.html.1" "examples.desktop" ".config/" "app/" "Templates/" "./" "0base/" ".slime-history.eld" ".gconf/" "emacs-24.4.tar.gz" ".bowerrc~" "tmp/" "Music/" ".ido.last" "Pictures/" ".npmrc~" ".emacs~" "Downloads/" ".gvfs/" "#.bashrc#" ".Xauthority" "test/" "Documents/" ".gem/" ".compiz/" ".xinputrc" ".fbtermrc" "Desktop/" ".bashrc" ".bowerrc.bak" ".ICEauthority" ".gemrc" ".bashrc~" ".local/" ".xsession-errors.old" ".xsession-errors" ".bash_history" ".mozilla/" "Videos/" ".zshrc" "index.html" ".cache/")
+
+ ("/home/irobot/0site/" (21575 7856 922114 544000) "../" "./")
+
+ ("/home/irobot/0base/0F#/" (21563 25899 240246 923000) "../" "./" "code/")
+
+ ("/home/irobot/.emacs.d/" (21575 7281 457349 116000) "Makefile" "COPYING.GPLv3" "ido.last" "../" "COPYING.FDL" "eshell/" "tools/" "elpa/" "Cask" "auto-save-list/" "ido.last~" "./" "etc/" "doc/" "README.md" ".emacs.win" "cmd/" ".gitignore" "tests/" "TODO.md" ".emacs.linux" "lisp/" ".git/" "lib/")
+
+ ("/usr/local/bin/" (21575 6090 88326 653000) "etags" "../" "emacs-24.4" "grep-changelog" "node" "ebrowse" "ctags" "./" "grunt" "bower" "npm" "emacsclient" "emacs")
+
  ("/home/xlgwr/" (21281 43803 383388 765000) ".gem/" ".lesshst" ".npm/" ".bower/" ".mysql_history" ".bash_history" ".bash_profile" ".odbc.ini" ".viminfo" ".fbtermrc" ".fonts.conf" ".gitconfig" ".emacs.d/" ".emacs.d.bak/" ".config/" "sources.list" "tmp/" ".fbtermrc~" ".psql_history" ".bundler/" "sources.list.163" ".sqsh_history" ".zprofile" "Users guide Apache.html" ".rvm/" ".bash_profile~" ".zshrc" ".emacs~" ".sqsh_readline" ".cache/" ".vim/" "public/" "share/" ".node-gyp/" ".local/" ".w3m/" "learn/" "../" "163.txt" ".fonts.conf~" "./" ".bashrc~" ".gemrc" ".sqlite_history" ".emacs.d.new/" "softs/" ".bash_logout" "work/" "lisps/" ".smex-items" ".rnd" "sites/" ".subversion/" ".slime-history.eld" ".ssh/" ".profile~" ".irb-history" ".profile" ".bashrc" ".emacs.bak" ".passenger/" ".emacs")
 
  ("/home/xlgwr/sites/pdf_renderer/lib/" (21274 46391 672752 539000) "pdf_renderer/" "tasks/" "pdf_renderer.rb~" "../" "./" "pdf_renderer.rb")
@@ -305,28 +330,6 @@
  ("/home/xlgwr/work/models/" (21201 21610 504585 98000) "db/" ".gitignore" "vendor/" "config.ru" "tmp/" "app/" "lib/" "Gemfile~" "Rakefile" ".bundle/" "public/" "config/" "Gemfile.lock" "../" "./" "bin/" "test/" "README.rdoc" "log/" "Gemfile")
 
  ("/home/xlgwr/work/blogsqlserver/" (21198 29230 179135 387000) "db/" ".gitignore" "vendor/" "config.ru" "tmp/" "app/" "lib/" "Gemfile~" "Rakefile" ".bundle/" "public/" "config/" "Gemfile.lock" "../" "./" "bin/" "test/" "README.rdoc" "log/" "Gemfile")
-
- ("/home/xlgwr/work/blog/test/" (21182 19788 73384 353000) "integration/" "models/" "controllers/" "mailers/" "../" "./" "test_helper.rb" "helpers/" "fixtures/")
-
- ("/home/xlgwr/work/blog/test/models/" (21182 60996 789451 665000) "user_test.rb" "comment_test.rb" "article_test.rb" ".keep" "category_test.rb" "../" "./" "profile_test.rb")
-
- ("~/work/blog/app/views/articles/" (21190 56423 520194 929000) "new.html.erb" "index.json.jbuilder" "edit.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "_article.html.erb" "show.html.erb~" "../" "_form.html.erb" "./" "_form.html.erb~" "_article.html.erb~" "index.html.erb~")
-
- ("/home/xlgwr/work/blog/app/views/articles/" (21190 56423 520194 929000) "new.html.erb" "index.json.jbuilder" "edit.html.erb" "index.html.erb" "show.json.jbuilder" "show.html.erb" "_article.html.erb" "show.html.erb~" "../" "_form.html.erb" "./" "_form.html.erb~" "_article.html.erb~" "index.html.erb~")
-
- ("/home/xlgwr/work/blog/app/views/users/" (21189 33143 185527 247000) "new.html.erb" "../" "_form.html.erb" "./" "_form.html.erb~")
-
- ("/home/xlgwr/work/blog/app/views/sessions/" (21185 38000 186419 24000) "new.html.erb" "new.html.erb~" "../" "./")
-
- ("/home/xlgwr/work/blog/app/views/" (21185 36998 227015 359000) "sessions/" "articles/" "users/" "../" "./" "layouts/" "comments/")
-
- ("/home/xlgwr/.emacs.d/tools/yasnippet/extras/imported/rails-mode/Snippets/" (21099 56941 930570 641000) "form_for label.yasnippet" "xhr post.yasnippet" "render (action)... (ra).yasnippet" "logger_debug.yasnippet" "xhr get.yasnippet" "validates_exclusion_of (ve).yasnippet" "form_for checkbox.yasnippet" "mattr_accessor.yasnippet" "render (nothing) (rn).yasnippet" "3C= Fixtures_identify(3Asymbol) 3E.yasnippet" "cattr_accessor.yasnippet" "validates_uniqueness_of if (vuif).yasnippet" "lia.yasnippet" "form_for check_box.yasnippet" "redirect_to (nested path).yasnippet" "render (text,status) (rts).yasnippet" "gem git.yasnippet" "validates_numericality_of.yasnippet" "has_many (hm).yasnippet" "render (layout) (rl).yasnippet" "after_save.yasnippet" "Create functional test class.yasnippet" "render (partial,object) (rpo).yasnippet" "form_for submit.yasnippet" "scope with extension.yasnippet" "t_references (tcr).yasnippet" "page_hide (2Aids).yasnippet" "respond_to.yasnippet" "map(&3Asym_proc).yasnippet" "validates_acceptance_of if.yasnippet" "link_to (nested path).yasnippet" "f_fields_for (nff).yasnippet" "find(id).yasnippet" "format (respond_with).yasnippet" "page_replace (id, partial).yasnippet" "validates_format_of.yasnippet" "stylesheet_link_tag.yasnippet" "rails params.yasnippet" "Create string column.yasnippet" "validates_presence_of (vp).yasnippet" "Migration Create Column (mcc).yasnippet" "after_destroy.yasnippet" "scope.yasnippet" "page_replace_html (id, partial).yasnippet" "render (partial,collection) (rpc).yasnippet" "content_for.yasnippet" "layout.yasnippet" "Create decimal column.yasnippet" "scoped_by.yasnippet" "form_for submit 2.yasnippet" "link_to (path).yasnippet" "logger_fatal.yasnippet" "validates_length_of (vl).yasnippet" "link_to (nested path plural).yasnippet" "form_for radio_box.yasnippet" "find_each.yasnippet" "rec.yasnippet" "before_create.yasnippet" "Create controller class.yasnippet" "def get request.yasnippet" "form_for text_field 2.yasnippet" "before_destroy.yasnippet" "assert_no_difference.yasnippet" "form_for password_field 2.yasnippet" "Create boolean column.yasnippet" "submit_tag.yasnippet" "recai.yasnippet" "validates_confirmation_of if (vcif).yasnippet" "Migration Create Column Continue (mccc).yasnippet" "validates_presence_of if (vpif) 2.yasnippet" "def create - resource.yasnippet" "reai.yasnippet" "Create float column.yasnippet" "redirect_to (path).yasnippet" "validates.yasnippet" "link_to (path plural).yasnippet" "t_timestamps (tctss).yasnippet" "render (action,layout) (ral).yasnippet" "before_filter.yasnippet" "form_for with errors.yasnippet" "validates_inclusion_of if.yasnippet" "image_submit_tag.yasnippet" "redirect_to (nested path plural).yasnippet" "render (update).yasnippet" "redirect_to (path plural).yasnippet" "form_for hidden_field 2.yasnippet" "find(3Aall).yasnippet" "xhr put.yasnippet" "form_for file_field.yasnippet" "Create resources controller class.yasnippet" "render (inline,locals) (ril).yasnippet" "page_visual_effect (effect, id).yasnippet" "lica.yasnippet" "render (partial) (rp).yasnippet" "Migration Drop Create Table (mdct).yasnippet" "has_many (through).yasnippet" "assert_rjs.yasnippet" "t_integer (tci).yasnippet" "link_to_function.yasnippet" "t_binary (tcbi).yasnippet" "scope lambda.yasnippet" "render (nothing,status) (rns).yasnippet" "Create lock_version column.yasnippet" "assert_redirected_to (nested path plural).yasnippet" "link_to model.yasnippet" "render (text,layout) (rtl).yasnippet" "if (ERB).yasnippet" "validates_length_of if.yasnippet" "after_update.yasnippet" "form_for radio_box 2.yasnippet" "find(3Alast).yasnippet" "has_and_belongs_to_many (habtm).yasnippet" "Create text column.yasnippet" "page_insert_html (position, id, partial).yasnippet" "t_float (tcf).yasnippet" "RAILS_DEFAULT_LOGGER.debug (rdb).yasnippet" "before_save.yasnippet" "belongs_to (bt).yasnippet" "assert_redirected_to (path).yasnippet" "render (partial,status) (rps).yasnippet" "rea.yasnippet" "accepts_nested_attributes_for.yasnippet" "validates_associated (va).yasnippet" "def post request.yasnippet" "Create binary column.yasnippet" "render (file) (rf).yasnippet" "before_update.yasnippet" "page_toggle (2Aids).yasnippet" "t_change (tch).yasnippet" "logger_info.yasnippet" "end.yasnippet" "render (inline,type) (rit).yasnippet" "javascript_include_tag.yasnippet" "form_for hidden_field.yasnippet" "Create integer column.yasnippet" "rails session.yasnippet" "render (file,use_full_path) (rfu).yasnippet" "validates_numericality_of if.yasnippet" "reca.yasnippet" "has_one (ho).yasnippet" "render (text) (rt).yasnippet" "t_timestamp (tcts).yasnippet" "t_boolean (tcb).yasnippet" "map_resources.yasnippet" "Test Assert Response (are).yasnippet" "Table column(s) change.yasnippet" "match.yasnippet" "fields_for.yasnippet" "map_resource.yasnippet" "assert_redirected_to (path plural).yasnippet" "validates_uniqueness_of (vu).yasnippet" "after_validation.yasnippet" "Create references column.yasnippet" "logger_warn.yasnippet" "image_tag.yasnippet" "gem.yasnippet" "form_for file_field 2.yasnippet" "render (text,layout=3Etrue) (rtlt).yasnippet" "form_for label 2.yasnippet" "Test Assert Redirected To (art).yasnippet" "licai.yasnippet" "form_for text_field.yasnippet" "validates_confirmation_of (vc).yasnippet" "returning do 7Cvariable7C E280A6 end.yasnippet" "t_lock_version (tcl).yasnippet" "member routes.yasnippet" "t_text (tct).yasnippet" "form_for text_area 2.yasnippet" "find_in_batches.yasnippet" "map_catch_all.yasnippet" "test do__end.yasnippet" "render (inline) (ri).yasnippet" "Migration Remove and Add Column (mrac).yasnippet" "alias_attribute.yasnippet" "map_named_route.yasnippet" "assert(var = assigns(3Avar)).yasnippet" "Create timestamps columns.yasnippet" "setup do__end.yasnippet" "Table column(s) rename.yasnippet" "form_for.yasnippet" "rails flash.yasnippet" "validates_exclusion_of if (veif).yasnippet" "t_rename (tre).yasnippet" "for loop erb.yasnippet" "render (partial,locals) (rpl).yasnippet" "find(3Afirst).yasnippet" "t_string (tcs).yasnippet" "has_many dependent = destroy.yasnippet" "t_datetime (tcdt).yasnippet" "Create timestamp column.yasnippet" "assert_redirected_to (nested path).yasnippet" "respond_with.yasnippet" "Create datetime column.yasnippet" "validates_associated if (vaif).yasnippet" "verify (verify).yasnippet" "form_for password_field.yasnippet" "validates_inclusion_of.yasnippet" "default_scope.yasnippet" "after_create.yasnippet" "Create sweeper class.yasnippet" "form_for fields_for.yasnippet" "else (ERB).yasnippet" "180 rails form_tag.yasnippet" "before_validation.yasnippet" "validates_format_of if.yasnippet" "resources collection.yasnippet" "get.yasnippet" "form_for text_area.yasnippet" "get on = member.yasnippet" "caches_action.yasnippet" "lic.yasnippet" "redirect_to back.yasnippet" "validates_acceptance_of.yasnippet" "logger_error.yasnippet" "resources.yasnippet" "assert_difference.yasnippet" "map_with_options.yasnippet" "t_decimal (tcd).yasnippet" "verify - redirect (verify).yasnippet" "t_time (tcti).yasnippet" "xhr delete.yasnippet" "page_show (2Aids).yasnippet" "assert_select.yasnippet" "t_date (tcda).yasnippet" "Create time column.yasnippet" "liai.yasnippet" "Create date column.yasnippet" "../" "./")
-
- ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/ruby-mode/collections/" (21099 56941 954570 339000) "eawi" "collect" "eac" "eai" "reject" "deli" "all" "select" "eav" "classify" "inject" "ea" "det" "any" "../" "./" "zip")
-
- ("/home/xlgwr/.emacs.d/tools/yasnippet/snippets/ruby-mode/general/" (21099 56941 954570 339000) "req" "rb" "app" "case" "rreq" "../" "./" "=b" "y" "bm" "dee")
-
- ("/home/xlgwr/learn/ruby/" (21181 41561 535207 917000) "class.rb~" "../" "class.rb" "./" "string.rb" "string.rb~")
 )
 
 ;; ----- ido-unc-hosts-cache -----
