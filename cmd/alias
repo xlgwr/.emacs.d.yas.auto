@@ -1,9 +1,21 @@
+. ~/.rvm/scripts/rvm
 alias cls='clear'
 alias lm='more '
 alias updateget='sudo apt-get update && echo y | sudo apt-get upgrade && echo y | sudo apt-get dist-upgrade'
 alias updatefast='sudo apt-fast update && echo y | sudo apt-fast upgrade && echo y | sudo apt-fast dist-upgrade'
+alias npmc="npm --registry=https://registry.npm.taobao.org \
+--cache=$HOME/.npm/.cache/cnpm \
+--disturl=https://npm.taobao.org/dist \
+--userconfig=$HOME/.cnpmrc"
 # restore white color
+#==> 若想使用非根用户运行fbterm，需要把用户加入video组：
+#sudo gpasswd -a YOUR_USERNAME video
+#==> 若想非根用户可使用键盘快捷方式，需要：
+#sudo setcap 'cap_sys_tty_config+ep' /usr/bin/fbterm
+#或者：
+#sudo chmod u+s /usr/bin/fbterm
 fbterm && echo -ne "\e]P7ffffff" && clear
 # proxy for npm
 # npm config set proxy=http://192.168.56.1:5865
 # npm config set registry=http://registry.npm.taobao.org
+
