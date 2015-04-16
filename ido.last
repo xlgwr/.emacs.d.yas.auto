@@ -63,6 +63,7 @@
 
 ;; ----- ido-work-directory-list -----
 (
+ "d:/0ling.xie/0code/"
  "/home/irobot/0site/demo/"
  "/home/irobot/0base/0F#/code/"
  "/home/irobot/0base/lisp/"
@@ -112,11 +113,11 @@
  "/home/xlgwr/work/blogsqlserver/"
  "/home/xlgwr/work/blogsqlserver/config/"
  "/home/xlgwr/work/blog/test/fixtures/"
- "/home/xlgwr/work/blog/app/views/comments/"
 )
 
 ;; ----- ido-work-file-list -----
 (
+ "index.html"
  "Gemfile"
  "test.fs"
  "hello.el"
@@ -126,11 +127,20 @@
  "hello.c"
  ".emacs"
  "pdf_renderer.rb"
- "test_helper.rb"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("d:/0ling.xie/" (21796 55086 0 0) "0soft/" "0report/" "0QAD/" "0mailObject/" "../" "./")
+
+ ("d:/0ling.xie/0soft/" (21796 56462 0 0) "YoudaoDictFull6.3/" "ruby-2.2.1-x64-mingw32.7z" "ruby-2.1.5-x64-mingw32.7z" "ruby-2.1.5-x64-mingw32/" "ruby/" "Entity Framework 6 Recipes 2nd Edition.pdf.baiduyun.downloading.cfg" "emacs/" "0zip/" "../" "./")
+
+ ("d:/0ling.xie/0soft/emacs/" (21796 56101 0 0) "var/" "share/" "libexec/" "bin/" "../" "./")
+
+ ("c:/Users/xielg/" (21796 56943 0 0) "Videos/" "Templates/" "Start Menu/" "SendTo/" "Searches/" "Saved Games/" "Recent/" "PrintHood/" "Pictures/" "ntuser.pol" "ntuser.ini" "NTUSER.DAT{016888bd-6c6f-11de-8d1d-001e0bcde3ec}.TMContainer00000000000000000002.regtrans-ms" "NTUSER.DAT{016888bd-6c6f-11de-8d1d-001e0bcde3ec}.TMContainer00000000000000000001.regtrans-ms" "NTUSER.DAT{016888bd-6c6f-11de-8d1d-001e0bcde3ec}.TM.blf" "ntuser.dat.LOG2" "ntuser.dat.LOG1" "NTUSER.DAT" "NetHood/" "My Documents/" "Music/" "logout.log" "Local Settings/" "Links/" "Favorites/" "Downloads/" "Documents/" "Desktop/" "Cookies/" "Contacts/" "Application Data/" "AppData/" ".gemrc" ".gem/" ".emacs.d/" ".emacs" ".config/" ".android/" "../" "./")
+
+ ("d:/0ling.xie/0soft/emacs/bin/" (21796 56076 0 0) "runemacs.exe" "libXpm.dll" "grep-changelog" "etags.exe" "emacsclientw.exe" "emacsclient.exe" "emacs.exe" "emacs-24.4.exe" "ebrowse.exe" "ctags.exe" "addpm.exe" "../" "./")
+
  ("/home/irobot/0site/demo/" (21575 8938 100522 291000) "config/" "../" "db/" "config.ru" "README.rdoc" "Rakefile" "Gemfile" "log/" "app/" "./" "public/" "tmp/" "vendor/" ".gitignore" "test/" "bin/" "lib/")
 
  ("/home/irobot/0base/0F#/code/" (21575 8862 721469 934000) ".#hello.fs" "../" "hello.fs" "#hello.fs#" ".#test.fs" "./" "hello.fs~" "test.fs")
@@ -320,16 +330,6 @@
  ("/home/xlgwr/work/models/app/models/" (21202 132 251736 826000) "product.rb" ".keep" "concerns/" "../" "./" "product.rb~")
 
  ("/home/xlgwr/work/blog/app/views/comments/" (21193 16381 252795 0) "new.js.erb~" "fail_create.js.erb~" "new.html.erb" "new.html.erb~" "_comment.html.erb~" "destroy.js.erb" "../" "new.js.erb" "./" "_comment.html.erb" "create.js.erb" "fail_create.js.erb")
-
- ("/home/xlgwr/work/blogsqlserver/config/" (21198 34308 3298 492000) "environment.rb" "routes.rb" "application.rb" "locales/" "database.yml~" "database.yml" "initializers/" "../" "./" "boot.rb" "environments/")
-
- ("/home/xlgwr/work/models/config/" (21201 20800 114773 78000) "environment.rb" "routes.rb" "application.rb" "locales/" "database.yml~" "database.yml" "initializers/" "../" "./" "boot.rb" "environments/")
-
- ("/home/xlgwr/work/models/app/" (21201 18872 563005 685000) "models/" "controllers/" "views/" "mailers/" "../" "./" "assets/" "helpers/")
-
- ("/home/xlgwr/work/models/" (21201 21610 504585 98000) "db/" ".gitignore" "vendor/" "config.ru" "tmp/" "app/" "lib/" "Gemfile~" "Rakefile" ".bundle/" "public/" "config/" "Gemfile.lock" "../" "./" "bin/" "test/" "README.rdoc" "log/" "Gemfile")
-
- ("/home/xlgwr/work/blogsqlserver/" (21198 29230 179135 387000) "db/" ".gitignore" "vendor/" "config.ru" "tmp/" "app/" "lib/" "Gemfile~" "Rakefile" ".bundle/" "public/" "config/" "Gemfile.lock" "../" "./" "bin/" "test/" "README.rdoc" "log/" "Gemfile")
 )
 
 ;; ----- ido-unc-hosts-cache -----

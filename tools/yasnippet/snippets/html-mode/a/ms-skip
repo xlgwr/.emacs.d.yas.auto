@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ms + type + "-" + param1 + "-" + param1 + "-" + param2 + ... + number = value
+# key: ms
+# --
+ms-${1:${2:type}${5:-${6:${7:param1}-${8:${9:param2}-${10:param3}}}}}${20:="${21:value}"}$0

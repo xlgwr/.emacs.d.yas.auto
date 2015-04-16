@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: data-xxx-yyy="xxx"
+# key: da
+# --
+data-${1:${2:type}${5:-${6:${7:param1}-${8:${9:param2}}}}}${20:="${21:value}"}$0

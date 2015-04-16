@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: a{{ text }}
+# key: aa
+# --
+{{ ${1:text} }}$0
