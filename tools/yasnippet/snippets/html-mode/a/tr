@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: tr <tr ng-xx='yy in dd'>
+# key: tr
+# --
+<tr ${1:${2:ng-repeat}="${3:item} in ${4:items}"}>
+$0
+</tr>

@@ -1,5 +1,10 @@
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives
+	     '("melpa" . "http://melpa.org/packages/") t)
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+    (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 ;;hide tool-bar
 ;;hide scroll-bar-mode
@@ -109,6 +114,12 @@
 ;;windows
 ;;(setq inferior-fsharp-program "\"c:\\Path\To\Fsi.exe\"")
 ;;(setq fsharp-compiler "\"c:\\Path\To\Fsc.exe\"")
+
+;; ad csharp C#
+(defun my-csharp-mode-hook ()
+  ;; enable the stuff you want for C# here
+  (electric-pair-mode 1))
+(add-hook 'csharp-mode-hook 'my-csharp-mode-hook)
 
 (ido-mode t)
 (yas-global-mode 1)
