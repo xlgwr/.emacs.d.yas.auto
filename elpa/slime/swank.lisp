@@ -777,22 +777,40 @@ connections, otherwise it will be closed after the first."
 
 (defparameter *loopback-interface* "127.0.0.1")
 
+(defmacro restart-loop (form &body clauses)
+  "Executes FORM, with restart-case CLAUSES which have a chance to modify FORM's
+environment before trying again (by returning normally) or giving up (through an
+explicit transfer of control), all within an implicit block named nil.
+e.g.: (restart-loop (http-request url) (use-value (new) (setq url new)))"
+  `(loop (restart-case (return ,form) ,@clauses)))
+
+(defun socket-quest (port backlog)
+  (restart-loop (create-socket *loopback-interface* port :backlog backlog)
+    (use-value (&optional (new-port (1+ port)))
+      :report (lambda (stream) (format stream "Try a port other than ~D" port))
+      :interactive
+      (lambda ()
+        (format *query-io* "Enter port (defaults to ~D): " (1+ port))
+        (finish-output *query-io*)      ; necessary for tunnels
+        (ignore-errors (list (parse-integer (read-line *query-io*)))))
+      (setq port new-port))))
+
 (defun setup-server (port announce-fn style dont-close backlog)
   (init-log-output)
-  (let* ((socket (create-socket *loopback-interface* port :backlog backlog))
+  (let* ((socket (socket-quest port backlog))
          (port (local-port socket)))
     (funcall announce-fn port)
     (labels ((serve () (accept-connections socket style dont-close))
-             (note () (send-to-sentinel `(:add-server ,socket ,port 
+             (note () (send-to-sentinel `(:add-server ,socket ,port
                                                       ,(current-thread))))
              (serve-loop () (note) (loop do (serve) while dont-close)))
       (ecase style
-        (:spawn (initialize-multiprocessing 
+        (:spawn (initialize-multiprocessing
                  (lambda ()
                    (start-sentinel)
                    (spawn #'serve-loop :name (format nil "Swank ~s" port)))))
-        ((:fd-handler :sigio) 
-         (note) 
+        ((:fd-handler :sigio)
+         (note)
          (add-fd-handler socket #'serve))
         ((nil) (serve-loop))))
     port))
@@ -1289,17 +1307,17 @@ event was found."
 
 (defun simple-repl ()
   (loop
-   (format t "~a> " (package-string-for-prompt *package*))
-   (force-output)
-   (let ((form (handler-case (read)
-                 (end-of-repl-input () (return)))))
-     (let ((- form)
-           (values (multiple-value-list (eval form))))
-       (setq *** **  ** *  * (car values)
-             /// //  // /  / values
-             +++ ++  ++ +  + form)
-       (cond ((null values) (format t "; No values~&"))
-             (t (mapc (lambda (v) (format t "~s~&" v)) values)))))))
+    (format t "~a> " (package-string-for-prompt *package*))
+    (force-output)
+    (let ((form (handler-case (read)
+                  (end-of-repl-input () (return)))))
+      (let ((- form)
+            (values (multiple-value-list (eval form))))
+        (setq *** **  ** *  * (car values)
+              /// //  // /  / values
+              +++ ++  ++ +  + form)
+        (cond ((null values) (format t "; No values~&"))
+              (t (mapc (lambda (v) (format t "~s~&" v)) values)))))))
 
 (defun make-repl-input-stream (connection stdin)
   (make-input-stream
@@ -1743,6 +1761,13 @@ Errors are trapped and invoke our debugger."
                (format nil "~A~D (~a bit~:p, #x~X, #o~O, #b~B)" 
                        *echo-area-prefix*
                        i (integer-length i) i i i)))
+            ((and (typep (car values) 'ratio)
+                  (null (cdr values))
+                  (ignore-errors
+                   ;; The ratio may be to large to be represented as a single float
+                   (format nil "~A~D (~:*~f)" 
+                           *echo-area-prefix*
+                           (car values)))))
             (t (format nil "~a~{~S~^, ~}" *echo-area-prefix* values))))))
 
 (defmacro values-to-string (values)

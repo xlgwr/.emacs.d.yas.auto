@@ -12,8 +12,8 @@
 @end direntry
 @c %**end of header
 
-@set EDITION 2.10.1
-@set SLIMEVER 2.10.1
+@set EDITION 2.14
+@set SLIMEVER 2.14
 @set UPDATED @today{}
 @set TITLE SLIME User Manual
 @settitle @value{TITLE}, version @value{EDITION}
@@ -397,32 +397,42 @@ and submit a @emph{pull request}. Be sure to first read the
 @node Installation
 @section Installation
 
-With a Lisp implementation that can be started from the command-line,
-installation just requires a few lines in your @file{.emacs}:
+The easiest way to install and keep @SLIME{} up-to-date is using
+Emacs's built-in package manager. @SLIME{} is available from the
+@uref{http://melpa.org,,MELPA} repository. After
+@uref{http://melpa.org/#/getting-started,,setting up the MELPA repository},
+@SLIME{} can be installed via @kbd{M-x package-install RET slime RET}.
+You should then define your default Lisp in your @file{.emacs} as follows:
 
-@vindex inferior-lisp-program
-@vindex load-path
 @example
-;; @emph{Setup load-path, autoloads and your lisp system}
-(add-to-list 'load-path "~/dir/to/cloned/slime")
-(require 'slime-autoloads)
 (setq inferior-lisp-program "/opt/sbcl/bin/sbcl")
 @end example
 
-@c @iftex
-The snippet above also appears in the @file{README.md} file. You can
-copy&paste it from there, but remember to fill in the appropriate
-paths.
-@c @end iftex
+At this point, you should be ready to start @ref{Running,,running SLIME}.
 
 This is the minimal configuration with the fewest frills.  If the
 basic setup is working, you can try additional modules (@ref{Loading
 Contribs}).
 
-We recommend not loading the @acronym{ILISP} package into Emacs if you
-intend to use @SLIME{}. Doing so will add a lot of extra bindings to
-the keymap for Lisp source files that may be confusing and may not
-work correctly for a Lisp process started by @SLIME{}.
+@subsection Installing from Git
+
+If you'd rather install @SLIME{} directly from its
+@uref{https://github.com/slime/slime,,git repository}, you will need
+to add a few extra lines in your @file{.emacs}:
+
+@vindex inferior-lisp-program
+@vindex load-path
+@example
+;; @emph{Setup load-path, autoloads and your lisp system}
+;; @emph{Not needed if you install SLIME via MELPA}
+(add-to-list 'load-path "~/dir/to/cloned/slime")
+(require 'slime-autoloads)
+(setq inferior-lisp-program "/opt/sbcl/bin/sbcl")
+@end example
+
+You may optionally byte-compile @SLIME{} using @code{make compile
+contrib-compile}.
+
 
 @c -----------------------
 @node Running
@@ -2145,6 +2155,7 @@ particular packages do.
 * Scratch Buffer::
 * SLIME Trace Dialog::
 * slime-sprof::
+* SLIME Enhanced M-.::
 * slime-fancy::
 @end menu
 
@@ -2540,7 +2551,16 @@ functions and for handling @code{make-instance},
 The package @code{slime-fuzzy} implements yet another symbol
 completion heuristic.
 
-[Somebody please describe what the algorithm actually does]
+@table @kbd
+@anchor{slime-fuzzy-complete-symbol}
+@kbditem{C-c M-i, slime-fuzzy-complete-symbol}
+Presents a list of likely completions to choose from for an
+abbreviation at point.  If you set the
+variable @code{slime-complete-symbol-function} to this command, fuzzy
+completion will also be used for @kbd{M-TAB}.
+@end table
+
+@subsection The Algorithm
 
 It attempts to complete a symbol all at once, instead of in pieces.
 For example, ``mvb'' will find ``@code{multiple-value-bind}'' and
@@ -2565,14 +2585,45 @@ previous letter's value, it will use that percentage instead.
 Finally, a small scaling factor is applied to favor shorter
 matches, all other things being equal.
 
-@table @kbd
-@anchor{slime-fuzzy-complete-symbol}
-@kbditem{C-c M-i, slime-fuzzy-complete-symbol}
-Presents a list of likely completions to choose from for an
-abbreviation at point.  If you set the
-variable @code{slime-complete-symbol-function} to this command, fuzzy
-completion will also be used for @kbd{M-TAB}.
-@end table
+@subsection Duplicate Symbols
+
+In case a symbol is accessible via several packages, duplicate symbol
+filter specified via @code{*fuzzy-duplicate-symbol-filter*} swank
+variable is applied. @code{:nearest-package} value specifies that only
+symbols in the package with highest score should be kept.
+@code{:home-package} specifies that only the match that represents the home
+package of the symbol is used, and @code{:all} value specifies that
+duplicate symbol filter mode should be turned off.
+
+To specify a custom filter, set @code{*fuzzy-duplicate-symbol-filter*}
+to a function accepting three arguments: the name of package being
+examined, the list of names of all packages being examined with
+packages with highest matching score listed first and an @code{equal}
+hash-table that is shared between calls to the function and can be
+used for deduplication purposes. The function should return a
+deduplication filter function which accepts a symbol and returns true
+if the symbol should be kept.
+
+For example, the effect of @code{:nearest-package} can be also achieved
+by specifying the following custom filter in @file{~/.swank.lisp}:
+@example
+(setf *fuzzy-duplicate-symbol-filter*
+      #'(lambda (cur-package all-packages dedup-table)
+          (declare (ignore cur-package all-packages))
+          #'(lambda (symbol)
+              (unless (gethash (symbol-name symbol) dedup-table)
+                (setf (gethash (symbol-name symbol) dedup-table) t)))))
+@end example
+And instead of @code{:home-package}, the following can be used:
+@example
+(setf *fuzzy-duplicate-symbol-filter*
+      #'(lambda (cur-package all-packages dedup-table)
+          (declare (ignore dedup-table))
+          (let ((packages (mapcar #'find-package
+                                  (remove cur-package all-packages))))
+            #'(lambda (symbol)
+                (not (member (symbol-package symbol) packages))))))
+@end example
 
 @node slime-autodoc-mode
 @section @code{slime-autodoc-mode}
@@ -3127,6 +3178,13 @@ Toggle exclusion of swank functions from the report.
 
 @end table
 
+@node SLIME Enhanced M-.
+@section SLIME Enhanced M-.
+@code{slime-mdot-fu} enables meta-point to jump to local variables
+bound with @code{let} and @code{let*}, in addition to function bindings
+declared with @code{flet} and @code{labels}, via
+@code{slime-edit-local-definition}.
+
 @node slime-fancy
 @section Meta package: @code{slime-fancy}
 
@@ -3363,7 +3421,6 @@ keybinding (if there is one) refer to the function description.
 @c @fcnindex{slime-make-default-connection}
 @c @fcnindex{slime-make-typeout-frame}
 @fcnindex{slime-mode}
-@c @fcnindex{slime-next-line/not-add-newlines}
 @c @fcnindex{slime-next-location}
 @fcnindex{slime-next-note}
 @fcnindex{slime-nop}

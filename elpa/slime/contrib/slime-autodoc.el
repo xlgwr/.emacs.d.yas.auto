@@ -106,6 +106,10 @@
 	(slime-insert-propertized '(face highlight) highlight)))
     (buffer-substring (point-min) (point-max))))
 
+(define-obsolete-function-alias 'slime-fontify-string
+  'slime-autodoc--fontify
+  "SLIME 2.10")
+
 
 ;;;; Autodocs (automatic context-sensitive help)
 
@@ -173,8 +177,9 @@ If it's not in the cache, the cache will be updated asynchronously."
   (set (make-local-variable 'eldoc-documentation-function) 'slime-autodoc)
   (set (make-local-variable 'eldoc-minor-mode-string) " adoc")
   (setq slime-autodoc-mode (eldoc-mode arg))
-  (message "Slime autodoc mode %s."
-	   (if slime-autodoc-mode "enabled" "disabled")))
+  (when (called-interactively-p 'interactive)
+    (message "Slime autodoc mode %s."
+             (if slime-autodoc-mode "enabled" "disabled"))))
 
 
 ;;; Noise to enable/disable slime-autodoc-mode

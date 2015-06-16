@@ -45,12 +45,13 @@
   #+armedbear '((swank abcl))
   #+cormanlisp '((swank corman) (swank gray))
   #+ecl '((swank ecl) (swank gray))
+  #+clasp '((swank clasp) (swank gray))
   #+mkcl '((swank mkcl) (swank gray))
   )
 
 (defparameter *implementation-features*
   '(:allegro :lispworks :sbcl :clozure :cmu :clisp :ccl :corman :cormanlisp
-    :armedbear :gcl :ecl :scl :mkcl))
+    :armedbear :gcl :ecl :scl :mkcl :clasp))
 
 (defparameter *os-features*
   '(:macosx :linux :windows :mswindows :win32 :solaris :darwin :sunos :hpux
@@ -58,7 +59,7 @@
 
 (defparameter *architecture-features*
   '(:powerpc :ppc :x86 :x86-64 :x86_64 :amd64 :i686 :i586 :i486 :pc386 :iapx386
-    :sparc64 :sparc :hppa64 :hppa :arm
+    :sparc64 :sparc :hppa64 :hppa :arm :armv5l :armv6l :armv7l
     :pentium3 :pentium4
     :java-1.4 :java-1.5 :java-1.6 :java-1.7))
 
@@ -72,6 +73,12 @@
             (let ((vcs-id (funcall (q "ext:lisp-implementation-vcs-id"))))
               (when (>= (length vcs-id) 8)
                 (subseq vcs-id 0 8))))))
+
+#+clasp
+(defun clasp-version-string ()
+  (format nil "~A~@[-~A~]"
+          (lisp-implementation-version)
+          (core:lisp-implementation-id)))
 
 (defun lisp-version-string ()
   #+(or clozure cmu) (substitute-if #\_ (lambda (x) (find x " /"))
@@ -93,7 +100,8 @@
   #+clisp     (let ((s (lisp-implementation-version)))
                 (subseq s 0 (position #\space s)))
   #+armedbear (lisp-implementation-version)
-  #+ecl (ecl-version-string) )
+  #+ecl (ecl-version-string)
+  #+clasp (clasp-version-string))
 
 (defun unique-dir-name ()
   "Return a name that can be used as a directory name that is
@@ -292,16 +300,30 @@ If LOAD is true, load the fasl file."
     (eval `(pushnew 'compile-contribs ,(q "swank::*after-init-hook*"))))
   (funcall (q "swank::init")))
 
+(defun string-starts-with (string prefix)
+  (string-equal string prefix :end1 (min (length string) (length prefix))))
+
 (defun list-swank-packages ()
-  (list* :swank
-         :swank-io-package
-         (remove-if (lambda (package)
-                      (< (string-not-equal #1="swank/" (package-name package))
-                         (length #1#)))
-                    (list-all-packages))))
+  (remove-if-not (lambda (package)
+                   (let ((name (package-name package)))
+                     (and (string-not-equal name "swank-loader")
+                          (string-starts-with name "swank"))))
+                 (list-all-packages)))
+
+(defun delete-packages (packages)
+  (dolist (package packages)
+    (flet ((handle-package-error (c)
+             (let ((pkgs (set-difference (package-used-by-list package)
+                                         packages)))
+               (when pkgs
+                 (warn "deleting ~a which is used by ~{~a~^, ~}."
+                       package pkgs))
+               (continue c))))
+      (handler-bind ((package-error #'handle-package-error))
+        (delete-package package)))))
 
 (defun init (&key delete reload load-contribs (setup t)
-               (quiet (not *load-verbose*)))
+                  (quiet (not *load-verbose*)))
   "Load SWANK and initialize some global variables.
 If DELETE is true, delete any existing SWANK packages.
 If RELOAD is true, reload SWANK, even if the SWANK package already exists.
@@ -309,7 +331,7 @@ If LOAD-CONTRIBS is true, load all contribs
 If SETUP is true, load user init files and initialize some
 global variabes in SWANK."
   (when (and delete (find-package :swank))
-    (mapc #'delete-package (list-swank-packages)))
+    (delete-packages (list-swank-packages)))
   (cond ((or (not (find-package :swank)) reload)
          (load-swank :quiet quiet))
         (t

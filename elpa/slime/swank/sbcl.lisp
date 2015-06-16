@@ -576,9 +576,10 @@ information."
                               (source-path-string-position
                                source-path *buffer-substring*))))
         ((compiling-from-file-p file)
-         (make-location (list :file (namestring file))
-                        (list :position (1+ (source-path-file-position
-                                             source-path file)))))
+         (let ((position (source-path-file-position source-path file)))
+           (make-location (list :file (namestring file))
+                          (list :position (and position
+                                               (1+ position))))))
         ((compiling-from-generated-code-p file source)
          (make-location (list :source-form source)
                         (list :position 1)))
@@ -629,6 +630,13 @@ compiler state."
        (error                     #'handle-notification-condition)
        (warning                   #'handle-notification-condition))
     (funcall function)))
+
+;;; HACK: SBCL 1.2.12 shipped with a bug where
+;;; SB-EXT:RESTRICT-COMPILER-POLICY would signal an error when there
+;;; were no policy restrictions in place. This workaround ensures the
+;;; existence of at least one dummy restriction.
+(handler-case (sb-ext:restrict-compiler-policy)
+  (error () (sb-ext:restrict-compiler-policy 'debug)))
 
 (defun compiler-policy (qualities)
   "Return compiler policy qualities present in the QUALITIES alist.
@@ -747,31 +755,20 @@ QUALITIES is an alist with (quality . value)"
     :transform :deftransform
     :optimizer :defoptimizer
     :vop :define-vop
-    :source-transform :define-source-transform)
+    :source-transform :define-source-transform
+    :ir1-convert :def-ir1-translator
+    :declaration declaim
+    :alien-type :define-alien-type)
   "Map SB-INTROSPECT definition type names to Slime-friendly forms")
 
-(defun definition-specifier (type name)
+(defun definition-specifier (type)
   "Return a pretty specifier for NAME representing a definition of type TYPE."
-  (if (and (symbolp name)
-           (eq type :function)
-           (sb-int:info :function :ir1-convert name))
-      :def-ir1-translator
-      (getf *definition-types* type)))
+  (getf *definition-types* type))
 
 (defun make-dspec (type name source-location)
-  (let ((spec (definition-specifier type name))
-        (desc (sb-introspect::definition-source-description source-location)))
-    (if (eq :define-vop spec)
-        ;; The first part of the VOP description is the name of the template
-        ;; -- which is actually good information and often long. So elide the
-        ;; original name in favor of making the interesting bit more visible.
-        ;;
-        ;; The second part of the VOP description is the associated
-        ;; compiler note, or NIL -- which is quite uninteresting and
-        ;; confuses the eye when reading the actual name which usually
-        ;; has a worthwhile postfix. So drop the note.
-        (list spec (car desc))
-        (list* spec name desc))))
+  (list* (definition-specifier type)
+         name
+         (sb-introspect::definition-source-description source-location)))
 
 (defimplementation find-definitions (name)
   (loop for type in *definition-types* by #'cddr
@@ -866,8 +863,9 @@ QUALITIES is an alist with (quality . value)"
                                     file-write-date) definition-source
     (let* ((namestring (namestring (translate-logical-pathname pathname)))
            (pos (if form-path
-                    (source-file-position namestring file-write-date
-                                          form-path)
+                    (or (source-file-position namestring file-write-date
+                                              form-path)
+                        character-offset)
                     character-offset))
            (snippet (source-hint-snippet namestring file-write-date pos)))
       (make-location `(:file ,namestring)
@@ -877,11 +875,11 @@ QUALITIES is an alist with (quality . value)"
                      `(:snippet ,snippet)))))
 
 (defun definition-source-buffer-and-file-location (definition-source)
-  (let ((buffer (definition-source-buffer-location definition-source))
-        (file (definition-source-file-location definition-source)))
+  (let ((buffer (definition-source-buffer-location definition-source)))
     (make-location (list :buffer-and-file
                          (cadr (location-buffer buffer))
-                         (cadr (location-buffer file)))
+                         (namestring (sb-introspect:definition-source-pathname
+                                      definition-source)))
                    (location-position buffer)
                    (location-hints buffer))))
 

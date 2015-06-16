@@ -3,9 +3,10 @@
 ;; URL: https://github.com/slime/slime
 ;; Package-Requires: ((cl-lib "0.5"))
 ;; Keywords: languages, lisp, slime
-;; Version: 2.10
+;; Version: 2.14
 
-;;;; License
+;;;; License and Commentary
+
 ;;     Copyright (C) 2003  Eric Marsden, Luke Gorrie, Helmut Eller
 ;;     Copyright (C) 2004,2005,2006  Luke Gorrie, Helmut Eller
 ;;     Copyright (C) 2007,2008,2009  Helmut Eller, Tobias C. Rittweiler
@@ -27,32 +28,33 @@
 ;;     Software Foundation, Inc., 59 Temple Place - Suite 330, Boston,
 ;;     MA 02111-1307, USA.
 
-
-;;;; Commentary
+;;; Commentary:
+
+;; SLIME is the ``Superior Lisp Interaction Mode for Emacs.''
 ;;
-;; This file contains extensions for programming in Common Lisp. The
-;; main features are:
+;; SLIME extends Emacs with support for interactive programming in
+;; Common Lisp. The features are centered around slime-mode, an Emacs
+;; minor-mode that complements the standard lisp-mode. While lisp-mode
+;; supports editing Lisp source files, slime-mode adds support for
+;; interacting with a running Common Lisp process for compilation,
+;; debugging, documentation lookup, and so on.
 ;;
-;;   A socket-based communication/RPC interface between Emacs and
-;;   Lisp, enabling introspection and remote development.
+;; The slime-mode programming environment follows the example of
+;; Emacs's native Emacs Lisp environment. We have also included good
+;; ideas from similar systems (such as ILISP) and some new ideas of
+;; our own.
 ;;
-;;   The `slime-mode' minor-mode complementing `lisp-mode'. This new
-;;   mode includes many commands for interacting with the Common Lisp
-;;   process.
+;; SLIME is constructed from two parts: a user-interface written in
+;; Emacs Lisp, and a supporting server program written in Common
+;; Lisp. The two sides are connected together with a socket and
+;; communicate using an RPC-like protocol.
 ;;
-;;   A Common Lisp debugger written in Emacs Lisp. The debugger pops up
-;;   an Emacs buffer similar to the Emacs/Elisp debugger.
-;;
-;;   A Common Lisp inspector to interactively look at run-time data.
-;;
-;;   Trapping compiler messages and creating annotations in the source
-;;   file on the appropriate forms.
-;;
-;; SLIME should work with any recent GNU Emacsen (23+)
-;;
-;; In order to run SLIME, a supporting Lisp server called Swank is
-;; required. Swank is distributed with slime.el and will automatically
-;; be started in a normal installation.
+;; The Lisp server is primarily written in portable Common Lisp. The
+;; required implementation-specific functionality is specified by a
+;; well-defined interface and implemented separately for each Lisp
+;; implementation. This makes SLIME readily portable.
+
+;;; Code:
 
 
 ;;;; Dependencies and setup
@@ -81,14 +83,12 @@
   (require 'apropos)
   (require 'gud))
 
-(eval-and-compile
-  (defvar slime-path
-    (let ((path (or (locate-library "slime") load-file-name)))
-      (and path (file-name-directory path)))
-    "Directory containing the Slime package.
+(defvar slime-path nil
+  "Directory containing the Slime package.
 This is used to load the supporting Common Lisp library, Swank.
-The default value is automatically computed from the location of the
-Emacs Lisp package."))
+The default value is automatically computed from the location of
+the Emacs Lisp package.")
+(setq slime-path (file-name-directory load-file-name))
 
 (defvar slime-lisp-modes '(lisp-mode))
 (defvar slime-contribs nil
@@ -111,8 +111,8 @@ CONTRIBS is a list of contrib packages to load. If `nil', use
 
 (defun slime--setup-contribs ()
   "Load and initialize contribs."
+  (add-to-list 'load-path (expand-file-name "contrib" slime-path))
   (when slime-contribs
-    (add-to-list 'load-path (expand-file-name "contrib" slime-path))
     (dolist (c slime-contribs)
       (unless (and (featurep c)
                    (memq c slime-required-modules))
@@ -127,11 +127,18 @@ CONTRIBS is a list of contrib packages to load. If `nil', use
        'common-lisp-indent-function))
 
 (eval-and-compile
+  (defun slime--changelog-file-name ()
+    (expand-file-name "ChangeLog"
+                      (if (and (boundp 'byte-compile-current-file)
+                               byte-compile-current-file)
+                          (file-name-directory byte-compile-current-file)
+                          slime-path)))
+
   (defun slime-changelog-date (&optional interactivep)
     "Return the datestring of the latest entry in the ChangeLog file.
 Return nil if the ChangeLog file cannot be found."
     (interactive "p")
-    (let ((changelog (expand-file-name "ChangeLog" slime-path))
+    (let ((changelog (slime--changelog-file-name))
           (date nil))
       (when (file-exists-p changelog)
         (with-temp-buffer
@@ -318,18 +325,8 @@ argument."
   "Face for notes from the compiler."
   :group 'slime-mode-faces)
 
-(defun slime-face-inheritance-possible-p ()
-  "Return true if the :inherit face attribute is supported."
-  (assq :inherit custom-face-attributes))
-
 (defface slime-highlight-face
-  (if (slime-face-inheritance-possible-p)
-      '((t (:inherit highlight :underline nil)))
-    '((((class color) (background light))
-       (:background "darkseagreen2"))
-      (((class color) (background dark))
-       (:background "darkolivegreen"))
-      (t (:inverse-video t))))
+    '((t (:inherit highlight :underline nil)))
   "Face for compiler notes while selected."
   :group 'slime-mode-faces)
 
@@ -358,12 +355,14 @@ PROPERTIES specifies any default face properties."
 
 (define-sldb-faces
   (topline        "the top line describing the error")
-  (condition      "the condition class")
-  (section        "the labels of major sections in the debugger buffer")
-  (frame-label    "backtrace frame numbers")
+  (condition      "the condition class"
+                  '(:inherit font-lock-warning-face))
+  (section        "the labels of major sections in the debugger buffer"
+                  '(:inherit header-line))
+  (frame-label    "backtrace frame numbers"
+                  '(:inherit shadow))
   (restart-type   "restart names."
-                  (if (slime-face-inheritance-possible-p)
-                      '(:inherit font-lock-keyword-face)))
+                  '(:inherit font-lock-keyword-face))
   (restart        "restart descriptions")
   (restart-number "restart numbers (correspond to keystrokes to invoke)"
                   '(:bold t))
@@ -375,9 +374,11 @@ PROPERTIES specifies any default face properties."
    "frames which are surely not restartable")
   (detailed-frame-line
    "function names and arguments in a detailed (expanded) frame")
-  (local-name     "local variable names")
+  (local-name     "local variable names"
+                  '(:inherit font-lock-variable-name-face))
   (local-value    "local variable values")
-  (catch-tag      "catch tags"))
+  (catch-tag      "catch tags"
+                  '(:inherit highlight)))
 
 
 ;;;; Minor modes
@@ -513,7 +514,8 @@ information."
     ("\C-t"  slime-toggle-trace-fdefinition)
     ("I"     slime-inspect)
     ("\C-xt" slime-list-threads)
-    ("\C-xn" slime-cycle-connections)
+    ("\C-xn" slime-next-connection)
+    ("\C-xp" slime-prev-connection)
     ("\C-xc" slime-list-connections)
     ("<"     slime-list-callers)
     (">"     slime-list-callees)
@@ -1683,16 +1685,29 @@ This doesn't mean it will connect right after Slime is loaded."
 
 (defvar slime-cycle-connections-hook nil)
 
-(defun slime-cycle-connections ()
+(defun slime-cycle-connections-within (connections)
+  (let* ((tail (or (cdr (member (slime-current-connection) connections))
+                   connections))        ; loop around to the beginning
+         (next (car tail)))
+    (slime-select-connection next)
+    (run-hooks 'slime-cycle-connections-hook)
+    (message "Lisp: %s %s"
+             (slime-connection-name next)
+             (process-contact next))))
+
+(defun slime-next-connection ()
   "Change current slime connection, cycling through all connections."
   (interactive)
-  (let* ((tail (or (cdr (member (slime-current-connection)
-                                slime-net-processes))
-                   slime-net-processes))
-         (p (car tail)))
-    (slime-select-connection p)
-    (run-hooks 'slime-cycle-connections-hook)
-    (message "Lisp: %s %s" (slime-connection-name p) (process-contact p))))
+  (slime-cycle-connections-within slime-net-processes))
+
+(define-obsolete-function-alias 'slime-cycle-connections
+  'slime-next-connection "2.13")
+
+(defun slime-prev-connection ()
+  "Change current slime connection, cycling through all connections.
+Goes in reverse order, relative to `slime-next-connection'."
+  (interactive)
+  (slime-cycle-connections-within (reverse slime-net-processes)))
 
 (cl-defmacro slime-with-connection-buffer ((&optional process) &rest body)
   "Execute BODY in the process-buffer of PROCESS.
@@ -2483,7 +2498,7 @@ See `slime-compile-and-load-file' for further details."
   (unless buffer-file-name
     (error "Buffer %s is not associated with a file." (buffer-name)))
   (check-parens)
-  (slime--save-some-buffers)
+  (slime--maybe-save-buffer)
   (run-hook-with-args 'slime-before-compile-functions (point-min) (point-max))
   (let ((file (slime-to-lisp-filename (buffer-file-name)))
         (options (slime-simplify-plist `(,@slime-compile-file-options
@@ -2495,10 +2510,10 @@ See `slime-compile-and-load-file' for further details."
     (message "Compiling %s..." file)))
 
 ;; FIXME: compilation-save-buffers-predicate was introduced in 24.1
-(defun slime--save-some-buffers ()
-  (save-some-buffers (not compilation-ask-about-save)
-                     (if (boundp 'compilation-save-buffers-predicate)
-                         compilation-save-buffers-predicate)))
+(defun slime--maybe-save-buffer ()
+  (let ((slime--this-buffer (current-buffer)))
+    (save-some-buffers (not compilation-ask-about-save)
+                       (lambda () (eq (current-buffer) slime--this-buffer)))))
 
 (defun slime-hack-quotes (arglist)
   ;; eval is the wrong primitive, we really want funcall
@@ -2647,7 +2662,7 @@ PREDICATE is executed in the buffer to test."
                              (slime-current-package)
                              start
                              (if (buffer-file-name)
-                                 (file-name-directory (buffer-file-name))
+                                 (slime-to-lisp-filename (buffer-file-name))
                                nil)))))
         ',slime-compilation-policy)
     cont))
@@ -4529,17 +4544,14 @@ The most important commands:
   ("v" 'slime-show-xref)
   ("n" 'slime-xref-next-line)
   ("p" 'slime-xref-prev-line)
+  ("." 'slime-xref-next-line)
+  ("," 'slime-xref-prev-line)
   ("\C-c\C-c" 'slime-recompile-xref)
   ("\C-c\C-k" 'slime-recompile-all-xrefs)
   ("\M-," 'slime-xref-retract)
   ([remap next-line] 'slime-xref-next-line)
   ([remap previous-line] 'slime-xref-prev-line)
   )
-
-(defun slime-next-line/not-add-newlines ()
-  (interactive)
-  (let ((next-line-add-newlines nil))
-    (forward-line 1)))
 
 
 ;;;;; XREF results buffer and window management
@@ -4715,13 +4727,13 @@ This is used by `slime-goto-next-xref'")
 (defun slime-all-xrefs ()
   (let ((xrefs nil))
     (save-excursion
-      (goto-char (point-min))
-      (while (ignore-errors (slime-next-line/not-add-newlines) t)
-        (let ((loc (get-text-property (point) 'slime-location)))
-          (when loc
-            (let* ((dspec (slime-xref-dspec-at-point))
-                   (xref  (make-slime-xref :dspec dspec :location loc)))
-              (push xref xrefs))))))
+     (goto-char (point-min))
+     (while (zerop (forward-line 1))
+       (let ((loc (get-text-property (point) 'slime-location)))
+         (when loc
+           (let* ((dspec (slime-xref-dspec-at-point))
+                  (xref  (make-slime-xref :dspec dspec :location loc)))
+             (push xref xrefs))))))
     (nreverse xrefs)))
 
 (defun slime-goto-xref ()
@@ -6334,17 +6346,12 @@ was called originally."
   :group 'slime-inspector)
 
 (defface slime-inspector-value-face
-  (if (slime-face-inheritance-possible-p)
-      '((t (:inherit font-lock-builtin-face)))
-    '((((background light)) (:foreground "MediumBlue" :bold t))
-      (((background dark)) (:foreground "LightGray" :bold t))))
+    '((t (:inherit font-lock-builtin-face)))
   "Face for things which can themselves be inspected."
   :group 'slime-inspector)
 
 (defface slime-inspector-action-face
-  (if (slime-face-inheritance-possible-p)
-      '((t (:inherit font-lock-warning-face)))
-    '((t (:foreground "OrangeRed"))))
+    '((t (:inherit font-lock-warning-face)))
   "Face for labels of inspector actions."
   :group 'slime-inspector)
 
@@ -6708,7 +6715,10 @@ If ARG is negative, move forwards."
 (slime-define-keys slime-inspector-mode-map
   ([return] 'slime-inspector-operate-on-point)
   ("\C-m"   'slime-inspector-operate-on-point)
+  ([mouse-1] 'slime-inspector-operate-on-click)
   ([mouse-2] 'slime-inspector-operate-on-click)
+  ([mouse-6] 'slime-inspector-pop)
+  ([mouse-7] 'slime-inspector-next)
   ("l" 'slime-inspector-pop)
   ("n" 'slime-inspector-next)
   (" " 'slime-inspector-next)
@@ -6837,7 +6847,14 @@ switch-to-buffer."
 
 (def-slime-selector-method ?n
   "Cycle to the next Lisp connection."
-  (slime-cycle-connections)
+  (slime-next-connection)
+  (concat "*slime-repl "
+          (slime-connection-name (slime-current-connection))
+          "*"))
+
+(def-slime-selector-method ?p
+  "Cycle to the previous Lisp connection."
+  (slime-prev-connection)
   (concat "*slime-repl "
           (slime-connection-name (slime-current-connection))
           "*"))
